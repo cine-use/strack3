@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>角色 - Strack Python SDK</title>
+  <link href='../css/googlecss.css' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u89d2\u8272";
+    var mkdocs_page_input_path = "avatar.md";
+    var mkdocs_page_url = "/avatar/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Strack Python SDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">概述</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../action/">动作</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../asset/">资产</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">角色</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">字段</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">关联字段</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">方法</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#find">find</a></li>
+        
+            <li><a class="toctree-l3" href="#select">select</a></li>
+        
+            <li><a class="toctree-l3" href="#upload">upload</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../category/">类别</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Strack Python SDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>角色</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">字段</h2>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段说明</th>
+<th>字段类型</th>
+<th>默认返回</th>
+<th>创建可选</th>
+<th>编辑可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>头像编号</td>
+<td>int</td>
+<td>True</td>
+<td>----</td>
+<td>----</td>
+</tr>
+<tr>
+<td>path</td>
+<td>头像路径</td>
+<td>string</td>
+<td>True</td>
+<td>----</td>
+<td>----</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>用户编号</td>
+<td>int</td>
+<td>True</td>
+<td>----</td>
+<td>----</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">关联字段</h2>
+<p>无</p>
+<h2 id="_3">方法</h2>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>find</td>
+<td>get first matched entry with given fields.</td>
+</tr>
+<tr>
+<td>select</td>
+<td>get all matched entry with given fields.</td>
+</tr>
+<tr>
+<td>upload</td>
+<td>upload thumbnail with given path.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="find">find</h3>
+<ul>
+<li>
+<p>Description:</p>
+<p>get first matched entry with given fields.</p>
+</li>
+<li>
+<p>Flags:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数说明</th>
+<th>参数类型</th>
+<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filters</td>
+<td>过滤条件</td>
+<td>str</td>
+<td>False</td>
+</tr>
+<tr>
+<td>fields</td>
+<td>获取字段</td>
+<td>list</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Examples:</li>
+</ul>
+<pre><code>from strack_globals import StrackGlobals
+st = StrackGlobals.st
+
+# 返回找到的角色头像
+print st.avatar.find()
+
+&gt;&gt;&gt; {u'path': u'/Uploads/avatars/20150212103159_c8aae080d7d66e68a80fe3dadc5a02df.jpg', u'user_id': 178, 'id': 2, 'type': u'avatar'}
+
+# 返回用户编号是10的角色头像
+print st.avatar.find('user_id=10')
+
+&gt;&gt;&gt; None
+</code></pre>
+
+<h3 id="select">select</h3>
+<ul>
+<li>
+<p>Description:</p>
+<p>get all matched entry with given fields.</p>
+</li>
+<li>
+<p>Flags:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数说明</th>
+<th>参数类型</th>
+<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filters</td>
+<td>过滤条件</td>
+<td>str</td>
+<td>False</td>
+</tr>
+<tr>
+<td>fields</td>
+<td>获取字段</td>
+<td>list</td>
+<td>False</td>
+</tr>
+<tr>
+<td>order</td>
+<td>排序方式</td>
+<td>dict</td>
+<td>False</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>限制结果数量</td>
+<td>int</td>
+<td>False</td>
+</tr>
+<tr>
+<td>page</td>
+<td>分页</td>
+<td>dict</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Examples:</li>
+</ul>
+<pre><code>from strack_globals import StrackGlobals
+st = StrackGlobals.st
+
+# 返回所有的角色头像
+print st.avatar.select()
+
+&gt;&gt;&gt; [{u'path': u'/Uploads/avatars/7faaafea1475414470.jpg', u'user_id': 265, 'id': 36, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/e25f617e1494838975.jpg', u'user_id': 244, 'id': 37, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/c44c1abb1479107344.jpg', u'user_id': 245, 'id': 38, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/40f55a061489568025.jpg', u'user_id': 268, 'id': 39, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/728c40541490947482.jpg', u'user_id': 1, 'id': 40, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/6718961f1497857891.jpg', u'user_id': 281, 'id': 41, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/cec8d6fa1498036256.jpg', u'user_id': 243, 'id': 42, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/0e341d5e1498915255.jpg', u'user_id': 282, 'id': 43, 'type': u'avatar'}]
+
+# 返回用户编号是1的角色头像
+print st.avatar.select('user_id=1')
+
+&gt;&gt;&gt; [{u'path': u'/Uploads/avatars/728c40541490947482.jpg', u'user_id': 1, 'id': 40, 'type': u'avatar'}]
+</code></pre>
+
+<h3 id="upload">upload</h3>
+<ul>
+<li>
+<p>Description:</p>
+<p>upload thumbnail with given path.</p>
+</li>
+<li>
+<p>Flags:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数说明</th>
+<th>参数类型</th>
+<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entity_id</td>
+<td>实体编号</td>
+<td>int</td>
+<td>True</td>
+</tr>
+<tr>
+<td>path</td>
+<td>文件路径</td>
+<td>str</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Examples:</li>
+</ul>
+<pre><code>from strack_globals import StrackGlobals
+st = StrackGlobals.st
+
+# 给编号为281的用户上传头像
+print st.avatar.upload(281, r&quot;E:\avatar.png&quot;)
+
+&gt;&gt;&gt; {u'user_id': u'281', u'avatar': u'/Uploads/avatars/d27f6e131501925159.jpg'}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../category/" class="btn btn-neutral float-right" title="类别">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../asset/" class="btn btn-neutral" title="资产"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.cgspread.com">Strack文档小组 </a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../asset/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../category/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

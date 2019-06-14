@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>类别 - Strack Python SDK</title>
+  <link href='../css/googlecss.css' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u7c7b\u522b";
+    var mkdocs_page_input_path = "category.md";
+    var mkdocs_page_url = "/category/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Strack Python SDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">概述</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../action/">动作</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../asset/">资产</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../avatar/">角色</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">类别</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">字段</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">关联字段</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">方法</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#create">create</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Strack Python SDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>类别</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">字段</h2>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段说明</th>
+<th>字段类型</th>
+<th>默认返回</th>
+<th>创建可选</th>
+<th>编辑可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>类别编号</td>
+<td>int</td>
+<td>True</td>
+<td>----</td>
+<td>----</td>
+</tr>
+<tr>
+<td>created</td>
+<td>创建时间</td>
+<td>string</td>
+<td>----</td>
+<td>----</td>
+<td>----</td>
+</tr>
+<tr>
+<td>name</td>
+<td>类别名称</td>
+<td>string</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">关联字段</h2>
+<p>无</p>
+<h2 id="_3">方法</h2>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>create</td>
+<td>create a data entry on strack.</td>
+</tr>
+<tr>
+<td>find</td>
+<td>get first matched entry with given fields.</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>remove entry with given fields.</td>
+</tr>
+<tr>
+<td>select</td>
+<td>get all matched entry with given fields.</td>
+</tr>
+<tr>
+<td>update</td>
+<td>edit entry data on strack.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="create">create</h3>
+<ul>
+<li>
+<p>Description:</p>
+<p>create a data entry on strack.</p>
+</li>
+<li>
+<p>Flags:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数说明</th>
+<th>参数类型</th>
+<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>创建数据</td>
+<td>dict</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Examples:</li>
+</ul>
+<pre><code>from strack_globals import StrackGlobals
+st = StrackGlobals.st
+
+# 创建名为动物的资产类别
+print st.category.create({&quot;name&quot;:&quot;animals&quot;})
+
+&gt;&gt;&gt; {u'created': u'2017-08-05', 'type': u'category', 'name': u'animals', 'id': 14}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../avatar/" class="btn btn-neutral" title="角色"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.cgspread.com">Strack文档小组 </a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../avatar/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

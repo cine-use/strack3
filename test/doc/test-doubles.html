@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>PHPUnit 手册 &#8211; 第 9 章 测试替身</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://phpunit.de/manual/current/zh_cn/test-doubles.html">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/highlight.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CSource+Code+Pro:400,700' rel='stylesheet' type='text/css'>
+  <!--[if lt IE 9]><script src="js/html5shiv.min.js"></script><![endif]-->
+ </head>
+ <body>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                <a href="https://phpunit.de/documentation.html">This documentation is outdated. Please follow this link to learn about the new documentation.</a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-4 col-lg-3">
+     <div class="well well-sm sidebar-nav">
+<dl class="toc nav hidden-print"><dt><span class="chapter"><a href="installation.html">1. 安装 PHPUnit</a></span></dt><dd><dl><dt><span class="section"><a href="installation.html#installation.requirements">需求</a></span></dt><dt><span class="section"><a href="installation.html#installation.phar">PHP 档案包 (PHAR)</a></span></dt><dd><dl><dt><span class="section"><a href="installation.html#installation.phar.windows">Windows</a></span></dt><dt><span class="section"><a href="installation.html#installation.phar.verification">校验 PHPUnit PHAR 发行包</a></span></dt></dl></dd><dt><span class="section"><a href="installation.html#installation.composer">Composer</a></span></dt><dt><span class="section"><a href="installation.html#installation.optional-packages">可选的组件包</a></span></dt></dl></dd><dt><span class="chapter"><a href="writing-tests-for-phpunit.html">2. 编写 PHPUnit 测试</a></span></dt><dd><dl><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.test-dependencies">测试的依赖关系</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers">数据供给器</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.exceptions">对异常进行测试</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.errors">对 PHP 错误进行测试</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.output">对输出进行测试</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.error-output">错误相关信息的输出</a></span></dt><dd><dl><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.error-output.edge-cases">边缘情况</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="textui.html">3. 命令行测试执行器</a></span></dt><dd><dl><dt><span class="section"><a href="textui.html#textui.clioptions">命令行选项</a></span></dt></dl></dd><dt><span class="chapter"><a href="fixtures.html">4. 基境(fixture)</a></span></dt><dd><dl><dt><span class="section"><a href="fixtures.html#fixtures.more-setup-than-teardown">setUp() 多 tearDown() 少</a></span></dt><dt><span class="section"><a href="fixtures.html#fixtures.variations">变体</a></span></dt><dt><span class="section"><a href="fixtures.html#fixtures.sharing-fixture">基境共享</a></span></dt><dt><span class="section"><a href="fixtures.html#fixtures.global-state">全局状态</a></span></dt></dl></dd><dt><span class="chapter"><a href="organizing-tests.html">5. 组织测试</a></span></dt><dd><dl><dt><span class="section"><a href="organizing-tests.html#organizing-tests.filesystem">用文件系统来编排测试套件</a></span></dt><dt><span class="section"><a href="organizing-tests.html#organizing-tests.xml-configuration">用 XML 配置来编排测试套件</a></span></dt></dl></dd><dt><span class="chapter"><a href="risky-tests.html">6. 有风险的测试</a></span></dt><dd><dl><dt><span class="section"><a href="risky-tests.html#risky-tests.useless-tests">无用测试</a></span></dt><dt><span class="section"><a href="risky-tests.html#risky-tests.unintentionally-covered-code">意外的代码覆盖</a></span></dt><dt><span class="section"><a href="risky-tests.html#risky-tests.output-during-test-execution">测试执行期间产生的输出</a></span></dt><dt><span class="section"><a href="risky-tests.html#risky-tests.test-execution-timeout">测试执行时长的超时限制</a></span></dt><dt><span class="section"><a href="risky-tests.html#risky-tests.global-state-manipulation">全局状态篡改</a></span></dt></dl></dd><dt><span class="chapter"><a href="incomplete-and-skipped-tests.html">7. 未完成的测试与跳过的测试</a></span></dt><dd><dl><dt><span class="section"><a href="incomplete-and-skipped-tests.html#incomplete-and-skipped-tests.incomplete-tests">未完成的测试</a></span></dt><dt><span class="section"><a href="incomplete-and-skipped-tests.html#incomplete-and-skipped-tests.skipping-tests">跳过测试</a></span></dt><dt><span class="section"><a href="incomplete-and-skipped-tests.html#incomplete-and-skipped-tests.skipping-tests-using-requires">用 @requires 来跳过测试</a></span></dt></dl></dd><dt><span class="chapter"><a href="database.html">8. 数据库测试</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.supported-vendors-for-database-testing">数据库测试所支持的供应商</a></span></dt><dt><span class="section"><a href="database.html#database.difficulties-in-database-testing">数据库测试的难点</a></span></dt><dt><span class="section"><a href="database.html#database.the-four-stages-of-a-database-test">数据库测试的四个阶段</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.clean-up-database">1. 清理数据库</a></span></dt><dt><span class="section"><a href="database.html#database.set-up-fixture">2. 建立基境</a></span></dt><dt><span class="section"><a href="database.html#database.run-test-verify-outcome-and-teardown">3–5. 运行测试、验证结果、并拆除基境</a></span></dt></dl></dd><dt><span class="section"><a href="database.html#database.configuration-of-a-phpunit-database-testcase">PHPUnit 数据库测试用例的配置</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.implementing-getconnection">实现 getConnection()</a></span></dt><dt><span class="section"><a href="database.html#database.implementing-getdataset">实现 getDataSet()</a></span></dt><dt><span class="section"><a href="database.html#database.what-about-the-database-schema-ddl">数据库构架(DDL)怎么办？</a></span></dt><dt><span class="section"><a href="database.html#database.tip-use-your-own-abstract-database-testcase">小建议：使用你自己的抽象数据库 TestCase 类</a></span></dt></dl></dd><dt><span class="section"><a href="database.html#database.understanding-datasets-and-datatables">理解 DataSet（数据集）和 DataTable（数据表）</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.available-implementations">可用的各种实现</a></span></dt><dt><span class="section"><a href="database.html#database.beware-of-foreign-keys">当心外键</a></span></dt><dt><span class="section"><a href="database.html#database.implementing-your-own-datasetsdatatables">实现自有的 DataSet/DataTable</a></span></dt></dl></dd><dt><span class="section"><a href="database.html#database.the-connection-api">数据库连接 API</a></span></dt><dt><span class="section"><a href="database.html#database.database-assertions-api">数据库断言 API</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.asserting-the-row-count-of-a-table">对表中数据行的数量作出断言</a></span></dt><dt><span class="section"><a href="database.html#database.asserting-the-state-of-a-table">对表的状态作出断言</a></span></dt><dt><span class="section"><a href="database.html#database.asserting-the-result-of-a-query">对查询的结果作出断言</a></span></dt><dt><span class="section"><a href="database.html#database.asserting-the-state-of-multiple-tables">对多个表的状态作出断言</a></span></dt></dl></dd><dt><span class="section"><a href="database.html#database.frequently-asked-questions">常见问题（FAQ）</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.will-phpunit-re-create-the-database-schema-for-each-test">PHPUnit 会为每个测试（重新）创建数据库吗？</a></span></dt><dt><span class="section"><a href="database.html#database.am-i-required-to-use-pdo-in-my-application-for-the-database-extension-to-work">为了让数据库扩展模块正常工作，需要在应用程序中使用 PDO 吗？</a></span></dt><dt><span class="section"><a href="database.html#database.what-can-i-do-when-i-get-a-too-much-connections-error">如果看到 <span class="quote">“<span class="quote">Too much Connections</span>”</span> 错误该怎么办？</a></span></dt><dt><span class="section"><a href="database.html#database.how-to-handle-null-with-flat-xml-csv-datasets">Flat XML / CSV 数据集中如何处理 NULL？</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="test-doubles.html" class="active">9. 测试替身</a></span></dt><dd><dl><dt><span class="section"><a href="test-doubles.html#test-doubles.stubs">Stubs （桩件）</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.mock-objects">仿件对象(Mock Object)</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.prophecy">Prophecy</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.mocking-traits-and-abstract-classes">对特质(Trait)与抽象类进行模仿</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.stubbing-and-mocking-web-services">对 Web 服务(Web Services)进行上桩或模仿</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.mocking-the-filesystem">对文件系统进行模仿</a></span></dt></dl></dd><dt><span class="chapter"><a href="testing-practices.html">10. 测试实践</a></span></dt><dd><dl><dt><span class="section"><a href="testing-practices.html#testing-practices.during-development">在开发过程中</a></span></dt><dt><span class="section"><a href="testing-practices.html#testing-practices.during-debugging">在调试过程中</a></span></dt></dl></dd><dt><span class="chapter"><a href="code-coverage-analysis.html">11. 代码覆盖率分析</a></span></dt><dd><dl><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.metrics">用于代码覆盖率的软件衡量标准</a></span></dt><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.whitelisting-files">将文件列入白名单</a></span></dt><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.ignoring-code-blocks">略过代码块</a></span></dt><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.specifying-covered-methods">指明要覆盖的方法</a></span></dt><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.edge-cases">边缘情况</a></span></dt></dl></dd><dt><span class="chapter"><a href="other-uses-for-tests.html">12. 测试的其他用途</a></span></dt><dd><dl><dt><span class="section"><a href="other-uses-for-tests.html#other-uses-for-tests.agile-documentation">敏捷文档</a></span></dt><dt><span class="section"><a href="other-uses-for-tests.html#other-uses-for-tests.cross-team-tests">跨团队测试</a></span></dt></dl></dd><dt><span class="chapter"><a href="logging.html">13. Logging （日志记录）</a></span></dt><dd><dl><dt><span class="section"><a href="logging.html#logging.xml">测试结果 (XML)</a></span></dt><dt><span class="section"><a href="logging.html#logging.codecoverage.xml">代码覆盖率 (XML)</a></span></dt><dt><span class="section"><a href="logging.html#logging.codecoverage.text">代码覆盖率 (TEXT)</a></span></dt></dl></dd><dt><span class="chapter"><a href="extending-phpunit.html">14. 扩展 PHPUnit</a></span></dt><dd><dl><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.PHPUnit_Framework_TestCase">PHPUnit\Framework\TestCase 的子类</a></span></dt><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.custom-assertions">编写自定义断言</a></span></dt><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.PHPUnit_Framework_TestListener">实现 PHPUnit\Framework\TestListener</a></span></dt><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.PHPUnit_Extensions_TestDecorator">从 PHPUnit_Extensions_TestDecorator 派生子类</a></span></dt><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.PHPUnit_Framework_Test">实现 PHPUnit_Framework_Test</a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.assertions.html">A. 断言</a></span></dt><dd><dl><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.static-vs-non-static-usage-of-assertion-methods">断言方法的用法：静态 vs. 非静态</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertArrayHasKey">assertArrayHasKey()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertClassHasAttribute">assertClassHasAttribute()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertArraySubset">assertArraySubset()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertClassHasStaticAttribute">assertClassHasStaticAttribute()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertContains">assertContains()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertContainsOnly">assertContainsOnly()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertContainsOnlyInstancesOf">assertContainsOnlyInstancesOf()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertCount">assertCount()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertDirectoryExists">assertDirectoryExists()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertDirectoryIsReadable">assertDirectoryIsReadable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertDirectoryIsWritable">assertDirectoryIsWritable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertEmpty">assertEmpty()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertEqualXMLStructure">assertEqualXMLStructure()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertEquals">assertEquals()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFalse">assertFalse()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFileEquals">assertFileEquals()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFileExists">assertFileExists()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFileIsReadable">assertFileIsReadable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFileIsWritable">assertFileIsWritable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertGreaterThan">assertGreaterThan()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertGreaterThanOrEqual">assertGreaterThanOrEqual()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertInfinite">assertInfinite()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertInstanceOf">assertInstanceOf()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertInternalType">assertInternalType()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertIsReadable">assertIsReadable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertIsWritable">assertIsWritable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertJsonFileEqualsJsonFile">assertJsonFileEqualsJsonFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertJsonStringEqualsJsonFile">assertJsonStringEqualsJsonFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertJsonStringEqualsJsonString">assertJsonStringEqualsJsonString()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertLessThan">assertLessThan()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertLessThanOrEqual">assertLessThanOrEqual()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertNan">assertNan()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertNull">assertNull()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertObjectHasAttribute">assertObjectHasAttribute()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertRegExp">assertRegExp()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringMatchesFormat">assertStringMatchesFormat()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringMatchesFormatFile">assertStringMatchesFormatFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertSame">assertSame()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringEndsWith">assertStringEndsWith()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringEqualsFile">assertStringEqualsFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringStartsWith">assertStringStartsWith()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertThat">assertThat()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertTrue">assertTrue()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertXmlFileEqualsXmlFile">assertXmlFileEqualsXmlFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertXmlStringEqualsXmlFile">assertXmlStringEqualsXmlFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertXmlStringEqualsXmlString">assertXmlStringEqualsXmlString()</a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.annotations.html">B. 标注</a></span></dt><dd><dl><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.author">@author</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.after">@after</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.afterClass">@afterClass</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.backupGlobals">@backupGlobals</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.backupStaticAttributes">@backupStaticAttributes</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.before">@before</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.beforeClass">@beforeClass</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.codeCoverageIgnore">@codeCoverageIgnore*</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.covers">@covers</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.coversDefaultClass">@coversDefaultClass</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.coversNothing">@coversNothing</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.dataProvider">@dataProvider</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.depends">@depends</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.expectedException">@expectedException</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.expectedExceptionCode">@expectedExceptionCode</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.expectedExceptionMessage">@expectedExceptionMessage</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.expectedExceptionMessageRegExp">@expectedExceptionMessageRegExp</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.group">@group</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.large">@large</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.medium">@medium</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.preserveGlobalState">@preserveGlobalState</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.requires">@requires</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.runTestsInSeparateProcesses">@runTestsInSeparateProcesses</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.runInSeparateProcess">@runInSeparateProcess</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.small">@small</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.test">@test</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.testdox">@testdox</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.ticket">@ticket</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.uses">@uses</a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.configuration.html">C. XML 配置文件</a></span></dt><dd><dl><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.phpunit">PHPUnit</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.testsuites">测试套件</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.groups">分组</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.whitelisting-files">Whitelisting Files for Code Coverage</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.logging">Logging （日志记录）</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.test-listeners">测试监听器</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.php-ini-constants-variables">设定 PHP INI 设置、常量、全局变量</a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.index.html">D. 索引</a></span></dt><dd><dl><dt><span class="index"><a href="appendixes.index.html#appendixes.index.index"></a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.bibliography.html">E. 参考书目</a></span></dt><dt><span class="appendix"><a href="appendixes.copyright.html">F. 版权</a></span></dt></dl>
+     </div>
+    </div>
+    <div class="col-md-8 col-lg-9">
+     <div class="row">
+      <div class="col-md-1 pull-left prev-nav"><a accesskey="p" href="database.html">上一章</a></div>
+      <div class="col-md-1 pull-right next-nav"><a accesskey="n" href="testing-practices.html">下一章</a></div>
+     </div>
+<div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="test-doubles"></a>第 9 章 测试替身</h1></div></div></div><p>Gerard Meszaros 在 <a class="xref" href="appendixes.bibliography.html#Meszaros2007" title="xUnit Test Patterns: Refactoring Test Code">[<abbr class="abbrev">Meszaros2007</abbr>]</a> 中介绍了测试替身的概念：</p><div class="blockquote"><table border="0" class="blockquote" style="width: 100%; cellspacing: 0; cellpadding: 0;" summary="Block quote"><tr><td width="10%" valign="top"> </td><td width="80%" valign="top"><p>
+      <a id="idm140589347516768" class="indexterm"></a>有时候对被测系统(SUT)进行测试是很困难的，因为它依赖于其他无法在测试环境中使用的组件。这有可能是因为这些组件不可用，它们不会返回测试所需要的结果，或者执行它们会有不良副作用。在其他情况下，我们的测试策略要求对被测系统的内部行为有更多控制或更多可见性。</p><p>
+      <a id="idm140589347515424" class="indexterm"></a>
+      <a id="idm140589347514880" class="indexterm"></a>如果在编写测试时无法使用（或选择不使用）实际的依赖组件(DOC)，可以用测试替身来代替。测试替身不需要和真正的依赖组件有完全一样的的行为方式；他只需要提供和真正的组件同样的 API 即可，这样被测系统就会以为它是真正的组件！</p></td><td width="10%" valign="top"> </td></tr><tr><td width="10%" valign="top"> </td><td colspan="2" align="right" valign="top">--<span class="attribution">Gerard Meszaros</span></td></tr></table></div><p>PHPUnit 提供的 <code class="literal">createMock($type)</code> 和 <code class="literal">getMockBuilder($type)</code> 方法可以在测试中用来自动生成对象，此对象可以充当任意指定原版类型（接口或类名）的测试替身。在任何预期或要求使用原版类的实例对象的上下文中都可以使用这个测试替身对象来代替。</p><p><code class="literal">createMock($type)</code> 方法直接返回指定类型（接口或类）的测试替身对象实例。此测试替身的创建使用了最佳实践的默认值（不执行原始类的 <code class="literal">__construct()</code> 和 <code class="literal">__clone()</code> 方法，且不对传递给测试替身的方法的参数进行克隆）。如果这些默认值非你所需，可以用 <code class="literal">getMockBuilder($type)</code> 方法并使用流畅式接口来定制测试替身的生成过程。</p><p>在默认情况下，原版类的所有方法都会被替换为只会返回 <code class="literal">null</code> 的伪实现（其中不会调用原版方法）。使用诸如 <code class="literal">will($this-&gt;returnValue())</code> 之类的方法可以对这些伪实现在被调用时应当返回什么值做出配置。</p><div class="alert alert-info"><h3 class="title">局限性：final、private、与 static 方法</h3><p>请注意，<code class="literal">final</code>、<code class="literal">private</code> 和 <code class="literal">static</code> 方法无法对其进行上桩(stub)或模仿(mock)。PHPUnit 的测试替身功能将会忽略它们，并维持它们的原始行为。</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="test-doubles.stubs"></a>Stubs （桩件）</h2></div></div></div><p>
+      <a id="idm140589347408480" class="indexterm"></a>将对象替换为（可选地）返回配置好的返回值的测试替身的实践方法称为<span class="emphasis"><em>上桩(stubbing)</em></span>。可以用<span class="emphasis"><em>桩件(stub)</em></span>来“替换掉被测系统所依赖的实际组件，这样测试就有了对被测系统的间接输入的控制点。这使得测试能强制安排被测系统的执行路径，否则被测系统可能无法执行”。</p><p>
+      <a id="idm140589347406272" class="indexterm"></a>
+
+      <a class="xref" href="test-doubles.html#test-doubles.stubs.examples.StubTest.php" title="例 9.2: 对某个方法的调用上桩，返回固定值">例 9.2</a>展示了如何对方法的调用上桩以及如何设定返回值。首先用 <code class="literal">PHPUnit\Framework\TestCase</code> 类提供的 <code class="literal">createMock()</code> 方法来建立一个桩件对象，它表面看起来像是 <code class="literal">SomeClass</code>类（<a class="xref" href="test-doubles.html#test-doubles.stubs.examples.SomeClass.php" title="例 9.1: 需要对其上桩的类">例 9.1</a>）的实例。随后用 PHPUnit 提供的 <a class="ulink" href="http://martinfowler.com/bliki/FluentInterface.html" target="_top">流畅式接口</a>来指定桩件的行为。本质上，这意味着不需要建立多个临时对象然后再把它们捆到一起。取而代之的是范例中所示的链式方法调用。这使得代码更加易读并更加“流畅”。</p><div class="example"><a id="test-doubles.stubs.examples.SomeClass.php"></a><p class="title"><strong>例 9.1: 需要对其上桩的类</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class SomeClass
+{
+    public function doSomething()
+    {
+        // 随便做点什么。
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><div class="example"><a id="test-doubles.stubs.examples.StubTest.php"></a><p class="title"><strong>例 9.2: 对某个方法的调用上桩，返回固定值</strong></p><div class="example-contents"><a id="idm140589347399760" class="indexterm"></a><a id="idm140589347399184" class="indexterm"></a><a id="idm140589347398608" class="indexterm"></a><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StubTest extends TestCase
+{
+    public function testStub()
+    {
+        // 为 SomeClass 类创建桩件。
+        $stub = $this-&gt;createMock(SomeClass::class);
+
+        // 配置桩件。
+        $stub-&gt;method('doSomething')
+             -&gt;willReturn('foo');
+
+        // 现在调用 $stub-&gt;doSomething() 将返回 'foo'。
+        $this-&gt;assertEquals('foo', $stub-&gt;doSomething());
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><div class="alert alert-info"><h3 class="title">局限性：名字为“method”的方法</h3><p>仅当原始类中不包含名字为“method”的方法时，以上范例才能正常运行。</p><p>如果原始类包含名为“method”的方法，就必须用 <code class="literal">$stub-&gt;expects($this-&gt;any())-&gt;method('doSomething')-&gt;willReturn('foo');</code>。</p></div><p>“在幕后”，当使用了 <code class="literal">createMock()</code> 方法时， PHPUnit 自动生成了一个新的 PHP 类来实现想要的行为。</p><p>
+      <a class="xref" href="test-doubles.html#test-doubles.stubs.examples.StubTest2.php" title="例 9.3: 使用可用于配置生成的测试替身类的仿件生成器 API">例 9.3</a>这个例子展示了如何用仿件生成器的流畅式接口来配置测试替身的生成。这个测试替身的默认配置用的是和 <code class="literal">createMock()</code> 相同的最佳实践。</p><div class="example"><a id="test-doubles.stubs.examples.StubTest2.php"></a><p class="title"><strong>例 9.3: 使用可用于配置生成的测试替身类的仿件生成器 API</strong></p><div class="example-contents"><a id="idm140589347557344" class="indexterm"></a><a id="idm140589347556768" class="indexterm"></a><a id="idm140589347556192" class="indexterm"></a><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StubTest extends TestCase
+{
+    public function testStub()
+    {
+        // 为 SomeClass 类建立桩件。
+        $stub = $this-&gt;getMockBuilder($originalClassName)
+                     -&gt;disableOriginalConstructor()
+                     -&gt;disableOriginalClone()
+                     -&gt;disableArgumentCloning()
+                     -&gt;disallowMockingUnknownTypes()
+                     -&gt;getMock();
+
+        // 配置桩件。
+        $stub-&gt;method('doSomething')
+             -&gt;willReturn('foo');
+
+        // 现在调用 $stub-&gt;doSomething() 将返回 'foo'。
+        $this-&gt;assertEquals('foo', $stub-&gt;doSomething());
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>在之前的例子中，用 <code class="literal">willReturn($value)</code> 返回简单值。这个简短的语法相当于 <code class="literal">will($this-&gt;returnValue($value))</code>。而在这个长点的语法中，可以使用变量，从而实现更复杂的上桩行为。</p><p>有时想要将（未改变的）方法调用时所使用的参数之一作为桩件的方法的调用结果来返回。 <a class="xref" href="test-doubles.html#test-doubles.stubs.examples.StubTest3.php" title="例 9.4: 对某个方法的调用上桩，返回参数之一">例 9.4</a>展示了如何用 <code class="literal">returnArgument()</code> 代替 <code class="literal">returnValue()</code> 来做到这点。</p><div class="example"><a id="test-doubles.stubs.examples.StubTest3.php"></a><p class="title"><strong>例 9.4: 对某个方法的调用上桩，返回参数之一</strong></p><div class="example-contents"><a id="idm140589347549728" class="indexterm"></a><a id="idm140589347549152" class="indexterm"></a><a id="idm140589347548576" class="indexterm"></a><a id="idm140589347548000" class="indexterm"></a><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StubTest extends TestCase
+{
+    public function testReturnArgumentStub()
+    {
+        // 为 SomeClass 类创建桩件。
+        $stub = $this-&gt;createMock(SomeClass::class);
+
+        // 配置桩件。
+        $stub-&gt;method('doSomething')
+             -&gt;will($this-&gt;returnArgument(0));
+
+        // $stub-&gt;doSomething('foo') 返回 'foo'
+        $this-&gt;assertEquals('foo', $stub-&gt;doSomething('foo'));
+
+        // $stub-&gt;doSomething('bar') 返回 'bar'
+        $this-&gt;assertEquals('bar', $stub-&gt;doSomething('bar'));
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>在用流畅式接口进行测试时，让某个已上桩的方法返回对桩件对象的引用有时会很有用。<a class="xref" href="test-doubles.html#test-doubles.stubs.examples.StubTest4.php" title="例 9.5: 对方法的调用上桩，返回对桩件对象的引用">例 9.5</a>展示了如何用 <code class="literal">returnSelf()</code> 来做到这点。</p><div class="example"><a id="test-doubles.stubs.examples.StubTest4.php"></a><p class="title"><strong>例 9.5: 对方法的调用上桩，返回对桩件对象的引用</strong></p><div class="example-contents"><a id="idm140589347543600" class="indexterm"></a><a id="idm140589347543024" class="indexterm"></a><a id="idm140589347542448" class="indexterm"></a><a id="idm140589347541872" class="indexterm"></a><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StubTest extends TestCase
+{
+    public function testReturnSelf()
+    {
+        // 为 SomeClass 类创建桩件。
+        $stub = $this-&gt;createMock(SomeClass::class);
+
+        // 配置桩件。
+        $stub-&gt;method('doSomething')
+             -&gt;will($this-&gt;returnSelf());
+
+        // $stub-&gt;doSomething() 返回 $stub
+        $this-&gt;assertSame($stub, $stub-&gt;doSomething());
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>有时候，上桩的方法需要根据预定义的参数清单来返回不同的值。可以用 <code class="literal">returnValueMap()</code> 方法将参数和相应的返回值关联起来建立映射。范例参见<a class="xref" href="test-doubles.html#test-doubles.stubs.examples.StubTest5.php" title="例 9.6: 对方法的调用上桩，按照映射确定返回值">例 9.6</a>。</p><div class="example"><a id="test-doubles.stubs.examples.StubTest5.php"></a><p class="title"><strong>例 9.6: 对方法的调用上桩，按照映射确定返回值</strong></p><div class="example-contents"><a id="idm140589347172080" class="indexterm"></a><a id="idm140589347171504" class="indexterm"></a><a id="idm140589347170928" class="indexterm"></a><a id="idm140589347170352" class="indexterm"></a><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StubTest extends TestCase
+{
+    public function testReturnValueMapStub()
+    {
+        // 为 SomeClass 类创建桩件。
+        $stub = $this-&gt;createMock(SomeClass::class);
+
+        // 创建从参数到返回值的映射。
+        $map = [
+            ['a', 'b', 'c', 'd'],
+            ['e', 'f', 'g', 'h']
+        ];
+
+        // 配置桩件。
+        $stub-&gt;method('doSomething')
+             -&gt;will($this-&gt;returnValueMap($map));
+
+        // $stub-&gt;doSomething() 根据提供的参数返回不同的值。
+        $this-&gt;assertEquals('d', $stub-&gt;doSomething('a', 'b', 'c'));
+        $this-&gt;assertEquals('h', $stub-&gt;doSomething('e', 'f', 'g'));
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>如果上桩的方法需要返回计算得到的值而不是固定值（参见 <code class="literal">returnValue()</code>）或某个（未改变的）参数（参见 <code class="literal">returnArgument()</code>），可以用 <code class="literal">returnCallback()</code> 来让上桩的方法返回回调函数或方法的结果。范例参见<a class="xref" href="test-doubles.html#test-doubles.stubs.examples.StubTest6.php" title="例 9.7: 对方法的调用上桩，由回调生成返回值">例 9.7</a>。</p><div class="example"><a id="test-doubles.stubs.examples.StubTest6.php"></a><p class="title"><strong>例 9.7: 对方法的调用上桩，由回调生成返回值</strong></p><div class="example-contents"><a id="idm140589347164864" class="indexterm"></a><a id="idm140589347164288" class="indexterm"></a><a id="idm140589347163712" class="indexterm"></a><a id="idm140589347163136" class="indexterm"></a><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StubTest extends TestCase
+{
+    public function testReturnCallbackStub()
+    {
+        // 为 SomeClass 类创建桩件。
+        $stub = $this-&gt;createMock(SomeClass::class);
+
+        // 配置桩件。
+        $stub-&gt;method('doSomething')
+             -&gt;will($this-&gt;returnCallback('str_rot13'));
+
+        // $stub-&gt;doSomething($argument) 返回 str_rot13($argument)
+        $this-&gt;assertEquals('fbzrguvat', $stub-&gt;doSomething('something'));
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>相比于建立回调方法，有一个更简单的选择是直接给出期望返回值的列表。可以用 <code class="literal">onConsecutiveCalls()</code> 方法来做到这个。范例参见 <a class="xref" href="test-doubles.html#test-doubles.stubs.examples.StubTest7.php" title="例 9.8: 对方法的调用上桩，按照指定顺序返回列表中的值">例 9.8</a>。</p><div class="example"><a id="test-doubles.stubs.examples.StubTest7.php"></a><p class="title"><strong>例 9.8: 对方法的调用上桩，按照指定顺序返回列表中的值</strong></p><div class="example-contents"><a id="idm140589347158800" class="indexterm"></a><a id="idm140589347158224" class="indexterm"></a><a id="idm140589347157648" class="indexterm"></a><a id="idm140589347157072" class="indexterm"></a><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StubTest extends TestCase
+{
+    public function testOnConsecutiveCallsStub()
+    {
+        // 为 SomeClass 类创建桩件。
+        $stub = $this-&gt;createMock(SomeClass::class);
+
+        // 配置桩件。
+        $stub-&gt;method('doSomething')
+             -&gt;will($this-&gt;onConsecutiveCalls(2, 3, 5, 7));
+
+        // $stub-&gt;doSomething() 每次返回值都不同
+        $this-&gt;assertEquals(2, $stub-&gt;doSomething());
+        $this-&gt;assertEquals(3, $stub-&gt;doSomething());
+        $this-&gt;assertEquals(5, $stub-&gt;doSomething());
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>除了返回一个值之外，上桩的方法还能抛出一个异常。<a class="xref" href="test-doubles.html#test-doubles.stubs.examples.StubTest8.php" title="例 9.9: 对方法的调用上桩，抛出异常">例 9.9</a>展示了如何用 <code class="literal">throwException()</code> 做到这点。</p><div class="example"><a id="test-doubles.stubs.examples.StubTest8.php"></a><p class="title"><strong>例 9.9: 对方法的调用上桩，抛出异常</strong></p><div class="example-contents"><a id="idm140589347152688" class="indexterm"></a><a id="idm140589347152112" class="indexterm"></a><a id="idm140589347151536" class="indexterm"></a><a id="idm140589347150960" class="indexterm"></a><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StubTest extends TestCase
+{
+    public function testThrowExceptionStub()
+    {
+        // 为 SomeClass 类创建桩件
+        $stub = $this-&gt;createMock(SomeClass::class);
+
+        // 配置桩件。
+        $stub-&gt;method('doSomething')
+             -&gt;will($this-&gt;throwException(new Exception));
+
+        // $stub-&gt;doSomething() 抛出异常
+        $stub-&gt;doSomething();
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>另外，也可以自行编写桩件，并在此过程中改善设计。在系统中被广泛使用的资源是通过单个外观(facade)来访问的，因此很容易就能用桩件替换掉资源。例如，将散落在代码各处的对数据库的直接调用替换为单个 <code class="literal">Database</code> 对象，这个对象实现了 <code class="literal">IDatabase</code> 接口。接下来，就可以创建实现了 <code class="literal">IDatabase</code> 的桩件并在测试中使用之。甚至可以创建一个选项来控制是用桩件还是用真实数据库来运行测试，这样测试就既能在开发过程中用作本地测试，又能在实际数据库环境中进行集成测试。</p><p>需要上桩的功能往往集中在同一个对象中，这就改善了内聚度。将功能通过单一且一致的接口呈现出来，就降低了这部分与系统其他部分之间的耦合度。</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="test-doubles.mock-objects"></a>仿件对象(Mock Object)</h2></div></div></div><p>将对象替换为能验证预期行为（例如断言某个方法必会被调用）的测试替身的实践方法称为<span class="emphasis"><em>模仿(mocking)</em></span>。</p><p>
+      <a id="idm140589347143440" class="indexterm"></a>可以用 <span class="emphasis"><em>仿件对象(mock object)</em></span>“作为观察点来核实被测试系统在测试中的间接输出。通常，仿件对象还需要包括桩件的功能，因为如果测试尚未失败则仿件对象需要向被测系统返回一些值，但是其重点还是在对间接输出的核实上。因此，仿件对象远不止是桩件加断言，它是以一种从根本上完全不同的方式来使用的”(Gerard Meszaros)。</p><div class="alert alert-info"><h3 class="title">局限性：对预期的自动校验</h3><p>PHPUnit只会对在某个测试的作用域内生成的仿件对象进行自动校验。诸如在数据供给器内生成或用<code class="literal">@depends</code> 标注注入测试的仿件对象，PHPUnit并不会自动对其进行校验。</p></div><p>这有个例子：假设需要测试的当前方法，在例子中是 <code class="literal">update()</code>，确实在一个观察着另外一个对象的对象中上被调用了。<a class="xref" href="test-doubles.html#test-doubles.mock-objects.examples.SUT.php" title="例 9.10: 被测系统(SUT)中 Subject 与 Observer 类的代码">例 9.10</a>展示了被测系统(SUT)中 <code class="literal">Subject</code> 和 <code class="literal">Observer</code>  两个类的代码。</p><div class="example"><a id="test-doubles.mock-objects.examples.SUT.php"></a><p class="title"><strong>例 9.10: 被测系统(SUT)中 Subject 与 Observer 类的代码</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class Subject
+{
+    protected $observers = [];
+    protected $name;
+
+    public function __construct($name)
+    {
+        $this-&gt;name = $name;
+    }
+
+    public function getName()
+    {
+        return $this-&gt;name;
+    }
+
+    public function attach(Observer $observer)
+    {
+        $this-&gt;observers[] = $observer;
+    }
+
+    public function doSomething()
+    {
+        // 做点什么
+        // ...
+
+        // 通知观察者发生了些什么
+        $this-&gt;notify('something');
+    }
+
+    public function doSomethingBad()
+    {
+        foreach ($this-&gt;observers as $observer) {
+            $observer-&gt;reportError(42, 'Something bad happened', $this);
+        }
+    }
+
+    protected function notify($argument)
+    {
+        foreach ($this-&gt;observers as $observer) {
+            $observer-&gt;update($argument);
+        }
+    }
+
+    // 其他方法。
+}
+
+class Observer
+{
+    public function update($argument)
+    {
+        // 做点什么。
+    }
+
+    public function reportError($errorCode, $errorMessage, Subject $subject)
+    {
+        // 做点什么。
+    }
+
+    // 其他方法。
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>
+      <a id="idm140589347134256" class="indexterm"></a>
+
+      <a class="xref" href="test-doubles.html#test-doubles.mock-objects.examples.SubjectTest.php" title="例 9.11: 测试某个方法会以特定参数被调用一次">例 9.11</a>展示了如何用仿件对象来测试 <code class="literal">Subject</code> 和 <code class="literal">Observer</code> 对象之间的互动。</p><p>首先用 <code class="literal">PHPUnit\Framework\TestCase</code> 类提供的 <code class="literal">getMockBuilder()</code> 方法建立 <code class="literal">Observer</code> 的仿件对象。由于给出了一个数组做为 <code class="literal">getMock()</code> 方法的第二（可选）参数，<code class="literal">Observer</code> 类只有 <code class="literal">update()</code> 方法会被替换为仿实现。</p><p>由于关注的是检验某个方法是否被调用，以及调用时具体所使用的参数，因此引入 <code class="literal">expects()</code> 与 <code class="literal">with()</code> 方法来指明此交互应该是什么样的。</p><div class="example"><a id="test-doubles.mock-objects.examples.SubjectTest.php"></a><p class="title"><strong>例 9.11: 测试某个方法会以特定参数被调用一次</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class SubjectTest extends TestCase
+{
+    public function testObserversAreUpdated()
+    {
+        // 为 Observer 类建立仿件对象，只模仿 update() 方法。
+        $observer = $this-&gt;getMockBuilder(Observer::class)
+                         -&gt;setMethods(['update'])
+                         -&gt;getMock();
+
+        // 建立预期状况：update() 方法将会被调用一次，
+        // 并且将以字符串 'something' 为参数。
+        $observer-&gt;expects($this-&gt;once())
+                 -&gt;method('update')
+                 -&gt;with($this-&gt;equalTo('something'));
+
+        // 创建 Subject 对象，并将模仿的 Observer 对象连接其上。
+        $subject = new Subject('My subject');
+        $subject-&gt;attach($observer);
+
+        // 在 $subject 对象上调用 doSomething() 方法，
+        // 预期将以字符串 'something' 为参数调用 
+        // Observer 仿件对象的 update() 方法。
+        $subject-&gt;doSomething();
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p><code class="literal">with()</code> 方法可以携带任何数量的参数，对应于被模仿的方法的参数数量。可以对方法的参数指定更加高等的约束而不仅是简单的匹配。</p><div class="example"><a id="test-doubles.mock-objects.examples.SubjectTest2.php"></a><p class="title"><strong>例 9.12: 测试某个方法将会以特定数量的参数进行调用，并且对各个参数以多种方式进行约束</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class SubjectTest extends TestCase
+{
+    public function testErrorReported()
+    {
+        // 为 Observer 类建立仿件，对 reportError() 方法进行模仿
+        $observer = $this-&gt;getMockBuilder(Observer::class)
+                         -&gt;setMethods(['reportError'])
+                         -&gt;getMock();
+
+        $observer-&gt;expects($this-&gt;once())
+                 -&gt;method('reportError')
+                 -&gt;with(
+                       $this-&gt;greaterThan(0),
+                       $this-&gt;stringContains('Something'),
+                       $this-&gt;anything()
+                   );
+
+        $subject = new Subject('My subject');
+        $subject-&gt;attach($observer);
+
+        // doSomethingBad() 方法应当会通过（observer的）reportError()方法
+        // 向 observer 报告错误。
+        $subject-&gt;doSomethingBad();
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p><code class="literal">withConsecutive()</code> 方法可以接受任意多个数组作为参数，具体数量取决于欲测试的调用。每个数组都都是对被仿方法的相应参数的一组约束，就像 <code class="literal">with()</code> 中那样。</p><div class="example"><a id="test-doubles.mock-objects.examples.with-consecutive.php"></a><p class="title"><strong>例 9.13: 测试某个方法将会以特定参数被调用二次</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class FooTest extends TestCase
+{
+    public function testFunctionCalledTwoTimesWithSpecificArguments()
+    {
+        $mock = $this-&gt;getMockBuilder(stdClass::class)
+                     -&gt;setMethods(['set'])
+                     -&gt;getMock();
+
+        $mock-&gt;expects($this-&gt;exactly(2))
+             -&gt;method('set')
+             -&gt;withConsecutive(
+                 [$this-&gt;equalTo('foo'), $this-&gt;greaterThan(0)],
+                 [$this-&gt;equalTo('bar'), $this-&gt;greaterThan(0)]
+             );
+
+        $mock-&gt;set('foo', 21);
+        $mock-&gt;set('bar', 48);
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p><code class="literal">callback()</code> 约束用来进行更加复杂的参数校验。此约束的唯一参数是一个 PHP 回调项(callback)。此 PHP 回调项接受需要校验的参数作为其唯一参数，并应当在参数通过校验时返回 <code class="literal">true</code>，否则返回 <code class="literal">false</code>。</p><div class="example"><a id="test-doubles.mock-objects.examples.SubjectTest3.php"></a><p class="title"><strong>例 9.14: 更加复杂的参数校验</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class SubjectTest extends TestCase
+{
+    public function testErrorReported()
+    {
+        // 为 Observer 类建立仿件，模仿 reportError() 方法
+        $observer = $this-&gt;getMockBuilder(Observer::class)
+                         -&gt;setMethods(['reportError'])
+                         -&gt;getMock();
+
+        $observer-&gt;expects($this-&gt;once())
+                 -&gt;method('reportError')
+                 -&gt;with($this-&gt;greaterThan(0),
+                        $this-&gt;stringContains('Something'),
+                        $this-&gt;callback(function($subject){
+                          return is_callable([$subject, 'getName']) &amp;&amp;
+                                 $subject-&gt;getName() == 'My subject';
+                        }));
+
+        $subject = new Subject('My subject');
+        $subject-&gt;attach($observer);
+
+        // doSomethingBad() 方法应当会通过（observer的）reportError()方法
+        // 向 observer 报告错误。
+        $subject-&gt;doSomethingBad();
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><div class="example"><a id="test-doubles.mock-objects.examples.clone-object-parameters-usecase.php"></a><p class="title"><strong>例 9.15: 测试某个方法将会被调用一次，并且以某个特定对象作为参数。</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class FooTest extends TestCase
+{
+    public function testIdenticalObjectPassed()
+    {
+        $expectedObject = new stdClass;
+
+        $mock = $this-&gt;getMockBuilder(stdClass::class)
+                     -&gt;setMethods(['foo'])
+                     -&gt;getMock();
+
+        $mock-&gt;expects($this-&gt;once())
+             -&gt;method('foo')
+             -&gt;with($this-&gt;identicalTo($expectedObject));
+
+        $mock-&gt;foo($expectedObject);
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><div class="example"><a id="test-doubles.mock-objects.examples.enable-clone-object-parameters.php"></a><p class="title"><strong>例 9.16: 创建仿件对象时启用参数克隆</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class FooTest extends TestCase
+{
+    public function testIdenticalObjectPassed()
+    {
+        $cloneArguments = true;
+
+        $mock = $this-&gt;getMockBuilder(stdClass::class)
+                     -&gt;enableArgumentCloning()
+                     -&gt;getMock();
+
+        // 现在仿件将对参数进行克隆，因此 identicalTo 约束将会失败。
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>
+      <a class="xref" href="appendixes.assertions.html#appendixes.assertions.assertThat.tables.constraints" title="表 A.1. 约束条件">表 A.1</a>列出了可以应用于方法参数的各种约束，<a class="xref" href="test-doubles.html#test-doubles.mock-objects.tables.matchers" title="表 9.1. 匹配器">表 9.1</a>列出了可以用于指定调用次数的各种匹配器。</p><div class="table"><a id="test-doubles.mock-objects.tables.matchers"></a><p class="title"><strong>表 9.1. 匹配器</strong></p><div class="table-contents"><table class="table" summary="匹配器" border="1"><colgroup><col></col><col></col></colgroup><thead><tr><th align="left">匹配器</th><th align="left">含义</th></tr></thead><tbody><tr><td align="left"><code class="literal">PHPUnit_Framework_MockObject_Matcher_AnyInvokedCount any()</code></td><td align="left">返回一个匹配器，当被评定的方法执行0次或更多次（即任意次数）时匹配成功。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_MockObject_Matcher_InvokedCount never()</code></td><td align="left">返回一个匹配器，当被评定的方法从未执行时匹配成功。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_MockObject_Matcher_InvokedAtLeastOnce atLeastOnce()</code></td><td align="left">返回一个匹配器，当被评定的方法执行至少一次时匹配成功。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_MockObject_Matcher_InvokedCount once()</code></td><td align="left">返回一个匹配器，当被评定的方法执行恰好一次时匹配成功。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_MockObject_Matcher_InvokedCount exactly(int $count)</code></td><td align="left">返回一个匹配器，当被评定的方法执行恰好 <code class="literal">$count</code> 次时匹配成功。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_MockObject_Matcher_InvokedAtIndex at(int $index)</code></td><td align="left">返回一个匹配器，当被评定的方法是第 <code class="literal">$index</code> 个执行的方法时匹配成功。</td></tr></tbody></table></div></div><br class="table-break"></br><div class="alert alert-info"><h3 class="title">注意</h3><p><code class="literal">at()</code> 匹配器的 <code class="literal">$index</code> 参数指的是对给定仿件对象的<span class="emphasis"><em>所有方法的调用</em></span>的索引，从零开始。使用这个匹配器要谨慎，因为它可能导致测试由于与具体的实现细节过分紧密绑定而变得脆弱。</p></div><p>
+      <a id="idm140589347089088" class="indexterm"></a>如一开始提到的，如果 <code class="literal">createMock()</code> 方法在生成测试替身时所使用的默认值不符合你的要求，则可以通过 <code class="literal">getMockBuilder($type)</code> 方法来用流畅式接口定制测试替身的生成过程。以下是仿件生成器所提供的方法列表：</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">setMethods(array $methods)</code> 可以在仿件生成器对象上调用，来指定哪些方法将被替换为可配置的测试替身。其他方法的行为不会有所改变。如果调用 <code class="literal">setMethods(null)</code>，那么没有方法会被替换。</p></li><li class="listitem"><p><code class="literal">setConstructorArgs(array $args)</code> 可用于向原版类的构造函数（默认情况下不会被替换为伪实现）提供参数数组。</p></li><li class="listitem"><p><code class="literal">setMockClassName($name)</code> 可用于指定生成的测试替身类的类名。</p></li><li class="listitem"><p><code class="literal">disableOriginalConstructor()</code> 参数可用于禁用对原版类的构造方法的调用。</p></li><li class="listitem"><p><code class="literal">disableOriginalClone()</code> 可用于禁用对原版类的克隆方法的调用。</p></li><li class="listitem"><p><code class="literal">disableAutoload()</code>可用于在测试替身类的生成期间禁用 <code class="literal">__autoload()</code>。</p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="test-doubles.prophecy"></a>Prophecy</h2></div></div></div><p>
+      <a class="ulink" href="https://github.com/phpspec/prophecy" target="_top">Prophecy</a> 是个“极为自我却又非常强大且灵活的 PHP 对象模仿框架。虽然一开始是为了满足 phpspec2 的需要而建立的，但它足够灵活，可以用最小代价用于任何测试框架内。”</p><p>PHPUnit 对用 Prophecy 建立测试替身提供了内建支持。<a class="xref" href="test-doubles.html#test-doubles.prophecy.examples.SubjectTest.php" title="例 9.17: 测试某个方法会以特定参数被调用一次">例 9.17</a>展示了<a class="xref" href="test-doubles.html#test-doubles.mock-objects.examples.SubjectTest.php" title="例 9.11: 测试某个方法会以特定参数被调用一次">例 9.11</a>中展示的测试应该如何用 Prophecy 的的预言式理念方式来达到同样的效果：</p><div class="example"><a id="test-doubles.prophecy.examples.SubjectTest.php"></a><p class="title"><strong>例 9.17: 测试某个方法会以特定参数被调用一次</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class SubjectTest extends TestCase
+{
+    public function testObserversAreUpdated()
+    {
+        $subject = new Subject('My subject');
+
+        // 为 Observer 类建立预言(prophecy)。
+        $observer = $this-&gt;prophesize(Observer::class);
+
+        // 建立预期状况：update() 方法将会被调用一次，
+        // 并且将以字符串 'something' 为参数。
+        $observer-&gt;update('something')-&gt;shouldBeCalled();
+
+        // 揭示预言，并将仿件对象链接到主体上。
+        $subject-&gt;attach($observer-&gt;reveal());
+
+        // 在 $subject 对象上调用 doSomething() 方法，
+        // 预期将以字符串 'something' 为参数调用 
+        // Observer 仿件对象的 update() 方法。
+        $subject-&gt;doSomething();
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>更多关于如何用这个测试替身框架来创建、配置及使用桩件、谍件、仿件的细节，请参考 Prophecy 的 <a class="ulink" href="https://github.com/phpspec/prophecy#how-to-use-it" target="_top">文档</a>。</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="test-doubles.mocking-traits-and-abstract-classes"></a>对特质(Trait)与抽象类进行模仿</h2></div></div></div><p>
+      <a id="idm140589347070656" class="indexterm"></a><code class="literal">getMockForTrait()</code> 方法返回一个使用了特定特质(trait)的仿件对象。给定特质的所有抽象方法将都被模仿。这样就能对特质的具体方法进行测试。</p><div class="example"><a id="test-doubles.mock-objects.examples.TraitClassTest.php"></a><p class="title"><strong>例 9.18: 对特质的具体方法进行测试</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+trait AbstractTrait
+{
+    public function concreteMethod()
+    {
+        return $this-&gt;abstractMethod();
+    }
+
+    public abstract function abstractMethod();
+}
+
+class TraitClassTest extends TestCase
+{
+    public function testConcreteMethod()
+    {
+        $mock = $this-&gt;getMockForTrait(AbstractTrait::class);
+
+        $mock-&gt;expects($this-&gt;any())
+             -&gt;method('abstractMethod')
+             -&gt;will($this-&gt;returnValue(true));
+
+        $this-&gt;assertTrue($mock-&gt;concreteMethod());
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>
+      <a id="idm140589347067008" class="indexterm"></a><code class="literal">getMockForAbstractClass()</code> 方法返回一个抽象类的仿件对象。给定抽象类的所有抽象方法将都被模仿。这样就能对抽象类的具体方法进行测试。</p><div class="example"><a id="test-doubles.mock-objects.examples.AbstractClassTest.php"></a><p class="title"><strong>例 9.19: 对抽象类的具体方法进行测试</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+abstract class AbstractClass
+{
+    public function concreteMethod()
+    {
+        return $this-&gt;abstractMethod();
+    }
+
+    public abstract function abstractMethod();
+}
+
+class AbstractClassTest extends TestCase
+{
+    public function testConcreteMethod()
+    {
+        $stub = $this-&gt;getMockForAbstractClass(AbstractClass::class);
+
+        $stub-&gt;expects($this-&gt;any())
+             -&gt;method('abstractMethod')
+             -&gt;will($this-&gt;returnValue(true));
+
+        $this-&gt;assertTrue($stub-&gt;concreteMethod());
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="test-doubles.stubbing-and-mocking-web-services"></a>对 Web 服务(Web Services)进行上桩或模仿</h2></div></div></div><p>
+      <a id="idm140589347062064" class="indexterm"></a>当应用程序需要和 web 服务进行交互时，会想要在不与 web 服务进行实际交互的情况下对其进行测试。为了简单地对 web 服务进行上桩或模仿，可以像使用 <code class="literal">getMock()</code> （见上文）那样使用 <code class="literal">getMockFromWsdl()</code>。唯一的区别是 <code class="literal">getMockFromWsdl()</code> 所返回的桩件或者仿件是基于以 WSDL 描述的 web 服务，而 <code class="literal">getMock()</code> 返回的桩件或者仿件是基于 PHP 类或接口的。</p><p>
+      <a class="xref" href="test-doubles.html#test-doubles.stubbing-and-mocking-web-services.examples.GoogleTest.php" title="例 9.20: 对 web 服务上桩">例 9.20</a>展示了如何用 <code class="literal">getMockFromWsdl()</code> 来对（例如）<code class="filename">GoogleSearch.wsdl</code> 中描述的 web 服务上桩。</p><div class="example"><a id="test-doubles.stubbing-and-mocking-web-services.examples.GoogleTest.php"></a><p class="title"><strong>例 9.20: 对 web 服务上桩</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class GoogleTest extends TestCase
+{
+    public function testSearch()
+    {
+        $googleSearch = $this-&gt;getMockFromWsdl(
+          'GoogleSearch.wsdl', 'GoogleSearch'
+        );
+
+        $directoryCategory = new stdClass;
+        $directoryCategory-&gt;fullViewableName = '';
+        $directoryCategory-&gt;specialEncoding = '';
+
+        $element = new stdClass;
+        $element-&gt;summary = '';
+        $element-&gt;URL = 'https://phpunit.de/';
+        $element-&gt;snippet = '...';
+        $element-&gt;title = '&lt;b&gt;PHPUnit&lt;/b&gt;';
+        $element-&gt;cachedSize = '11k';
+        $element-&gt;relatedInformationPresent = true;
+        $element-&gt;hostName = 'phpunit.de';
+        $element-&gt;directoryCategory = $directoryCategory;
+        $element-&gt;directoryTitle = '';
+
+        $result = new stdClass;
+        $result-&gt;documentFiltering = false;
+        $result-&gt;searchComments = '';
+        $result-&gt;estimatedTotalResultsCount = 3.9000;
+        $result-&gt;estimateIsExact = false;
+        $result-&gt;resultElements = [$element];
+        $result-&gt;searchQuery = 'PHPUnit';
+        $result-&gt;startIndex = 1;
+        $result-&gt;endIndex = 1;
+        $result-&gt;searchTips = '';
+        $result-&gt;directoryCategories = [];
+        $result-&gt;searchTime = 0.248822;
+
+        $googleSearch-&gt;expects($this-&gt;any())
+                     -&gt;method('doGoogleSearch')
+                     -&gt;will($this-&gt;returnValue($result));
+
+        /**
+         * $googleSearch-&gt;doGoogleSearch() 将会返回上桩的结果，
+         * web 服务的 doGoogleSearch() 方法不会被调用。
+         */
+        $this-&gt;assertEquals(
+          $result,
+          $googleSearch-&gt;doGoogleSearch(
+            '00000000000000000000000000000000',
+            'PHPUnit',
+            0,
+            1,
+            false,
+            '',
+            false,
+            '',
+            '',
+            ''
+          )
+        );
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="test-doubles.mocking-the-filesystem"></a>对文件系统进行模仿</h2></div></div></div><p>
+      <a class="ulink" href="https://github.com/mikey179/vfsStream" target="_top">vfsStream</a> 是对<a class="ulink" href="http://en.wikipedia.org/wiki/Virtual_file_system" target="_top">虚拟文件系统</a> 的 <a class="ulink" href="http://www.php.net/streams" target="_top">流包覆器(stream wrapper)</a>，可以用于模仿真实文件系统，在单元测试中可能会有所助益。</p><p>如果使用 <a class="ulink" href="https://getcomposer.org/" target="_top">Composer</a> 来管理项目的依赖关系，那么只需简单的在项目的 <code class="literal">composer.json</code> 文件中加一条对 <code class="literal">mikey179/vfsStream</code> 的依赖关系即可。以下是一个最小化的 <code class="literal">composer.json</code>文件例子，只定义了一条对 PHPUnit 4.6 与 vfsStream 的开发时(development-time)依赖：</p><pre class="programlisting">{
+    "require-dev": {
+        "phpunit/phpunit": "~4.6",
+        "mikey179/vfsStream": "~1"
+    }
+}</pre><p>
+      <a class="xref" href="test-doubles.html#test-doubles.mocking-the-filesystem.examples.Example.php" title="例 9.21: 一个与文件系统交互的类">例 9.21</a>展示了一个与文件系统交互的类。</p><div class="example"><a id="test-doubles.mocking-the-filesystem.examples.Example.php"></a><p class="title"><strong>例 9.21: 一个与文件系统交互的类</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class Example
+{
+    protected $id;
+    protected $directory;
+
+    public function __construct($id)
+    {
+        $this-&gt;id = $id;
+    }
+
+    public function setDirectory($directory)
+    {
+        $this-&gt;directory = $directory . DIRECTORY_SEPARATOR . $this-&gt;id;
+
+        if (!file_exists($this-&gt;directory)) {
+            mkdir($this-&gt;directory, 0700, true);
+        }
+    }
+}?&gt;</pre></div></div><br class="example-break"></br><p>如果不使用诸如 vfsStream 这样的虚拟文件系统，就无法在隔离外部影响的情况下对 <code class="literal">setDirectory()</code> 方法进行测试（参见 <a class="xref" href="test-doubles.html#test-doubles.mocking-the-filesystem.examples.ExampleTest.php" title="例 9.22: 对一个与文件系统交互的类进行测试">例 9.22</a>）。</p><div class="example"><a id="test-doubles.mocking-the-filesystem.examples.ExampleTest.php"></a><p class="title"><strong>例 9.22: 对一个与文件系统交互的类进行测试</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ExampleTest extends TestCase
+{
+    protected function setUp()
+    {
+        if (file_exists(dirname(__FILE__) . '/id')) {
+            rmdir(dirname(__FILE__) . '/id');
+        }
+    }
+
+    public function testDirectoryIsCreated()
+    {
+        $example = new Example('id');
+        $this-&gt;assertFalse(file_exists(dirname(__FILE__) . '/id'));
+
+        $example-&gt;setDirectory(dirname(__FILE__));
+        $this-&gt;assertTrue(file_exists(dirname(__FILE__) . '/id'));
+    }
+
+    protected function tearDown()
+    {
+        if (file_exists(dirname(__FILE__) . '/id')) {
+            rmdir(dirname(__FILE__) . '/id');
+        }
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>上面的方法有几个缺点：</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>和任何其他外部资源一样，文件系统可能会间歇性的出现一些问题，这使得和它交互的测试变得不可靠。</p></li><li class="listitem"><p>在 <code class="literal">setUp()</code> 和 <code class="literal">tearDown()</code> 方法中，必须确保这个目录在测试前和测试后均不存在。</p></li><li class="listitem"><p>如果测试在 <code class="literal">tearDown()</code> 方法被调用之前就终止了，这个目录就会遗留在文件系统中。</p></li></ul></div><p>
+      <a class="xref" href="test-doubles.html#test-doubles.mocking-the-filesystem.examples.ExampleTest2.php" title="例 9.23: 在对与文件系统交互的类进行的测试中模仿文件系统">例 9.23</a>展示了如何在对与文件系统交互的类进行的测试中使用 vfsStream 来模仿文件系统。</p><div class="example"><a id="test-doubles.mocking-the-filesystem.examples.ExampleTest2.php"></a><p class="title"><strong>例 9.23: 在对与文件系统交互的类进行的测试中模仿文件系统</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function setUp()
+    {
+        vfsStreamWrapper::register();
+        vfsStreamWrapper::setRoot(new vfsStreamDirectory('exampleDir'));
+    }
+
+    public function testDirectoryIsCreated()
+    {
+        $example = new Example('id');
+        $this-&gt;assertFalse(vfsStreamWrapper::getRoot()-&gt;hasChild('id'));
+
+        $example-&gt;setDirectory(vfsStream::url('exampleDir'));
+        $this-&gt;assertTrue(vfsStreamWrapper::getRoot()-&gt;hasChild('id'));
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>这有几个优点：</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>测试本身更加简洁。</p></li><li class="listitem"><p>vfsStream 让开发者能够完全控制被测代码所处的文件系统环境。</p></li><li class="listitem"><p>由于文件系统操作不再对真实文件系统进行操作，<code class="literal">tearDown()</code> 方法中的清理操作不再需要了。</p></li></ul></div></div></div>
+     <div class="row">
+      <div class="col-md-1 pull-left prev-nav"><a accesskey="p" href="database.html">上一章</a></div>
+      <div class="col-md-1 pull-right next-nav"><a accesskey="n" href="testing-practices.html">下一章</a></div>
+     </div>
+    </div>
+   </div>
+   <hr/>
+   <footer>
+    <p><a href="appendixes.copyright.html">Copyright</a> &copy; 2005-2017 <a href="http://sebastian-bergmann.de/">Sebastian Bergmann</a>.</p>
+   </footer>
+  </div>
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/highlight.pack.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() { $('pre.programlisting').each(function(i, e) {hljs.highlightBlock(e)}); });
+  </script>
+ </body>
+</html>

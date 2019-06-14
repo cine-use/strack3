@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+// 定义项目路径
+define('APP_PATH', __DIR__ . '/App/');
+
+// 定义缓存目录
+define('RUNTIME_PATH', __DIR__ . '/Runtime/');
+
+define('APP_MODE', 'cli');
+
+
+// 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
+define('APP_DEBUG', false);
+
+define('SWOOLE_JOBS_ROOT_PATH', __DIR__);
+
+date_default_timezone_set('Asia/Shanghai');
+
+// 加载基础文件
+require __DIR__ . '/Core/Base.php';
+$config = require_once SWOOLE_JOBS_ROOT_PATH . '/App/Common/Conf/swoole_jobs.php';
+
+$console = new \Kcloze\Jobs\Console($config);
+$console->run();

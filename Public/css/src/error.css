@@ -1,0 +1,110 @@
+@CHARSET "UTF-8";
+body{
+    min-height: 100%;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑","Open Sans",Helvetica,Arial,sans-serif;
+    background-color: #242629;
+    background-image: radial-gradient(circle at center center , transparent, transparent, rgba(0, 0, 0, 0.3));
+    overflow: auto;
+}
+textarea{
+    font-size: 14px;
+    font-family: "微软雅黑","Open Sans",Helvetica,Arial,sans-serif;
+}
+.error-wrap{
+    background-color: #efefef;
+    margin: 60px auto 0;
+}
+.error-size-1{
+    width: 1140px;
+    min-height: 380px;
+}
+.error-size-2{
+    width: 580px;
+    min-height: 280px;
+}
+.error-title i{
+    color: #ffcc00;
+    font-size: 22px;
+    margin-right: 10px;
+}
+.error-wrap .error-title{
+    height: 60px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    line-height: 60px;
+    font-weight: bold;
+    background-color: #1890ff;
+    border-bottom: 1px solid #ADADAD;
+}
+.error-wrap .error-item{
+    padding: 10px 20px;
+}
+.error-item .error-i-tilte{
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.error-item .error-i-content,
+.error-item .error-i-notice{
+    word-break:break-all;
+    word-wrap:break-word;
+}
+.error-item .error-i-notice{
+    font-size: 14px;
+}
+.error-item .lic-number-show{
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.lic-number-show .current-lic-number{
+    height: 28px;
+    line-height: 28px;
+    color: #f5222d;
+}
+.error-i-content textarea{
+    min-width: 1080px;
+    max-width: 1080px;
+    padding: 5px;
+    min-height: 240px;
+    height: 240px;
+    margin-top: 10px;
+}
+.error-item .lic-user-manage{
+    height: 500px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    position: relative;
+    background: #ffffff;
+}
+.error-item .error-bnt{
+    min-width: calc(100% - 60px);
+    text-align: center;
+}
+a.error-submit{
+    display: block;
+    padding: 10px;
+    width: 400px;
+    margin: 0 auto;
+    background-color: #1E9FFF;
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration:none;
+}
+a.error-download-bnt{
+    display: block;
+    padding: 6px;
+    width: 240px;
+    background-color: #1E9FFF;
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration:none;
+}

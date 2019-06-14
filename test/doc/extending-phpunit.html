@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>PHPUnit 手册 &#8211; 第 14 章 扩展 PHPUnit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://phpunit.de/manual/current/zh_cn/extending-phpunit.html">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/highlight.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CSource+Code+Pro:400,700' rel='stylesheet' type='text/css'>
+  <!--[if lt IE 9]><script src="js/html5shiv.min.js"></script><![endif]-->
+ </head>
+ <body>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                <a href="https://phpunit.de/documentation.html">This documentation is outdated. Please follow this link to learn about the new documentation.</a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-4 col-lg-3">
+     <div class="well well-sm sidebar-nav">
+<dl class="toc nav hidden-print"><dt><span class="chapter"><a href="installation.html">1. 安装 PHPUnit</a></span></dt><dd><dl><dt><span class="section"><a href="installation.html#installation.requirements">需求</a></span></dt><dt><span class="section"><a href="installation.html#installation.phar">PHP 档案包 (PHAR)</a></span></dt><dd><dl><dt><span class="section"><a href="installation.html#installation.phar.windows">Windows</a></span></dt><dt><span class="section"><a href="installation.html#installation.phar.verification">校验 PHPUnit PHAR 发行包</a></span></dt></dl></dd><dt><span class="section"><a href="installation.html#installation.composer">Composer</a></span></dt><dt><span class="section"><a href="installation.html#installation.optional-packages">可选的组件包</a></span></dt></dl></dd><dt><span class="chapter"><a href="writing-tests-for-phpunit.html">2. 编写 PHPUnit 测试</a></span></dt><dd><dl><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.test-dependencies">测试的依赖关系</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers">数据供给器</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.exceptions">对异常进行测试</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.errors">对 PHP 错误进行测试</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.output">对输出进行测试</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.error-output">错误相关信息的输出</a></span></dt><dd><dl><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.error-output.edge-cases">边缘情况</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="textui.html">3. 命令行测试执行器</a></span></dt><dd><dl><dt><span class="section"><a href="textui.html#textui.clioptions">命令行选项</a></span></dt></dl></dd><dt><span class="chapter"><a href="fixtures.html">4. 基境(fixture)</a></span></dt><dd><dl><dt><span class="section"><a href="fixtures.html#fixtures.more-setup-than-teardown">setUp() 多 tearDown() 少</a></span></dt><dt><span class="section"><a href="fixtures.html#fixtures.variations">变体</a></span></dt><dt><span class="section"><a href="fixtures.html#fixtures.sharing-fixture">基境共享</a></span></dt><dt><span class="section"><a href="fixtures.html#fixtures.global-state">全局状态</a></span></dt></dl></dd><dt><span class="chapter"><a href="organizing-tests.html">5. 组织测试</a></span></dt><dd><dl><dt><span class="section"><a href="organizing-tests.html#organizing-tests.filesystem">用文件系统来编排测试套件</a></span></dt><dt><span class="section"><a href="organizing-tests.html#organizing-tests.xml-configuration">用 XML 配置来编排测试套件</a></span></dt></dl></dd><dt><span class="chapter"><a href="risky-tests.html">6. 有风险的测试</a></span></dt><dd><dl><dt><span class="section"><a href="risky-tests.html#risky-tests.useless-tests">无用测试</a></span></dt><dt><span class="section"><a href="risky-tests.html#risky-tests.unintentionally-covered-code">意外的代码覆盖</a></span></dt><dt><span class="section"><a href="risky-tests.html#risky-tests.output-during-test-execution">测试执行期间产生的输出</a></span></dt><dt><span class="section"><a href="risky-tests.html#risky-tests.test-execution-timeout">测试执行时长的超时限制</a></span></dt><dt><span class="section"><a href="risky-tests.html#risky-tests.global-state-manipulation">全局状态篡改</a></span></dt></dl></dd><dt><span class="chapter"><a href="incomplete-and-skipped-tests.html">7. 未完成的测试与跳过的测试</a></span></dt><dd><dl><dt><span class="section"><a href="incomplete-and-skipped-tests.html#incomplete-and-skipped-tests.incomplete-tests">未完成的测试</a></span></dt><dt><span class="section"><a href="incomplete-and-skipped-tests.html#incomplete-and-skipped-tests.skipping-tests">跳过测试</a></span></dt><dt><span class="section"><a href="incomplete-and-skipped-tests.html#incomplete-and-skipped-tests.skipping-tests-using-requires">用 @requires 来跳过测试</a></span></dt></dl></dd><dt><span class="chapter"><a href="database.html">8. 数据库测试</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.supported-vendors-for-database-testing">数据库测试所支持的供应商</a></span></dt><dt><span class="section"><a href="database.html#database.difficulties-in-database-testing">数据库测试的难点</a></span></dt><dt><span class="section"><a href="database.html#database.the-four-stages-of-a-database-test">数据库测试的四个阶段</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.clean-up-database">1. 清理数据库</a></span></dt><dt><span class="section"><a href="database.html#database.set-up-fixture">2. 建立基境</a></span></dt><dt><span class="section"><a href="database.html#database.run-test-verify-outcome-and-teardown">3–5. 运行测试、验证结果、并拆除基境</a></span></dt></dl></dd><dt><span class="section"><a href="database.html#database.configuration-of-a-phpunit-database-testcase">PHPUnit 数据库测试用例的配置</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.implementing-getconnection">实现 getConnection()</a></span></dt><dt><span class="section"><a href="database.html#database.implementing-getdataset">实现 getDataSet()</a></span></dt><dt><span class="section"><a href="database.html#database.what-about-the-database-schema-ddl">数据库构架(DDL)怎么办？</a></span></dt><dt><span class="section"><a href="database.html#database.tip-use-your-own-abstract-database-testcase">小建议：使用你自己的抽象数据库 TestCase 类</a></span></dt></dl></dd><dt><span class="section"><a href="database.html#database.understanding-datasets-and-datatables">理解 DataSet（数据集）和 DataTable（数据表）</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.available-implementations">可用的各种实现</a></span></dt><dt><span class="section"><a href="database.html#database.beware-of-foreign-keys">当心外键</a></span></dt><dt><span class="section"><a href="database.html#database.implementing-your-own-datasetsdatatables">实现自有的 DataSet/DataTable</a></span></dt></dl></dd><dt><span class="section"><a href="database.html#database.the-connection-api">数据库连接 API</a></span></dt><dt><span class="section"><a href="database.html#database.database-assertions-api">数据库断言 API</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.asserting-the-row-count-of-a-table">对表中数据行的数量作出断言</a></span></dt><dt><span class="section"><a href="database.html#database.asserting-the-state-of-a-table">对表的状态作出断言</a></span></dt><dt><span class="section"><a href="database.html#database.asserting-the-result-of-a-query">对查询的结果作出断言</a></span></dt><dt><span class="section"><a href="database.html#database.asserting-the-state-of-multiple-tables">对多个表的状态作出断言</a></span></dt></dl></dd><dt><span class="section"><a href="database.html#database.frequently-asked-questions">常见问题（FAQ）</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.will-phpunit-re-create-the-database-schema-for-each-test">PHPUnit 会为每个测试（重新）创建数据库吗？</a></span></dt><dt><span class="section"><a href="database.html#database.am-i-required-to-use-pdo-in-my-application-for-the-database-extension-to-work">为了让数据库扩展模块正常工作，需要在应用程序中使用 PDO 吗？</a></span></dt><dt><span class="section"><a href="database.html#database.what-can-i-do-when-i-get-a-too-much-connections-error">如果看到 <span class="quote">“<span class="quote">Too much Connections</span>”</span> 错误该怎么办？</a></span></dt><dt><span class="section"><a href="database.html#database.how-to-handle-null-with-flat-xml-csv-datasets">Flat XML / CSV 数据集中如何处理 NULL？</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="test-doubles.html">9. 测试替身</a></span></dt><dd><dl><dt><span class="section"><a href="test-doubles.html#test-doubles.stubs">Stubs （桩件）</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.mock-objects">仿件对象(Mock Object)</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.prophecy">Prophecy</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.mocking-traits-and-abstract-classes">对特质(Trait)与抽象类进行模仿</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.stubbing-and-mocking-web-services">对 Web 服务(Web Services)进行上桩或模仿</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.mocking-the-filesystem">对文件系统进行模仿</a></span></dt></dl></dd><dt><span class="chapter"><a href="testing-practices.html">10. 测试实践</a></span></dt><dd><dl><dt><span class="section"><a href="testing-practices.html#testing-practices.during-development">在开发过程中</a></span></dt><dt><span class="section"><a href="testing-practices.html#testing-practices.during-debugging">在调试过程中</a></span></dt></dl></dd><dt><span class="chapter"><a href="code-coverage-analysis.html">11. 代码覆盖率分析</a></span></dt><dd><dl><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.metrics">用于代码覆盖率的软件衡量标准</a></span></dt><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.whitelisting-files">将文件列入白名单</a></span></dt><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.ignoring-code-blocks">略过代码块</a></span></dt><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.specifying-covered-methods">指明要覆盖的方法</a></span></dt><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.edge-cases">边缘情况</a></span></dt></dl></dd><dt><span class="chapter"><a href="other-uses-for-tests.html">12. 测试的其他用途</a></span></dt><dd><dl><dt><span class="section"><a href="other-uses-for-tests.html#other-uses-for-tests.agile-documentation">敏捷文档</a></span></dt><dt><span class="section"><a href="other-uses-for-tests.html#other-uses-for-tests.cross-team-tests">跨团队测试</a></span></dt></dl></dd><dt><span class="chapter"><a href="logging.html">13. Logging （日志记录）</a></span></dt><dd><dl><dt><span class="section"><a href="logging.html#logging.xml">测试结果 (XML)</a></span></dt><dt><span class="section"><a href="logging.html#logging.codecoverage.xml">代码覆盖率 (XML)</a></span></dt><dt><span class="section"><a href="logging.html#logging.codecoverage.text">代码覆盖率 (TEXT)</a></span></dt></dl></dd><dt><span class="chapter"><a href="extending-phpunit.html" class="active">14. 扩展 PHPUnit</a></span></dt><dd><dl><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.PHPUnit_Framework_TestCase">PHPUnit\Framework\TestCase 的子类</a></span></dt><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.custom-assertions">编写自定义断言</a></span></dt><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.PHPUnit_Framework_TestListener">实现 PHPUnit\Framework\TestListener</a></span></dt><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.PHPUnit_Extensions_TestDecorator">从 PHPUnit_Extensions_TestDecorator 派生子类</a></span></dt><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.PHPUnit_Framework_Test">实现 PHPUnit_Framework_Test</a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.assertions.html">A. 断言</a></span></dt><dd><dl><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.static-vs-non-static-usage-of-assertion-methods">断言方法的用法：静态 vs. 非静态</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertArrayHasKey">assertArrayHasKey()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertClassHasAttribute">assertClassHasAttribute()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertArraySubset">assertArraySubset()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertClassHasStaticAttribute">assertClassHasStaticAttribute()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertContains">assertContains()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertContainsOnly">assertContainsOnly()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertContainsOnlyInstancesOf">assertContainsOnlyInstancesOf()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertCount">assertCount()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertDirectoryExists">assertDirectoryExists()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertDirectoryIsReadable">assertDirectoryIsReadable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertDirectoryIsWritable">assertDirectoryIsWritable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertEmpty">assertEmpty()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertEqualXMLStructure">assertEqualXMLStructure()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertEquals">assertEquals()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFalse">assertFalse()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFileEquals">assertFileEquals()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFileExists">assertFileExists()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFileIsReadable">assertFileIsReadable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFileIsWritable">assertFileIsWritable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertGreaterThan">assertGreaterThan()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertGreaterThanOrEqual">assertGreaterThanOrEqual()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertInfinite">assertInfinite()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertInstanceOf">assertInstanceOf()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertInternalType">assertInternalType()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertIsReadable">assertIsReadable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertIsWritable">assertIsWritable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertJsonFileEqualsJsonFile">assertJsonFileEqualsJsonFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertJsonStringEqualsJsonFile">assertJsonStringEqualsJsonFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertJsonStringEqualsJsonString">assertJsonStringEqualsJsonString()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertLessThan">assertLessThan()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertLessThanOrEqual">assertLessThanOrEqual()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertNan">assertNan()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertNull">assertNull()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertObjectHasAttribute">assertObjectHasAttribute()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertRegExp">assertRegExp()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringMatchesFormat">assertStringMatchesFormat()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringMatchesFormatFile">assertStringMatchesFormatFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertSame">assertSame()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringEndsWith">assertStringEndsWith()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringEqualsFile">assertStringEqualsFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringStartsWith">assertStringStartsWith()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertThat">assertThat()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertTrue">assertTrue()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertXmlFileEqualsXmlFile">assertXmlFileEqualsXmlFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertXmlStringEqualsXmlFile">assertXmlStringEqualsXmlFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertXmlStringEqualsXmlString">assertXmlStringEqualsXmlString()</a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.annotations.html">B. 标注</a></span></dt><dd><dl><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.author">@author</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.after">@after</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.afterClass">@afterClass</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.backupGlobals">@backupGlobals</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.backupStaticAttributes">@backupStaticAttributes</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.before">@before</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.beforeClass">@beforeClass</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.codeCoverageIgnore">@codeCoverageIgnore*</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.covers">@covers</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.coversDefaultClass">@coversDefaultClass</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.coversNothing">@coversNothing</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.dataProvider">@dataProvider</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.depends">@depends</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.expectedException">@expectedException</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.expectedExceptionCode">@expectedExceptionCode</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.expectedExceptionMessage">@expectedExceptionMessage</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.expectedExceptionMessageRegExp">@expectedExceptionMessageRegExp</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.group">@group</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.large">@large</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.medium">@medium</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.preserveGlobalState">@preserveGlobalState</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.requires">@requires</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.runTestsInSeparateProcesses">@runTestsInSeparateProcesses</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.runInSeparateProcess">@runInSeparateProcess</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.small">@small</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.test">@test</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.testdox">@testdox</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.ticket">@ticket</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.uses">@uses</a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.configuration.html">C. XML 配置文件</a></span></dt><dd><dl><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.phpunit">PHPUnit</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.testsuites">测试套件</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.groups">分组</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.whitelisting-files">Whitelisting Files for Code Coverage</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.logging">Logging （日志记录）</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.test-listeners">测试监听器</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.php-ini-constants-variables">设定 PHP INI 设置、常量、全局变量</a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.index.html">D. 索引</a></span></dt><dd><dl><dt><span class="index"><a href="appendixes.index.html#appendixes.index.index"></a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.bibliography.html">E. 参考书目</a></span></dt><dt><span class="appendix"><a href="appendixes.copyright.html">F. 版权</a></span></dt></dl>
+     </div>
+    </div>
+    <div class="col-md-8 col-lg-9">
+     <div class="row">
+      <div class="col-md-1 pull-left prev-nav"><a accesskey="p" href="logging.html">上一章</a></div>
+      <div class="col-md-1 pull-right next-nav"><a accesskey="n" href="appendixes.assertions.html">下一章</a></div>
+     </div>
+<div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="extending-phpunit"></a>第 14 章 扩展 PHPUnit</h1></div></div></div><p>可以用多种方式对 PHPUnit 进行扩展，使编写测试更容易，以及对运行测试所得到的反馈进行定制。扩展 PHPUnit 时，一般从这些点入手：</p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="extending-phpunit.PHPUnit_Framework_TestCase"></a>PHPUnit\Framework\TestCase 的子类</h2></div></div></div><p>
+      <a id="idm140589347028096" class="indexterm"></a>将自定义的断言和工具方法写在 <code class="literal">PHPUnit\Framework\TestCase</code> 的一个抽象子类中，然后从这个抽象子类派生你的测试用例类。这是扩展 PHPUnit 的最容易的方法。</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="extending-phpunit.custom-assertions"></a>编写自定义断言</h2></div></div></div><p>编写自定义断言时，最佳实践是遵循 PHPUnit 自有断言的实现方式。正如 <a class="xref" href="extending-phpunit.html#extending-phpunit.examples.Assert.php" title="例 14.1: PHPUnit_Framework_Assert 类的 assertTrue() 与 isTrue() 方法">例 14.1</a>中所示，<code class="literal">assertTrue()</code> 方法只是对 <code class="literal">isTrue()</code> 和 <code class="literal">assertThat()</code> 方法的外包覆：<code class="literal">isTrue()</code> 创建了一个匹配器对象，将其传递给 <code class="literal">assertThat()</code> 进行评定。</p><div class="example"><a id="extending-phpunit.examples.Assert.php"></a><p class="title"><strong>例 14.1: PHPUnit_Framework_Assert 类的 assertTrue() 与 isTrue() 方法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+abstract class PHPUnit_Framework_Assert
+{
+    // ...
+
+    /**
+     * 断言某个条件为真。
+     *
+     * @param  boolean $condition
+     * @param  string  $message
+     * @throws PHPUnit_Framework_AssertionFailedError
+     */
+    public static function assertTrue($condition, $message = '')
+    {
+        self::assertThat($condition, self::isTrue(), $message);
+    }
+
+    // ...
+
+    /**
+     * 返回一个 PHPUnit_Framework_Constraint_IsTrue 匹配器对象
+     *
+     * @return PHPUnit_Framework_Constraint_IsTrue
+     * @since  Method available since Release 3.3.0
+     */
+    public static function isTrue()
+    {
+        return new PHPUnit_Framework_Constraint_IsTrue;
+    }
+
+    // ...
+}?&gt;</pre></div></div><br class="example-break"></br><p>
+      <a class="xref" href="extending-phpunit.html#extending-phpunit.examples.IsTrue.php" title="例 14.2: PHPUnit_Framework_Constraint_IsTrue 类">例 14.2</a>展示了 <code class="literal">PHPUnit_Framework_Constraint_IsTrue</code> 是如何扩展针对匹配器对象（或约束）的抽象基类 <code class="literal">PHPUnit_Framework_Constraint</code> 的。</p><div class="example"><a id="extending-phpunit.examples.IsTrue.php"></a><p class="title"><strong>例 14.2: PHPUnit_Framework_Constraint_IsTrue  类</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class PHPUnit_Framework_Constraint_IsTrue extends PHPUnit_Framework_Constraint
+{
+    /**
+     * 对参数 $other 进行约束评定。如果符合约束，
+     * 返回 TRUE，否则返回 FALSE。
+     *
+     * @param mixed $other Value or object to evaluate.
+     * @return bool
+     */
+    public function matches($other)
+    {
+        return $other === true;
+    }
+
+    /**
+     * 返回代表此约束的字符串。
+     *
+     * @return string
+     */
+    public function toString()
+    {
+        return 'is true';
+    }
+}?&gt;</pre></div></div><br class="example-break"></br><p>在实现 <code class="literal">assertTrue()</code> 和 <code class="literal">isTrue()</code> 方法及 <code class="literal">PHPUnit_Framework_Constraint_IsTrue</code> 类时所付出的努力带来了一些好处，<code class="literal">assertThat()</code> 能够自动负责起断言的评定与任务簿记（例如为了统计目的而对其进行计数）工作。此外， <code class="literal">isTrue()</code> 方法还可以在配置仿件对象时用来作为匹配器。</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="extending-phpunit.PHPUnit_Framework_TestListener"></a>实现 PHPUnit\Framework\TestListener</h2></div></div></div><p>
+      <a id="idm140589347508992" class="indexterm"></a>
+
+      <a class="xref" href="extending-phpunit.html#extending-phpunit.examples.SimpleTestListener.php" title="例 14.3: 简单的测试监听器">例 14.3</a>展示了 <code class="literal">PHPUnit\Framework\TestListener</code> 接口的一个简单实现。</p><div class="example"><a id="extending-phpunit.examples.SimpleTestListener.php"></a><p class="title"><strong>例 14.3: 简单的测试监听器</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestListener;
+
+class SimpleTestListener implements TestListener
+{
+    public function addError(PHPUnit_Framework_Test $test, Exception $e, $time)
+    {
+        printf("Error while running test '%s'.\n", $test-&gt;getName());
+    }
+
+    public function addFailure(PHPUnit_Framework_Test $test, PHPUnit_Framework_AssertionFailedError $e, $time)
+    {
+        printf("Test '%s' failed.\n", $test-&gt;getName());
+    }
+
+    public function addIncompleteTest(PHPUnit_Framework_Test $test, Exception $e, $time)
+    {
+        printf("Test '%s' is incomplete.\n", $test-&gt;getName());
+    }
+
+    public function addRiskyTest(PHPUnit_Framework_Test $test, Exception $e, $time)
+    {
+        printf("Test '%s' is deemed risky.\n", $test-&gt;getName());
+    }
+
+    public function addSkippedTest(PHPUnit_Framework_Test $test, Exception $e, $time)
+    {
+        printf("Test '%s' has been skipped.\n", $test-&gt;getName());
+    }
+
+    public function startTest(PHPUnit_Framework_Test $test)
+    {
+        printf("Test '%s' started.\n", $test-&gt;getName());
+    }
+
+    public function endTest(PHPUnit_Framework_Test $test, $time)
+    {
+        printf("Test '%s' ended.\n", $test-&gt;getName());
+    }
+
+    public function startTestSuite(PHPUnit_Framework_TestSuite $suite)
+    {
+        printf("TestSuite '%s' started.\n", $suite-&gt;getName());
+    }
+
+    public function endTestSuite(PHPUnit_Framework_TestSuite $suite)
+    {
+        printf("TestSuite '%s' ended.\n", $suite-&gt;getName());
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>
+      <a id="idm140589347503712" class="indexterm"></a>
+
+      <a class="xref" href="extending-phpunit.html#extending-phpunit.examples.BaseTestListener.php" title="例 14.4: 使用测试监听器基类">例 14.4</a>展示了如何从抽象类 <code class="literal">PHPUnit_Framework_BaseTestListener</code> 派生子类，这个抽象类为所有接口方法提供了空白实现，这样你就只需要指定那些在你的使用情境下有意义的接口方法。</p><div class="example"><a id="extending-phpunit.examples.BaseTestListener.php"></a><p class="title"><strong>例 14.4: 使用测试监听器基类</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ShortTestListener extends PHPUnit_Framework_BaseTestListener
+{
+    public function endTest(PHPUnit_Framework_Test $test, $time)
+    {
+        printf("Test '%s' ended.\n", $test-&gt;getName());
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>在<a class="xref" href="appendixes.configuration.html#appendixes.configuration.test-listeners" title="测试监听器">“测试监听器”一节</a>中可以看到如何配置 PHPUnit 来将测试监听器附加到测试执行过程上。</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="extending-phpunit.PHPUnit_Extensions_TestDecorator"></a>从 PHPUnit_Extensions_TestDecorator 派生子类</h2></div></div></div><p>
+      <a id="idm140589347497232" class="indexterm"></a>可以将测试用例或者测试套件包装在 <code class="literal">PHPUnit_Extensions_TestDecorator</code> 的子类中并运用 Decorator（修饰器）设计模式来在测试运行前后执行一些动作。</p><p>
+      <a id="idm140589347495600" class="indexterm"></a>PHPUnit 了包含了一个具体的测试修饰器：<code class="literal">PHPUnit_Extensions_RepeatedTest</code>。它用于重复运行某个测试，并且只在全部循环中都成功时计为成功。</p><p>
+      <a class="xref" href="extending-phpunit.html#extending-phpunit.examples.RepeatedTest.php" title="例 14.5: RepeatedTest 修饰器">例 14.5</a>展示了测试修饰器 <code class="literal">PHPUnit_Extensions_RepeatedTest</code> 的一个删减版本，用以说明如何编写你自己的测试修饰器。</p><div class="example"><a id="extending-phpunit.examples.RepeatedTest.php"></a><p class="title"><strong>例 14.5: RepeatedTest 修饰器</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+require_once 'PHPUnit/Extensions/TestDecorator.php';
+
+class PHPUnit_Extensions_RepeatedTest extends PHPUnit_Extensions_TestDecorator
+{
+    private $timesRepeat = 1;
+
+    public function __construct(PHPUnit_Framework_Test $test, $timesRepeat = 1)
+    {
+        parent::__construct($test);
+
+        if (is_integer($timesRepeat) &amp;&amp;
+            $timesRepeat &gt;= 0) {
+            $this-&gt;timesRepeat = $timesRepeat;
+        }
+    }
+
+    public function count()
+    {
+        return $this-&gt;timesRepeat * $this-&gt;test-&gt;count();
+    }
+
+    public function run(PHPUnit_Framework_TestResult $result = null)
+    {
+        if ($result === null) {
+            $result = $this-&gt;createResult();
+        }
+
+        for ($i = 0; $i &lt; $this-&gt;timesRepeat &amp;&amp; !$result-&gt;shouldStop(); $i++) {
+            $this-&gt;test-&gt;run($result);
+        }
+
+        return $result;
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="extending-phpunit.PHPUnit_Framework_Test"></a>实现 PHPUnit_Framework_Test</h2></div></div></div><p>
+      <a id="idm140589347488752" class="indexterm"></a>
+      <a id="idm140589347488176" class="indexterm"></a><code class="literal">PHPUnit_Framework_Test</code>  接口是比较狭义的，十分容易实现。举例来说，你可以自行为 <code class="literal">PHPUnit_Framework_Test</code>  编写一个类似于 <code class="literal">PHPUnit\Framework\TestCase</code> 的实现来运行<span class="emphasis"><em>数据驱动测试</em></span>。</p><p>
+      <a class="xref" href="extending-phpunit.html#extending-phpunit.examples.DataDrivenTest.php" title="例 14.6: 一个数据驱动的测试">例 14.6</a>展示了一个数据驱动的测试用例类，对来自 CSV 文件内的值进行比较。这个文件内的每个行看起来类似于 <code class="literal">foo;bar</code>，第一个值是期望值，第二个值则是实际值。</p><div class="example"><a id="extending-phpunit.examples.DataDrivenTest.php"></a><p class="title"><strong>例 14.6: 一个数据驱动的测试</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class DataDrivenTest implements PHPUnit_Framework_Test
+{
+    private $lines;
+
+    public function __construct($dataFile)
+    {
+        $this-&gt;lines = file($dataFile);
+    }
+
+    public function count()
+    {
+        return 1;
+    }
+
+    public function run(PHPUnit_Framework_TestResult $result = null)
+    {
+        if ($result === null) {
+            $result = new PHPUnit_Framework_TestResult;
+        }
+
+        foreach ($this-&gt;lines as $line) {
+            $result-&gt;startTest($this);
+            PHP_Timer::start();
+            $stopTime = null;
+
+            list($expected, $actual) = explode(';', $line);
+
+            try {
+                PHPUnit_Framework_Assert::assertEquals(
+                  trim($expected), trim($actual)
+                );
+            }
+
+            catch (PHPUnit_Framework_AssertionFailedError $e) {
+                $stopTime = PHP_Timer::stop();
+                $result-&gt;addFailure($this, $e, $stopTime);
+            }
+
+            catch (Exception $e) {
+                $stopTime = PHP_Timer::stop();
+                $result-&gt;addError($this, $e, $stopTime);
+            }
+
+            if ($stopTime === null) {
+                $stopTime = PHP_Timer::stop();
+            }
+
+            $result-&gt;endTest($this, $stopTime);
+        }
+
+        return $result;
+    }
+}
+
+$test = new DataDrivenTest('data_file.csv');
+$result = PHPUnit_TextUI_TestRunner::run($test);
+?&gt;</pre><pre class="screen">PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+.F
+
+Time: 0 seconds
+
+There was 1 failure:
+
+1) DataDrivenTest
+Failed asserting that two strings are equal.
+expected string &lt;bar&gt;
+difference      &lt;  x&gt;
+got string      &lt;baz&gt;
+/home/sb/DataDrivenTest.php:32
+/home/sb/DataDrivenTest.php:53
+
+FAILURES!
+Tests: 2, Failures: 1.</pre></div></div><br class="example-break"></br></div></div>
+     <div class="row">
+      <div class="col-md-1 pull-left prev-nav"><a accesskey="p" href="logging.html">上一章</a></div>
+      <div class="col-md-1 pull-right next-nav"><a accesskey="n" href="appendixes.assertions.html">下一章</a></div>
+     </div>
+    </div>
+   </div>
+   <hr/>
+   <footer>
+    <p><a href="appendixes.copyright.html">Copyright</a> &copy; 2005-2017 <a href="http://sebastian-bergmann.de/">Sebastian Bergmann</a>.</p>
+   </footer>
+  </div>
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/highlight.pack.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() { $('pre.programlisting').each(function(i, e) {hljs.highlightBlock(e)}); });
+  </script>
+ </body>
+</html>

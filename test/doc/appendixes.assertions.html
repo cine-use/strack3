@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>PHPUnit 手册 &#8211; 附录 A. 断言</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://phpunit.de/manual/current/zh_cn/appendixes.assertions.html">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/highlight.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CSource+Code+Pro:400,700' rel='stylesheet' type='text/css'>
+  <!--[if lt IE 9]><script src="js/html5shiv.min.js"></script><![endif]-->
+ </head>
+ <body>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                <a href="https://phpunit.de/documentation.html">This documentation is outdated. Please follow this link to learn about the new documentation.</a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-4 col-lg-3">
+     <div class="well well-sm sidebar-nav">
+<dl class="toc nav hidden-print"><dt><span class="chapter"><a href="installation.html">1. 安装 PHPUnit</a></span></dt><dd><dl><dt><span class="section"><a href="installation.html#installation.requirements">需求</a></span></dt><dt><span class="section"><a href="installation.html#installation.phar">PHP 档案包 (PHAR)</a></span></dt><dd><dl><dt><span class="section"><a href="installation.html#installation.phar.windows">Windows</a></span></dt><dt><span class="section"><a href="installation.html#installation.phar.verification">校验 PHPUnit PHAR 发行包</a></span></dt></dl></dd><dt><span class="section"><a href="installation.html#installation.composer">Composer</a></span></dt><dt><span class="section"><a href="installation.html#installation.optional-packages">可选的组件包</a></span></dt></dl></dd><dt><span class="chapter"><a href="writing-tests-for-phpunit.html">2. 编写 PHPUnit 测试</a></span></dt><dd><dl><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.test-dependencies">测试的依赖关系</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers">数据供给器</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.exceptions">对异常进行测试</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.errors">对 PHP 错误进行测试</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.output">对输出进行测试</a></span></dt><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.error-output">错误相关信息的输出</a></span></dt><dd><dl><dt><span class="section"><a href="writing-tests-for-phpunit.html#writing-tests-for-phpunit.error-output.edge-cases">边缘情况</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="textui.html">3. 命令行测试执行器</a></span></dt><dd><dl><dt><span class="section"><a href="textui.html#textui.clioptions">命令行选项</a></span></dt></dl></dd><dt><span class="chapter"><a href="fixtures.html">4. 基境(fixture)</a></span></dt><dd><dl><dt><span class="section"><a href="fixtures.html#fixtures.more-setup-than-teardown">setUp() 多 tearDown() 少</a></span></dt><dt><span class="section"><a href="fixtures.html#fixtures.variations">变体</a></span></dt><dt><span class="section"><a href="fixtures.html#fixtures.sharing-fixture">基境共享</a></span></dt><dt><span class="section"><a href="fixtures.html#fixtures.global-state">全局状态</a></span></dt></dl></dd><dt><span class="chapter"><a href="organizing-tests.html">5. 组织测试</a></span></dt><dd><dl><dt><span class="section"><a href="organizing-tests.html#organizing-tests.filesystem">用文件系统来编排测试套件</a></span></dt><dt><span class="section"><a href="organizing-tests.html#organizing-tests.xml-configuration">用 XML 配置来编排测试套件</a></span></dt></dl></dd><dt><span class="chapter"><a href="risky-tests.html">6. 有风险的测试</a></span></dt><dd><dl><dt><span class="section"><a href="risky-tests.html#risky-tests.useless-tests">无用测试</a></span></dt><dt><span class="section"><a href="risky-tests.html#risky-tests.unintentionally-covered-code">意外的代码覆盖</a></span></dt><dt><span class="section"><a href="risky-tests.html#risky-tests.output-during-test-execution">测试执行期间产生的输出</a></span></dt><dt><span class="section"><a href="risky-tests.html#risky-tests.test-execution-timeout">测试执行时长的超时限制</a></span></dt><dt><span class="section"><a href="risky-tests.html#risky-tests.global-state-manipulation">全局状态篡改</a></span></dt></dl></dd><dt><span class="chapter"><a href="incomplete-and-skipped-tests.html">7. 未完成的测试与跳过的测试</a></span></dt><dd><dl><dt><span class="section"><a href="incomplete-and-skipped-tests.html#incomplete-and-skipped-tests.incomplete-tests">未完成的测试</a></span></dt><dt><span class="section"><a href="incomplete-and-skipped-tests.html#incomplete-and-skipped-tests.skipping-tests">跳过测试</a></span></dt><dt><span class="section"><a href="incomplete-and-skipped-tests.html#incomplete-and-skipped-tests.skipping-tests-using-requires">用 @requires 来跳过测试</a></span></dt></dl></dd><dt><span class="chapter"><a href="database.html">8. 数据库测试</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.supported-vendors-for-database-testing">数据库测试所支持的供应商</a></span></dt><dt><span class="section"><a href="database.html#database.difficulties-in-database-testing">数据库测试的难点</a></span></dt><dt><span class="section"><a href="database.html#database.the-four-stages-of-a-database-test">数据库测试的四个阶段</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.clean-up-database">1. 清理数据库</a></span></dt><dt><span class="section"><a href="database.html#database.set-up-fixture">2. 建立基境</a></span></dt><dt><span class="section"><a href="database.html#database.run-test-verify-outcome-and-teardown">3–5. 运行测试、验证结果、并拆除基境</a></span></dt></dl></dd><dt><span class="section"><a href="database.html#database.configuration-of-a-phpunit-database-testcase">PHPUnit 数据库测试用例的配置</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.implementing-getconnection">实现 getConnection()</a></span></dt><dt><span class="section"><a href="database.html#database.implementing-getdataset">实现 getDataSet()</a></span></dt><dt><span class="section"><a href="database.html#database.what-about-the-database-schema-ddl">数据库构架(DDL)怎么办？</a></span></dt><dt><span class="section"><a href="database.html#database.tip-use-your-own-abstract-database-testcase">小建议：使用你自己的抽象数据库 TestCase 类</a></span></dt></dl></dd><dt><span class="section"><a href="database.html#database.understanding-datasets-and-datatables">理解 DataSet（数据集）和 DataTable（数据表）</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.available-implementations">可用的各种实现</a></span></dt><dt><span class="section"><a href="database.html#database.beware-of-foreign-keys">当心外键</a></span></dt><dt><span class="section"><a href="database.html#database.implementing-your-own-datasetsdatatables">实现自有的 DataSet/DataTable</a></span></dt></dl></dd><dt><span class="section"><a href="database.html#database.the-connection-api">数据库连接 API</a></span></dt><dt><span class="section"><a href="database.html#database.database-assertions-api">数据库断言 API</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.asserting-the-row-count-of-a-table">对表中数据行的数量作出断言</a></span></dt><dt><span class="section"><a href="database.html#database.asserting-the-state-of-a-table">对表的状态作出断言</a></span></dt><dt><span class="section"><a href="database.html#database.asserting-the-result-of-a-query">对查询的结果作出断言</a></span></dt><dt><span class="section"><a href="database.html#database.asserting-the-state-of-multiple-tables">对多个表的状态作出断言</a></span></dt></dl></dd><dt><span class="section"><a href="database.html#database.frequently-asked-questions">常见问题（FAQ）</a></span></dt><dd><dl><dt><span class="section"><a href="database.html#database.will-phpunit-re-create-the-database-schema-for-each-test">PHPUnit 会为每个测试（重新）创建数据库吗？</a></span></dt><dt><span class="section"><a href="database.html#database.am-i-required-to-use-pdo-in-my-application-for-the-database-extension-to-work">为了让数据库扩展模块正常工作，需要在应用程序中使用 PDO 吗？</a></span></dt><dt><span class="section"><a href="database.html#database.what-can-i-do-when-i-get-a-too-much-connections-error">如果看到 <span class="quote">“<span class="quote">Too much Connections</span>”</span> 错误该怎么办？</a></span></dt><dt><span class="section"><a href="database.html#database.how-to-handle-null-with-flat-xml-csv-datasets">Flat XML / CSV 数据集中如何处理 NULL？</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="test-doubles.html">9. 测试替身</a></span></dt><dd><dl><dt><span class="section"><a href="test-doubles.html#test-doubles.stubs">Stubs （桩件）</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.mock-objects">仿件对象(Mock Object)</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.prophecy">Prophecy</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.mocking-traits-and-abstract-classes">对特质(Trait)与抽象类进行模仿</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.stubbing-and-mocking-web-services">对 Web 服务(Web Services)进行上桩或模仿</a></span></dt><dt><span class="section"><a href="test-doubles.html#test-doubles.mocking-the-filesystem">对文件系统进行模仿</a></span></dt></dl></dd><dt><span class="chapter"><a href="testing-practices.html">10. 测试实践</a></span></dt><dd><dl><dt><span class="section"><a href="testing-practices.html#testing-practices.during-development">在开发过程中</a></span></dt><dt><span class="section"><a href="testing-practices.html#testing-practices.during-debugging">在调试过程中</a></span></dt></dl></dd><dt><span class="chapter"><a href="code-coverage-analysis.html">11. 代码覆盖率分析</a></span></dt><dd><dl><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.metrics">用于代码覆盖率的软件衡量标准</a></span></dt><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.whitelisting-files">将文件列入白名单</a></span></dt><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.ignoring-code-blocks">略过代码块</a></span></dt><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.specifying-covered-methods">指明要覆盖的方法</a></span></dt><dt><span class="section"><a href="code-coverage-analysis.html#code-coverage-analysis.edge-cases">边缘情况</a></span></dt></dl></dd><dt><span class="chapter"><a href="other-uses-for-tests.html">12. 测试的其他用途</a></span></dt><dd><dl><dt><span class="section"><a href="other-uses-for-tests.html#other-uses-for-tests.agile-documentation">敏捷文档</a></span></dt><dt><span class="section"><a href="other-uses-for-tests.html#other-uses-for-tests.cross-team-tests">跨团队测试</a></span></dt></dl></dd><dt><span class="chapter"><a href="logging.html">13. Logging （日志记录）</a></span></dt><dd><dl><dt><span class="section"><a href="logging.html#logging.xml">测试结果 (XML)</a></span></dt><dt><span class="section"><a href="logging.html#logging.codecoverage.xml">代码覆盖率 (XML)</a></span></dt><dt><span class="section"><a href="logging.html#logging.codecoverage.text">代码覆盖率 (TEXT)</a></span></dt></dl></dd><dt><span class="chapter"><a href="extending-phpunit.html">14. 扩展 PHPUnit</a></span></dt><dd><dl><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.PHPUnit_Framework_TestCase">PHPUnit\Framework\TestCase 的子类</a></span></dt><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.custom-assertions">编写自定义断言</a></span></dt><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.PHPUnit_Framework_TestListener">实现 PHPUnit\Framework\TestListener</a></span></dt><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.PHPUnit_Extensions_TestDecorator">从 PHPUnit_Extensions_TestDecorator 派生子类</a></span></dt><dt><span class="section"><a href="extending-phpunit.html#extending-phpunit.PHPUnit_Framework_Test">实现 PHPUnit_Framework_Test</a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.assertions.html" class="active">A. 断言</a></span></dt><dd><dl><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.static-vs-non-static-usage-of-assertion-methods">断言方法的用法：静态 vs. 非静态</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertArrayHasKey">assertArrayHasKey()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertClassHasAttribute">assertClassHasAttribute()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertArraySubset">assertArraySubset()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertClassHasStaticAttribute">assertClassHasStaticAttribute()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertContains">assertContains()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertContainsOnly">assertContainsOnly()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertContainsOnlyInstancesOf">assertContainsOnlyInstancesOf()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertCount">assertCount()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertDirectoryExists">assertDirectoryExists()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertDirectoryIsReadable">assertDirectoryIsReadable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertDirectoryIsWritable">assertDirectoryIsWritable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertEmpty">assertEmpty()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertEqualXMLStructure">assertEqualXMLStructure()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertEquals">assertEquals()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFalse">assertFalse()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFileEquals">assertFileEquals()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFileExists">assertFileExists()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFileIsReadable">assertFileIsReadable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertFileIsWritable">assertFileIsWritable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertGreaterThan">assertGreaterThan()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertGreaterThanOrEqual">assertGreaterThanOrEqual()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertInfinite">assertInfinite()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertInstanceOf">assertInstanceOf()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertInternalType">assertInternalType()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertIsReadable">assertIsReadable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertIsWritable">assertIsWritable()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertJsonFileEqualsJsonFile">assertJsonFileEqualsJsonFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertJsonStringEqualsJsonFile">assertJsonStringEqualsJsonFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertJsonStringEqualsJsonString">assertJsonStringEqualsJsonString()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertLessThan">assertLessThan()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertLessThanOrEqual">assertLessThanOrEqual()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertNan">assertNan()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertNull">assertNull()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertObjectHasAttribute">assertObjectHasAttribute()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertRegExp">assertRegExp()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringMatchesFormat">assertStringMatchesFormat()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringMatchesFormatFile">assertStringMatchesFormatFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertSame">assertSame()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringEndsWith">assertStringEndsWith()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringEqualsFile">assertStringEqualsFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertStringStartsWith">assertStringStartsWith()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertThat">assertThat()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertTrue">assertTrue()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertXmlFileEqualsXmlFile">assertXmlFileEqualsXmlFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertXmlStringEqualsXmlFile">assertXmlStringEqualsXmlFile()</a></span></dt><dt><span class="section"><a href="appendixes.assertions.html#appendixes.assertions.assertXmlStringEqualsXmlString">assertXmlStringEqualsXmlString()</a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.annotations.html">B. 标注</a></span></dt><dd><dl><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.author">@author</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.after">@after</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.afterClass">@afterClass</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.backupGlobals">@backupGlobals</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.backupStaticAttributes">@backupStaticAttributes</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.before">@before</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.beforeClass">@beforeClass</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.codeCoverageIgnore">@codeCoverageIgnore*</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.covers">@covers</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.coversDefaultClass">@coversDefaultClass</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.coversNothing">@coversNothing</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.dataProvider">@dataProvider</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.depends">@depends</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.expectedException">@expectedException</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.expectedExceptionCode">@expectedExceptionCode</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.expectedExceptionMessage">@expectedExceptionMessage</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.expectedExceptionMessageRegExp">@expectedExceptionMessageRegExp</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.group">@group</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.large">@large</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.medium">@medium</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.preserveGlobalState">@preserveGlobalState</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.requires">@requires</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.runTestsInSeparateProcesses">@runTestsInSeparateProcesses</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.runInSeparateProcess">@runInSeparateProcess</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.small">@small</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.test">@test</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.testdox">@testdox</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.ticket">@ticket</a></span></dt><dt><span class="section"><a href="appendixes.annotations.html#appendixes.annotations.uses">@uses</a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.configuration.html">C. XML 配置文件</a></span></dt><dd><dl><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.phpunit">PHPUnit</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.testsuites">测试套件</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.groups">分组</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.whitelisting-files">Whitelisting Files for Code Coverage</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.logging">Logging （日志记录）</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.test-listeners">测试监听器</a></span></dt><dt><span class="section"><a href="appendixes.configuration.html#appendixes.configuration.php-ini-constants-variables">设定 PHP INI 设置、常量、全局变量</a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.index.html">D. 索引</a></span></dt><dd><dl><dt><span class="index"><a href="appendixes.index.html#appendixes.index.index"></a></span></dt></dl></dd><dt><span class="appendix"><a href="appendixes.bibliography.html">E. 参考书目</a></span></dt><dt><span class="appendix"><a href="appendixes.copyright.html">F. 版权</a></span></dt></dl>
+     </div>
+    </div>
+    <div class="col-md-8 col-lg-9">
+     <div class="row">
+      <div class="col-md-1 pull-left prev-nav"><a accesskey="p" href="extending-phpunit.html">上一章</a></div>
+      <div class="col-md-1 pull-right next-nav"><a accesskey="n" href="appendixes.annotations.html">下一章</a></div>
+     </div>
+<div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="appendixes.assertions"></a>附录 A. 断言</h1></div></div></div><p>本附录列举可用的各种断言方法。</p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.static-vs-non-static-usage-of-assertion-methods"></a>断言方法的用法：静态 vs. 非静态</h2></div></div></div><p>PHPUnit 的各个断言是在 <code class="code">PHPUnit\Framework\Assert</code> 中实现的。<code class="code">PHPUnit\Framework\TestCase</code> 则继承于 <code class="code">PHPUnit\Framework\Assert</code>。</p><p>各个断言方法均声明为 <code class="code">static</code>，可以从任何上下文以类似于 <code class="code">PHPUnit\Framework\Assert::assertTrue()</code> 的方式调用，或者也可以用类似于 <code class="code">$this-&gt;assertTrue()</code> 或 <code class="code">self::assertTrue()</code> 的方式在扩展自 <code class="code">PHPUnit\Framework\TestCase</code> 的类内调用。</p><p>实际上，只要（手工）包含了 PHPUnit 中的 <code class="filename">src/Framework/Assert/Functions.php</code> 源码文件，甚至可以在任何上下文中（甚至包括扩展自 <code class="code">PHPUnit\Framework\TestCase</code> 的类中）以诸如 <code class="code">assertTrue()</code> 这样的方式来调用全局函数封装。</p><p>有个常见的疑问——对于那些 PHPUnit 的新手尤甚——是究竟应该用诸如 <code class="code">$this-&gt;assertTrue()</code> 还是诸如 <code class="code">self::assertTrue()</code> 这样的形式来调用断言才是“正确的方式”？简而言之：没有正确方式。同时，也没有错误方式。这基本上是个人喜好问题。</p><p>对于大多数人而言，由于测试方法是在测试对象上调用，因此用 <code class="code">$this-&gt;assertTrue()</code> 会“觉的更正确”。然而请记住断言方法是声明为 <code class="code">static</code> 的，这使其可以（重）用于测试对象的作用域之外。最后，全局函数封装让开发者能再少打一些字（用 <code class="code">assertTrue()</code> 代替 <code class="code">$this-&gt;assertTrue()</code> 或者 <code class="code">self::assertTrue()</code>）。</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertArrayHasKey"></a>assertArrayHasKey()</h2></div></div></div><a id="idm140589346946880" class="indexterm"></a><a id="idm140589346946304" class="indexterm"></a><p><code class="literal">assertArrayHasKey(mixed $key, array $array[, string $message = ''])</code></p><p>当 <code class="literal">$array</code> 不包含 <code class="literal">$key</code> 时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertArrayNotHasKey()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertArrayHasKey.example"></a><p class="title"><strong>例 A.1: assertArrayHasKey() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ArrayHasKeyTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertArrayHasKey('foo', ['bar' =&gt; 'baz']);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit ArrayHasKeyTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) ArrayHasKeyTest::testFailure
+Failed asserting that an array has the key 'foo'.
+
+/home/sb/ArrayHasKeyTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertClassHasAttribute"></a>assertClassHasAttribute()</h2></div></div></div><a id="idm140589346938560" class="indexterm"></a><a id="idm140589346937968" class="indexterm"></a><p><code class="literal">assertClassHasAttribute(string $attributeName, string $className[, string $message = ''])</code></p><p>当 <code class="literal">$className::attributeName</code> 不存在时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertClassNotHasAttribute()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertClassHasAttribute.example"></a><p class="title"><strong>例 A.2: assertClassHasAttribute() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ClassHasAttributeTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertClassHasAttribute('foo', stdClass::class);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit ClassHasAttributeTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) ClassHasAttributeTest::testFailure
+Failed asserting that class "stdClass" has attribute "foo".
+
+/home/sb/ClassHasAttributeTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertArraySubset"></a>assertArraySubset()</h2></div></div></div><a id="idm140589346987840" class="indexterm"></a><a id="idm140589346987264" class="indexterm"></a><p><code class="literal">assertArraySubset(array $subset, array $array[, bool $strict = '', string $message = ''])</code></p><p>当 <code class="literal">$array</code> 不包含 <code class="literal">$subset</code> 时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">$strict</code> 是一个标志，用于表明是否需要对数组中的对象进行全等判定。</p><div class="example"><a id="appendixes.assertions.assertArraySubset.example"></a><p class="title"><strong>例 A.3: assertArraySubset() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ArraySubsetTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertArraySubset(['config' =&gt; ['key-a', 'key-b']], ['config' =&gt; ['key-a']]);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit ArrayHasKeyTest</code></strong>
+PHPUnit 4.4.0 by Sebastian Bergmann.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) Epilog\EpilogTest::testNoFollowOption
+Failed asserting that an array has the subset Array &amp;0 (
+    'config' =&gt; Array &amp;1 (
+        0 =&gt; 'key-a'
+        1 =&gt; 'key-b'
+    )
+).
+
+/home/sb/ArraySubsetTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertClassHasStaticAttribute"></a>assertClassHasStaticAttribute()</h2></div></div></div><a id="idm140589346979360" class="indexterm"></a><a id="idm140589346978768" class="indexterm"></a><p><code class="literal">assertClassHasStaticAttribute(string $attributeName, string $className[, string $message = ''])</code></p><p>当 <code class="literal">$className::attributeName</code> 不存在时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertClassNotHasStaticAttribute()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertClassHasStaticAttribute.example"></a><p class="title"><strong>例 A.4: assertClassHasStaticAttribute() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ClassHasStaticAttributeTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertClassHasStaticAttribute('foo', stdClass::class);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit ClassHasStaticAttributeTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) ClassHasStaticAttributeTest::testFailure
+Failed asserting that class "stdClass" has static attribute "foo".
+
+/home/sb/ClassHasStaticAttributeTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertContains"></a>assertContains()</h2></div></div></div><a id="idm140589346971216" class="indexterm"></a><a id="idm140589346970640" class="indexterm"></a><a id="idm140589346970064" class="indexterm"></a><a id="idm140589346969472" class="indexterm"></a><p><code class="literal">assertContains(mixed $needle, Iterator|array $haystack[, string $message = ''])</code></p><p>当 <code class="literal">$needle</code> 不是 <code class="literal">$haystack</code>的元素时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotContains()</code> 是与之相反的断言，接受相同的参数。</p><p><code class="literal">assertAttributeContains()</code> 和 <code class="literal">assertAttributeNotContains()</code> 是便捷包装(convenience wrapper)，以某个类或对象的 <code class="literal">public</code>、<code class="literal">protected</code> 或 <code class="literal">private</code> 属性为搜索范围。</p><div class="example"><a id="appendixes.assertions.assertContains.example"></a><p class="title"><strong>例 A.5: assertContains() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ContainsTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertContains(4, [1, 2, 3]);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit ContainsTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) ContainsTest::testFailure
+Failed asserting that an array contains 4.
+
+/home/sb/ContainsTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br><p><code class="literal">assertContains(string $needle, string $haystack[, string $message = '', boolean $ignoreCase = false])</code></p><p>当 <code class="literal">$needle</code> 不是 <code class="literal">$haystack</code> 的子字符串时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p>如果 <code class="literal">$ignoreCase</code> 为 <code class="literal">true</code>，测试将按大小写不敏感的方式进行。</p><div class="example"><a id="appendixes.assertions.assertContains.example2"></a><p class="title"><strong>例 A.6: assertContains() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ContainsTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertContains('baz', 'foobar');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit ContainsTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) ContainsTest::testFailure
+Failed asserting that 'foobar' contains "baz".
+
+/home/sb/ContainsTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br><div class="example"><a id="appendixes.assertions.assertContains.example3"></a><p class="title"><strong>例 A.7: 带有 $ignoreCase 参数的 assertContains() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ContainsTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertContains('foo', 'FooBar');
+    }
+
+    public function testOK()
+    {
+        $this-&gt;assertContains('foo', 'FooBar', '', true);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit ContainsTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F.
+
+Time: 0 seconds, Memory: 2.75Mb
+
+There was 1 failure:
+
+1) ContainsTest::testFailure
+Failed asserting that 'FooBar' contains "foo".
+
+/home/sb/ContainsTest.php:6
+
+FAILURES!
+Tests: 2, Assertions: 2, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertContainsOnly"></a>assertContainsOnly()</h2></div></div></div><a id="idm140589346422816" class="indexterm"></a><a id="idm140589346422240" class="indexterm"></a><a id="idm140589346421664" class="indexterm"></a><a id="idm140589346421072" class="indexterm"></a><p><code class="literal">assertContainsOnly(string $type, Iterator|array $haystack[, boolean $isNativeType = null, string $message = ''])</code></p><p>当 <code class="literal">$haystack</code> 并非仅包含类型为 <code class="literal">$type</code> 的变量时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">$isNativeType</code> 是一个标志，用来表明 <code class="literal">$type</code> 是否是原生 PHP 类型。</p><p><code class="literal">assertNotContainsOnly()</code> 是与之相反的断言，并接受相同的参数。</p><p><code class="literal">assertAttributeContainsOnly()</code> 和 <code class="literal">assertAttributeNotContainsOnly()</code> 是便捷包装(convenience wrapper)，以某个类或对象的 <code class="literal">public</code>、<code class="literal">protected</code> 或 <code class="literal">private</code> 属性为搜索范围。</p><div class="example"><a id="appendixes.assertions.assertContainsOnly.example"></a><p class="title"><strong>例 A.8: assertContainsOnly() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ContainsOnlyTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertContainsOnly('string', ['1', '2', 3]);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit ContainsOnlyTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) ContainsOnlyTest::testFailure
+Failed asserting that Array (
+    0 =&gt; '1'
+    1 =&gt; '2'
+    2 =&gt; 3
+) contains only values of type "string".
+
+/home/sb/ContainsOnlyTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertContainsOnlyInstancesOf"></a>assertContainsOnlyInstancesOf()</h2></div></div></div><a id="idm140589346409232" class="indexterm"></a><p><code class="literal">assertContainsOnlyInstancesOf(string $classname, Traversable|array $haystack[, string $message = ''])</code></p><p>当 <code class="literal">$haystack</code> 并非仅包含类 <code class="literal">$classname</code> 的实例时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><div class="example"><a id="appendixes.assertions.assertContainsOnlyInstancesOf.example"></a><p class="title"><strong>例 A.9: assertContainsOnlyInstancesOf() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ContainsOnlyInstancesOfTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertContainsOnlyInstancesOf(
+            Foo::class,
+            [new Foo, new Bar, new Foo]
+        );
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit ContainsOnlyInstancesOfTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) ContainsOnlyInstancesOfTest::testFailure
+Failed asserting that Array ([0]=&gt; Bar Object(...)) is an instance of class "Foo".
+
+/home/sb/ContainsOnlyInstancesOfTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertCount"></a>assertCount()</h2></div></div></div><a id="idm140589346401968" class="indexterm"></a><a id="idm140589346401392" class="indexterm"></a><p><code class="literal">assertCount($expectedCount, $haystack[, string $message = ''])</code></p><p>当 <code class="literal">$haystack</code> 中的元素数量不是 <code class="literal">$expectedCount</code> 时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotCount()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertCount.example"></a><p class="title"><strong>例 A.10: assertCount() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class CountTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertCount(0, ['foo']);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit CountTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) CountTest::testFailure
+Failed asserting that actual size 1 matches expected size 0.
+
+/home/sb/CountTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertDirectoryExists"></a>assertDirectoryExists()</h2></div></div></div><a id="idm140589346393616" class="indexterm"></a><a id="idm140589346393040" class="indexterm"></a><p><code class="literal">assertDirectoryExists(string $directory[, string $message = ''])</code></p><p>当 <code class="literal">$directory</code> 所指定的目录不存在时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertDirectoryNotExists()</code> 是与之相反的断言，并接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertDirectoryExists.example"></a><p class="title"><strong>例 A.11: assertDirectoryExists() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class DirectoryExistsTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertDirectoryExists('/path/to/directory');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit DirectoryExistsTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) DirectoryExistsTest::testFailure
+Failed asserting that directory "/path/to/directory" exists.
+
+/home/sb/DirectoryExistsTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertDirectoryIsReadable"></a>assertDirectoryIsReadable()</h2></div></div></div><a id="idm140589346385568" class="indexterm"></a><a id="idm140589346384976" class="indexterm"></a><p><code class="literal">assertDirectoryIsReadable(string $directory[, string $message = ''])</code></p><p>当 <code class="literal">$directory</code> 所指定的目录不是个目录或不可读时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertDirectoryNotIsReadable()</code> 是与之相反的断言，并接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertDirectoryIsReadable.example"></a><p class="title"><strong>例 A.12: assertDirectoryIsReadable() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class DirectoryIsReadableTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertDirectoryIsReadable('/path/to/directory');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit DirectoryIsReadableTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) DirectoryIsReadableTest::testFailure
+Failed asserting that "/path/to/directory" is readable.
+
+/home/sb/DirectoryIsReadableTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertDirectoryIsWritable"></a>assertDirectoryIsWritable()</h2></div></div></div><a id="idm140589346377456" class="indexterm"></a><a id="idm140589346376864" class="indexterm"></a><p><code class="literal">assertDirectoryIsWritable(string $directory[, string $message = ''])</code></p><p>当 <code class="literal">$directory</code> 所指定的目录不是个目录或不可写时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertDirectoryNotIsWritable()</code> 是与之相反的断言，并接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertDirectoryIsWritable.example"></a><p class="title"><strong>例 A.13: assertDirectoryIsWritable() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class DirectoryIsWritableTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertDirectoryIsWritable('/path/to/directory');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit DirectoryIsWritableTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) DirectoryIsWritableTest::testFailure
+Failed asserting that "/path/to/directory" is writable.
+
+/home/sb/DirectoryIsWritableTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertEmpty"></a>assertEmpty()</h2></div></div></div><a id="idm140589346369376" class="indexterm"></a><a id="idm140589346368800" class="indexterm"></a><a id="idm140589346368224" class="indexterm"></a><a id="idm140589346367648" class="indexterm"></a><p><code class="literal">assertEmpty(mixed $actual[, string $message = ''])</code></p><p>当 <code class="literal">$actual</code> 非空时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotEmpty()</code> 是与之相反的断言，接受相同的参数。</p><p><code class="literal">assertAttributeEmpty()</code> 和 <code class="literal">assertAttributeNotEmpty()</code> 是便捷包装(convenience wrapper)，可以应用于某个类或对象的某个 <code class="literal">public</code>、<code class="literal">protected</code> 或 <code class="literal">private</code> 属性。</p><div class="example"><a id="appendixes.assertions.assertEmpty.example"></a><p class="title"><strong>例 A.14: assertEmpty() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class EmptyTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertEmpty(['foo']);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit EmptyTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) EmptyTest::testFailure
+Failed asserting that an array is empty.
+
+/home/sb/EmptyTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertEqualXMLStructure"></a>assertEqualXMLStructure()</h2></div></div></div><a id="idm140589346357712" class="indexterm"></a><p><code class="literal">assertEqualXMLStructure(DOMElement $expectedElement, DOMElement $actualElement[, boolean $checkAttributes = false, string $message = ''])</code></p><p>当 <code class="literal">$actualElement</code> 中 DOMElement 的 XML 结构与 <code class="literal">$expectedElement</code> 中 DOMElement的 XML 结构不相同时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><div class="example"><a id="appendixes.assertions.assertEqualXMLStructure.example"></a><p class="title"><strong>例 A.15: assertEqualXMLStructure() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class EqualXMLStructureTest extends TestCase
+{
+    public function testFailureWithDifferentNodeNames()
+    {
+        $expected = new DOMElement('foo');
+        $actual = new DOMElement('bar');
+
+        $this-&gt;assertEqualXMLStructure($expected, $actual);
+    }
+
+    public function testFailureWithDifferentNodeAttributes()
+    {
+        $expected = new DOMDocument;
+        $expected-&gt;loadXML('&lt;foo bar="true" /&gt;');
+
+        $actual = new DOMDocument;
+        $actual-&gt;loadXML('&lt;foo/&gt;');
+
+        $this-&gt;assertEqualXMLStructure(
+          $expected-&gt;firstChild, $actual-&gt;firstChild, true
+        );
+    }
+
+    public function testFailureWithDifferentChildrenCount()
+    {
+        $expected = new DOMDocument;
+        $expected-&gt;loadXML('&lt;foo&gt;&lt;bar/&gt;&lt;bar/&gt;&lt;bar/&gt;&lt;/foo&gt;');
+
+        $actual = new DOMDocument;
+        $actual-&gt;loadXML('&lt;foo&gt;&lt;bar/&gt;&lt;/foo&gt;');
+
+        $this-&gt;assertEqualXMLStructure(
+          $expected-&gt;firstChild, $actual-&gt;firstChild
+        );
+    }
+
+    public function testFailureWithDifferentChildren()
+    {
+        $expected = new DOMDocument;
+        $expected-&gt;loadXML('&lt;foo&gt;&lt;bar/&gt;&lt;bar/&gt;&lt;bar/&gt;&lt;/foo&gt;');
+
+        $actual = new DOMDocument;
+        $actual-&gt;loadXML('&lt;foo&gt;&lt;baz/&gt;&lt;baz/&gt;&lt;baz/&gt;&lt;/foo&gt;');
+
+        $this-&gt;assertEqualXMLStructure(
+          $expected-&gt;firstChild, $actual-&gt;firstChild
+        );
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit EqualXMLStructureTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+FFFF
+
+Time: 0 seconds, Memory: 5.75Mb
+
+There were 4 failures:
+
+1) EqualXMLStructureTest::testFailureWithDifferentNodeNames
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'foo'
++'bar'
+
+/home/sb/EqualXMLStructureTest.php:9
+
+2) EqualXMLStructureTest::testFailureWithDifferentNodeAttributes
+Number of attributes on node "foo" does not match
+Failed asserting that 0 matches expected 1.
+
+/home/sb/EqualXMLStructureTest.php:22
+
+3) EqualXMLStructureTest::testFailureWithDifferentChildrenCount
+Number of child nodes of "foo" differs
+Failed asserting that 1 matches expected 3.
+
+/home/sb/EqualXMLStructureTest.php:35
+
+4) EqualXMLStructureTest::testFailureWithDifferentChildren
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'bar'
++'baz'
+
+/home/sb/EqualXMLStructureTest.php:48
+
+FAILURES!
+Tests: 4, Assertions: 8, Failures: 4.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertEquals"></a>assertEquals()</h2></div></div></div><a id="idm140589346348672" class="indexterm"></a><a id="idm140589346348096" class="indexterm"></a><a id="idm140589346347520" class="indexterm"></a><a id="idm140589346346944" class="indexterm"></a><p><code class="literal">assertEquals(mixed $expected, mixed $actual[, string $message = ''])</code></p><p>当两个变量 <code class="literal">$expected</code> 和 <code class="literal">$actual</code> 不相等时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotEquals()</code> 是与之相反的断言，接受相同的参数。</p><p><code class="literal">assertAttributeEquals()</code> 和 <code class="literal">assertAttributeNotEquals()</code> 是便捷包装(convenience wrapper)，以某个类或对象的某个 <code class="literal">public</code>、<code class="literal">protected</code> 或 <code class="literal">private</code> 属性作为实际值来进行比较。</p><div class="example"><a id="appendixes.assertions.assertEquals.example"></a><p class="title"><strong>例 A.16: assertEquals() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class EqualsTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertEquals(1, 0);
+    }
+
+    public function testFailure2()
+    {
+        $this-&gt;assertEquals('bar', 'baz');
+    }
+
+    public function testFailure3()
+    {
+        $this-&gt;assertEquals("foo\nbar\nbaz\n", "foo\nbah\nbaz\n");
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit EqualsTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+FFF
+
+Time: 0 seconds, Memory: 5.25Mb
+
+There were 3 failures:
+
+1) EqualsTest::testFailure
+Failed asserting that 0 matches expected 1.
+
+/home/sb/EqualsTest.php:6
+
+2) EqualsTest::testFailure2
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'bar'
++'baz'
+
+/home/sb/EqualsTest.php:11
+
+3) EqualsTest::testFailure3
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+ 'foo
+-bar
++bah
+ baz
+ '
+
+/home/sb/EqualsTest.php:16
+
+FAILURES!
+Tests: 3, Assertions: 3, Failures: 3.</pre></div></div><br class="example-break"></br><p>如果 <code class="literal">$expected</code> 和 <code class="literal">$actual</code> 是某些特定的类型，将使用更加专门的比较方式，参阅下文。</p><p><code class="literal">assertEquals(float $expected, float $actual[, string $message = '', float $delta = 0])</code></p><p>当两个浮点数 <code class="literal">$expected</code> 和 <code class="literal">$actual</code>  之间的差值（的绝对值）大于 <code class="literal">$delta</code> 时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p>关于为什么 <code class="literal">$delta</code> 参数是必须的，请阅读《<a class="ulink" href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_top">关于浮点运算，每一位计算机科学从业人员都应该知道的事实</a>》。</p><div class="example"><a id="appendixes.assertions.assertEquals.example2"></a><p class="title"><strong>例 A.17: 将assertEquals()用于浮点数时的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class EqualsTest extends TestCase
+{
+    public function testSuccess()
+    {
+        $this-&gt;assertEquals(1.0, 1.1, '', 0.2);
+    }
+
+    public function testFailure()
+    {
+        $this-&gt;assertEquals(1.0, 1.1);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit EqualsTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+.F
+
+Time: 0 seconds, Memory: 5.75Mb
+
+There was 1 failure:
+
+1) EqualsTest::testFailure
+Failed asserting that 1.1 matches expected 1.0.
+
+/home/sb/EqualsTest.php:11
+
+FAILURES!
+Tests: 2, Assertions: 2, Failures: 1.</pre></div></div><br class="example-break"></br><p><code class="literal">assertEquals(DOMDocument $expected, DOMDocument $actual[, string $message = ''])</code></p><p>当 <code class="literal">$expected</code> 和 <code class="literal">$actual</code> 这两个 DOMDocument 对象所表示的 XML 文档对应的无注释规范形式不相同时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><div class="example"><a id="appendixes.assertions.assertEquals.example3"></a><p class="title"><strong>例 A.18: assertEquals()应用于 DOMDocument 对象时的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class EqualsTest extends TestCase
+{
+    public function testFailure()
+    {
+        $expected = new DOMDocument;
+        $expected-&gt;loadXML('&lt;foo&gt;&lt;bar/&gt;&lt;/foo&gt;');
+
+        $actual = new DOMDocument;
+        $actual-&gt;loadXML('&lt;bar&gt;&lt;foo/&gt;&lt;/bar&gt;');
+
+        $this-&gt;assertEquals($expected, $actual);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit EqualsTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) EqualsTest::testFailure
+Failed asserting that two DOM documents are equal.
+--- Expected
++++ Actual
+@@ @@
+ &lt;?xml version="1.0"?&gt;
+-&lt;foo&gt;
+-  &lt;bar/&gt;
+-&lt;/foo&gt;
++&lt;bar&gt;
++  &lt;foo/&gt;
++&lt;/bar&gt;
+
+/home/sb/EqualsTest.php:12
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br><p><code class="literal">assertEquals(object $expected, object $actual[, string $message = ''])</code></p><p>当 <code class="literal">$expected</code> 和 <code class="literal">$actual</code> 这两个对象的属性值不相等时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><div class="example"><a id="appendixes.assertions.assertEquals.example4"></a><p class="title"><strong>例 A.19: assertEquals()应用于对象时的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class EqualsTest extends TestCase
+{
+    public function testFailure()
+    {
+        $expected = new stdClass;
+        $expected-&gt;foo = 'foo';
+        $expected-&gt;bar = 'bar';
+
+        $actual = new stdClass;
+        $actual-&gt;foo = 'bar';
+        $actual-&gt;baz = 'bar';
+
+        $this-&gt;assertEquals($expected, $actual);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit EqualsTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.25Mb
+
+There was 1 failure:
+
+1) EqualsTest::testFailure
+Failed asserting that two objects are equal.
+--- Expected
++++ Actual
+@@ @@
+ stdClass Object (
+-    'foo' =&gt; 'foo'
+-    'bar' =&gt; 'bar'
++    'foo' =&gt; 'bar'
++    'baz' =&gt; 'bar'
+ )
+
+/home/sb/EqualsTest.php:14
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br><p><code class="literal">assertEquals(array $expected, array $actual[, string $message = ''])</code></p><p>当 <code class="literal">$expected</code> 和 <code class="literal">$actual</code> 这两个数组不相等时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><div class="example"><a id="appendixes.assertions.assertEquals.example5"></a><p class="title"><strong>例 A.20: assertEquals() 应用于数组时的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class EqualsTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertEquals(['a', 'b', 'c'], ['a', 'c', 'd']);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit EqualsTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.25Mb
+
+There was 1 failure:
+
+1) EqualsTest::testFailure
+Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+ Array (
+     0 =&gt; 'a'
+-    1 =&gt; 'b'
+-    2 =&gt; 'c'
++    1 =&gt; 'c'
++    2 =&gt; 'd'
+ )
+
+/home/sb/EqualsTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertFalse"></a>assertFalse()</h2></div></div></div><a id="idm140589346310368" class="indexterm"></a><p><code class="literal">assertFalse(bool $condition[, string $message = ''])</code></p><p>当 <code class="literal">$condition</code> 为 <code class="literal">true</code> 时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotFalse()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertFalse.example"></a><p class="title"><strong>例 A.21: assertFalse() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class FalseTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertFalse(true);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit FalseTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) FalseTest::testFailure
+Failed asserting that true is false.
+
+/home/sb/FalseTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertFileEquals"></a>assertFileEquals()</h2></div></div></div><a id="idm140589346302656" class="indexterm"></a><a id="idm140589346302080" class="indexterm"></a><p><code class="literal">assertFileEquals(string $expected, string $actual[, string $message = ''])</code></p><p>当 <code class="literal">$expected</code> 所指定的文件与 <code class="literal">$actual</code> 所指定的文件内容不同时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertFileNotEquals()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertFileEquals.example"></a><p class="title"><strong>例 A.22: assertFileEquals() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class FileEqualsTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertFileEquals('/home/sb/expected', '/home/sb/actual');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit FileEqualsTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.25Mb
+
+There was 1 failure:
+
+1) FileEqualsTest::testFailure
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'expected
++'actual
+ '
+
+/home/sb/FileEqualsTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 3, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertFileExists"></a>assertFileExists()</h2></div></div></div><a id="idm140589346294176" class="indexterm"></a><a id="idm140589346293600" class="indexterm"></a><p><code class="literal">assertFileExists(string $filename[, string $message = ''])</code></p><p>当 <code class="literal">$filename</code> 所指定的文件不存在时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertFileNotExists()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertFileExists.example"></a><p class="title"><strong>例 A.23: assertFileExists() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class FileExistsTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertFileExists('/path/to/file');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit FileExistsTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) FileExistsTest::testFailure
+Failed asserting that file "/path/to/file" exists.
+
+/home/sb/FileExistsTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertFileIsReadable"></a>assertFileIsReadable()</h2></div></div></div><a id="idm140589346286224" class="indexterm"></a><a id="idm140589346285648" class="indexterm"></a><p><code class="literal">assertFileIsReadable(string $filename[, string $message = ''])</code></p><p>当 <code class="literal">$filename</code> 所指定的文件不是个文件或不可读时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertFileNotIsReadable()</code> 是与之相反的断言，并接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertFileIsReadable.example"></a><p class="title"><strong>例 A.24: assertFileIsReadable() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class FileIsReadableTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertFileIsReadable('/path/to/file');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit FileIsReadableTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) FileIsReadableTest::testFailure
+Failed asserting that "/path/to/file" is readable.
+
+/home/sb/FileIsReadableTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertFileIsWritable"></a>assertFileIsWritable()</h2></div></div></div><a id="idm140589346278176" class="indexterm"></a><a id="idm140589346277600" class="indexterm"></a><p><code class="literal">assertFileIsWritable(string $filename[, string $message = ''])</code></p><p>当 <code class="literal">$filename</code> 所指定的文件不是个文件或不可写时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertFileNotIsWritable()</code> 是与之相反的断言，并接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertFileIsWritable.example"></a><p class="title"><strong>例 A.25: assertFileIsWritable() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class FileIsWritableTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertFileIsWritable('/path/to/file');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit FileIsWritableTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) FileIsWritableTest::testFailure
+Failed asserting that "/path/to/file" is writable.
+
+/home/sb/FileIsWritableTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertGreaterThan"></a>assertGreaterThan()</h2></div></div></div><a id="idm140589346270144" class="indexterm"></a><a id="idm140589346269568" class="indexterm"></a><p><code class="literal">assertGreaterThan(mixed $expected, mixed $actual[, string $message = ''])</code></p><p>当 <code class="literal">$actual</code> 的值不大于 <code class="literal">$expected</code> 的值时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertAttributeGreaterThan()</code> 是便捷包装(convenience wrapper)，以某个类或对象的某个 <code class="literal">public</code>、<code class="literal">protected</code> 或 <code class="literal">private</code> 属性作为实际值来进行比较。</p><div class="example"><a id="appendixes.assertions.assertGreaterThan.example"></a><p class="title"><strong>例 A.26: assertGreaterThan() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class GreaterThanTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertGreaterThan(2, 1);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit GreaterThanTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) GreaterThanTest::testFailure
+Failed asserting that 1 is greater than 2.
+
+/home/sb/GreaterThanTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertGreaterThanOrEqual"></a>assertGreaterThanOrEqual()</h2></div></div></div><a id="idm140589346260304" class="indexterm"></a><a id="idm140589346259712" class="indexterm"></a><p><code class="literal">assertGreaterThanOrEqual(mixed $expected, mixed $actual[, string $message = ''])</code></p><p>当 <code class="literal">$actual</code> 的值不大于且不等于 <code class="literal">$expected</code> 的值时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertAttributeGreaterThanOrEqual()</code> 是便捷包装(convenience wrapper)，以某个类或对象的某个 <code class="literal">public</code>、<code class="literal">protected</code> 或 <code class="literal">private</code> 属性作为实际值来进行比较。</p><div class="example"><a id="appendixes.assertions.assertGreaterThanOrEqual.example"></a><p class="title"><strong>例 A.27: assertGreaterThanOrEqual() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class GreatThanOrEqualTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertGreaterThanOrEqual(2, 1);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit GreaterThanOrEqualTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.25Mb
+
+There was 1 failure:
+
+1) GreatThanOrEqualTest::testFailure
+Failed asserting that 1 is equal to 2 or is greater than 2.
+
+/home/sb/GreaterThanOrEqualTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 2, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertInfinite"></a>assertInfinite()</h2></div></div></div><a id="idm140589346250416" class="indexterm"></a><a id="idm140589346249840" class="indexterm"></a><p><code class="literal">assertInfinite(mixed $variable[, string $message = ''])</code></p><p>当 <code class="literal">$actual</code> 不是  <code class="literal">INF</code> 时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertFinite()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertInfinite.example"></a><p class="title"><strong>例 A.28: assertInfinite() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class InfiniteTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertInfinite(1);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit InfiniteTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) InfiniteTest::testFailure
+Failed asserting that 1 is infinite.
+
+/home/sb/InfiniteTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertInstanceOf"></a>assertInstanceOf()</h2></div></div></div><a id="idm140589346242112" class="indexterm"></a><a id="idm140589346241536" class="indexterm"></a><a id="idm140589346240960" class="indexterm"></a><a id="idm140589346240368" class="indexterm"></a><p><code class="literal">assertInstanceOf($expected, $actual[, $message = ''])</code></p><p>当 <code class="literal">$actual</code> 不是 <code class="literal">$expected</code> 的实例时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotInstanceOf()</code> 是与之相反的断言，接受相同的参数。</p><p><code class="literal">assertAttributeInstanceOf()</code> 和 <code class="literal">assertAttributeNotInstanceOf()</code> 是便捷包装(convenience wrapper)，可以应用于某个类或对象的某个 <code class="literal">public</code>、<code class="literal">protected</code> 或 <code class="literal">private</code> 属性。</p><div class="example"><a id="appendixes.assertions.assertInstanceOf.example"></a><p class="title"><strong>例 A.29: assertInstanceOf() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class InstanceOfTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertInstanceOf(RuntimeException::class, new Exception);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit InstanceOfTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) InstanceOfTest::testFailure
+Failed asserting that Exception Object (...) is an instance of class "RuntimeException".
+
+/home/sb/InstanceOfTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertInternalType"></a>assertInternalType()</h2></div></div></div><a id="idm140589346229856" class="indexterm"></a><a id="idm140589346229280" class="indexterm"></a><a id="idm140589346228704" class="indexterm"></a><a id="idm140589346228112" class="indexterm"></a><p><code class="literal">assertInternalType($expected, $actual[, $message = ''])</code></p><p>当 <code class="literal">$actual</code> 不是 <code class="literal">$expected</code> 所指明的类型时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotInternalType()</code> 是与之相反的断言，接受相同的参数。</p><p><code class="literal">assertAttributeInternalType()</code> 和 <code class="literal">assertAttributeNotInternalType()</code> 是便捷包装(convenience wrapper)，可以应用于某个类或对象的某个 <code class="literal">public</code>、<code class="literal">protected</code> 或 <code class="literal">private</code> 属性。</p><div class="example"><a id="appendixes.assertions.assertInternalType.example"></a><p class="title"><strong>例 A.30: assertInternalType() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class InternalTypeTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertInternalType('string', 42);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit InternalTypeTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) InternalTypeTest::testFailure
+Failed asserting that 42 is of type "string".
+
+/home/sb/InternalTypeTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertIsReadable"></a>assertIsReadable()</h2></div></div></div><a id="idm140589346217680" class="indexterm"></a><a id="idm140589346217104" class="indexterm"></a><p><code class="literal">assertIsReadable(string $filename[, string $message = ''])</code></p><p>当 <code class="literal">$filename</code> 所指定的文件或目录不可读时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotIsReadable()</code> 是与之相反的断言，并接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertIsReadable.example"></a><p class="title"><strong>例 A.31: assertIsReadable() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class IsReadableTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertIsReadable('/path/to/unreadable');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit IsReadableTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) IsReadableTest::testFailure
+Failed asserting that "/path/to/unreadable" is readable.
+
+/home/sb/IsReadableTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertIsWritable"></a>assertIsWritable()</h2></div></div></div><a id="idm140589346209712" class="indexterm"></a><a id="idm140589346209136" class="indexterm"></a><p><code class="literal">assertIsWritable(string $filename[, string $message = ''])</code></p><p>当 <code class="literal">$filename</code> 所指定的文件或目录不可写时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotIsWritable()</code> 是与之相反的断言，并接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertIsWritable.example"></a><p class="title"><strong>例 A.32: assertIsWritable() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class IsWritableTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertIsWritable('/path/to/unwritable');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit IsWritableTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) IsWritableTest::testFailure
+Failed asserting that "/path/to/unwritable" is writable.
+
+/home/sb/IsWritableTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertJsonFileEqualsJsonFile"></a>assertJsonFileEqualsJsonFile()</h2></div></div></div><a id="idm140589346201712" class="indexterm"></a><a id="idm140589346201120" class="indexterm"></a><p><code class="literal">assertJsonFileEqualsJsonFile(mixed $expectedFile, mixed $actualFile[, string $message = ''])</code></p><p>当 <code class="literal">$actualFile</code> 对应的值与 <code class="literal">$expectedFile</code> 对应的值不匹配时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><div class="example"><a id="appendixes.assertions.assertJsonFileEqualsJsonFile.example"></a><p class="title"><strong>例 A.33: assertJsonFileEqualsJsonFile() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class JsonFileEqualsJsonFileTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertJsonFileEqualsJsonFile(
+          'path/to/fixture/file', 'path/to/actual/file');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit JsonFileEqualsJsonFileTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) JsonFileEqualsJsonFile::testFailure
+Failed asserting that '{"Mascot":"Tux"}' matches JSON string "["Mascott", "Tux", "OS", "Linux"]".
+
+/home/sb/JsonFileEqualsJsonFileTest.php:5
+
+FAILURES!
+Tests: 1, Assertions: 3, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertJsonStringEqualsJsonFile"></a>assertJsonStringEqualsJsonFile()</h2></div></div></div><a id="idm140589346193824" class="indexterm"></a><a id="idm140589346193232" class="indexterm"></a><p><code class="literal">assertJsonStringEqualsJsonFile(mixed $expectedFile, mixed $actualJson[, string $message = ''])</code></p><p>当 <code class="literal">$actualJson</code> 对应的值与 <code class="literal">$expectedFile</code> 对应的值不匹配时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><div class="example"><a id="appendixes.assertions.assertJsonStringEqualsJsonFile.example"></a><p class="title"><strong>例 A.34: assertJsonStringEqualsJsonFile() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class JsonStringEqualsJsonFileTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertJsonStringEqualsJsonFile(
+            'path/to/fixture/file', json_encode(['Mascot' =&gt; 'ux'])
+        );
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit JsonStringEqualsJsonFileTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) JsonStringEqualsJsonFile::testFailure
+Failed asserting that '{"Mascot":"ux"}' matches JSON string "{"Mascott":"Tux"}".
+
+/home/sb/JsonStringEqualsJsonFileTest.php:5
+
+FAILURES!
+Tests: 1, Assertions: 3, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertJsonStringEqualsJsonString"></a>assertJsonStringEqualsJsonString()</h2></div></div></div><a id="idm140589346185904" class="indexterm"></a><a id="idm140589346185312" class="indexterm"></a><p><code class="literal">assertJsonStringEqualsJsonString(mixed $expectedJson, mixed $actualJson[, string $message = ''])</code></p><p>当 <code class="literal">$actualJson</code> 对应的值与 <code class="literal">$expectedJson</code> 对应的值不匹配时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><div class="example"><a id="appendixes.assertions.assertJsonStringEqualsJsonString.example"></a><p class="title"><strong>例 A.35: assertJsonStringEqualsJsonString() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class JsonStringEqualsJsonStringTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertJsonStringEqualsJsonString(
+            json_encode(['Mascot' =&gt; 'Tux']),
+            json_encode(['Mascot' =&gt; 'ux'])
+        );
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit JsonStringEqualsJsonStringTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) JsonStringEqualsJsonStringTest::testFailure
+Failed asserting that two objects are equal.
+--- Expected
++++ Actual
+@@ @@
+ stdClass Object (
+ -    'Mascot' =&gt; 'Tux'
+ +    'Mascot' =&gt; 'ux'
+)
+
+/home/sb/JsonStringEqualsJsonStringTest.php:5
+
+FAILURES!
+Tests: 1, Assertions: 3, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertLessThan"></a>assertLessThan()</h2></div></div></div><a id="idm140589346177936" class="indexterm"></a><a id="idm140589346177360" class="indexterm"></a><p><code class="literal">assertLessThan(mixed $expected, mixed $actual[, string $message = ''])</code></p><p>当 <code class="literal">$actual</code> 的值不小于 <code class="literal">$expected</code> 的值时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertAttributeLessThan()</code> 是便捷包装(convenience wrapper)，以某个类或对象的某个 <code class="literal">public</code>、<code class="literal">protected</code> 或 <code class="literal">private</code> 属性作为实际值来进行比较。</p><div class="example"><a id="appendixes.assertions.assertLessThan.example"></a><p class="title"><strong>例 A.36: assertLessThan() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class LessThanTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertLessThan(1, 2);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit LessThanTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) LessThanTest::testFailure
+Failed asserting that 2 is less than 1.
+
+/home/sb/LessThanTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertLessThanOrEqual"></a>assertLessThanOrEqual()</h2></div></div></div><a id="idm140589346168160" class="indexterm"></a><a id="idm140589346167584" class="indexterm"></a><p><code class="literal">assertLessThanOrEqual(mixed $expected, mixed $actual[, string $message = ''])</code></p><p>当 <code class="literal">$actual</code> 的值不小于且不等于 <code class="literal">$expected</code> 的值时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertAttributeLessThanOrEqual()</code> 是便捷包装(convenience wrapper)，以某个类或对象的某个 <code class="literal">public</code>、<code class="literal">protected</code> 或 <code class="literal">private</code> 属性作为实际值来进行比较。</p><div class="example"><a id="appendixes.assertions.assertLessThanOrEqual.example"></a><p class="title"><strong>例 A.37: assertLessThanOrEqual() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class LessThanOrEqualTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertLessThanOrEqual(1, 2);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit LessThanOrEqualTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.25Mb
+
+There was 1 failure:
+
+1) LessThanOrEqualTest::testFailure
+Failed asserting that 2 is equal to 1 or is less than 1.
+
+/home/sb/LessThanOrEqualTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 2, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertNan"></a>assertNan()</h2></div></div></div><a id="idm140589346158304" class="indexterm"></a><p><code class="literal">assertNan(mixed $variable[, string $message = ''])</code></p><p>当 <code class="literal">$variable</code> 不是  <code class="literal">NAN</code> 时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><div class="example"><a id="appendixes.assertions.assertNan.example"></a><p class="title"><strong>例 A.38: assertNan() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class NanTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertNan(1);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit NanTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) NanTest::testFailure
+Failed asserting that 1 is nan.
+
+/home/sb/NanTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertNull"></a>assertNull()</h2></div></div></div><a id="idm140589346151408" class="indexterm"></a><a id="idm140589346150832" class="indexterm"></a><p><code class="literal">assertNull(mixed $variable[, string $message = ''])</code></p><p>当 <code class="literal">$actual</code> 不是  <code class="literal">null</code> 时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotNull()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertNull.example"></a><p class="title"><strong>例 A.39: assertNull() 的使用</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class NullTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertNull('foo');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit NotNullTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) NullTest::testFailure
+Failed asserting that 'foo' is null.
+
+/home/sb/NotNullTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertObjectHasAttribute"></a>assertObjectHasAttribute()</h2></div></div></div><a id="idm140589346143088" class="indexterm"></a><a id="idm140589346142496" class="indexterm"></a><p><code class="literal">assertObjectHasAttribute(string $attributeName, object $object[, string $message = ''])</code></p><p>当 <code class="literal">$object-&gt;attributeName</code> 不存在时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertObjectNotHasAttribute()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertObjectHasAttribute.example"></a><p class="title"><strong>例 A.40: assertObjectHasAttribute() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class ObjectHasAttributeTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertObjectHasAttribute('foo', new stdClass);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit ObjectHasAttributeTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) ObjectHasAttributeTest::testFailure
+Failed asserting that object of class "stdClass" has attribute "foo".
+
+/home/sb/ObjectHasAttributeTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertRegExp"></a>assertRegExp()</h2></div></div></div><a id="idm140589346135040" class="indexterm"></a><a id="idm140589346134464" class="indexterm"></a><p><code class="literal">assertRegExp(string $pattern, string $string[, string $message = ''])</code></p><p>当 <code class="literal">$string</code> 不匹配于正则表达式 <code class="literal">$pattern</code> 时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotRegExp()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertRegExp.example"></a><p class="title"><strong>例 A.41: assertRegExp() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class RegExpTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertRegExp('/foo/', 'bar');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit RegExpTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) RegExpTest::testFailure
+Failed asserting that 'bar' matches PCRE pattern "/foo/".
+
+/home/sb/RegExpTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertStringMatchesFormat"></a>assertStringMatchesFormat()</h2></div></div></div><a id="idm140589346126640" class="indexterm"></a><a id="idm140589346126048" class="indexterm"></a><p><code class="literal">assertStringMatchesFormat(string $format, string $string[, string $message = ''])</code></p><p>当 <code class="literal">$string</code> 不匹配于 <code class="literal">$format</code> 定义的格式时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertStringNotMatchesFormat()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertStringMatchesFormat.example"></a><p class="title"><strong>例 A.42: assertStringMatchesFormat() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StringMatchesFormatTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertStringMatchesFormat('%i', 'foo');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit StringMatchesFormatTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) StringMatchesFormatTest::testFailure
+Failed asserting that 'foo' matches PCRE pattern "/^[+-]?\d+$/s".
+
+/home/sb/StringMatchesFormatTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br><p>格式定义字符串中可以使用如下占位符：</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">%e</code>：表示目录分隔符，例如在 Linux 系统中是 <code class="literal">/</code>。</p></li><li class="listitem"><p><code class="literal">%s</code>：一个或多个除了换行符以外的任意字符（非空白字符或者空白字符）。</p></li><li class="listitem"><p><code class="literal">%S</code>：零个或多个除了换行符以外的任意字符（非空白字符或者空白字符）。</p></li><li class="listitem"><p><code class="literal">%a</code>：一个或多个包括换行符在内的任意字符（非空白字符或者空白字符）。</p></li><li class="listitem"><p><code class="literal">%A</code>：零个或多个包括换行符在内的任意字符（非空白字符或者空白字符）。</p></li><li class="listitem"><p><code class="literal">%w</code>：零个或多个空白字符。</p></li><li class="listitem"><p><code class="literal">%i</code>：带符号整数值，例如 <code class="literal">+3142</code>、<code class="literal">-3142</code>。</p></li><li class="listitem"><p><code class="literal">%d</code>：无符号整数值，例如 <code class="literal">123456</code>。</p></li><li class="listitem"><p><code class="literal">%x</code>：一个或多个十六进制字符。所谓十六进制字符，指的是在以下范围内的字符：<code class="literal">0-9</code>、<code class="literal">a-f</code>、<code class="literal">A-F</code>。</p></li><li class="listitem"><p><code class="literal">%f</code>：浮点数，例如 <code class="literal">3.142</code>、<code class="literal">-3.142</code>、<code class="literal">3.142E-10</code>、<code class="literal">3.142e+10</code>。</p></li><li class="listitem"><p><code class="literal">%c</code>：单个任意字符。</p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertStringMatchesFormatFile"></a>assertStringMatchesFormatFile()</h2></div></div></div><a id="idm140589346102224" class="indexterm"></a><a id="idm140589346101632" class="indexterm"></a><p><code class="literal">assertStringMatchesFormatFile(string $formatFile, string $string[, string $message = ''])</code></p><p>当 <code class="literal">$string</code> 不匹配于 <code class="literal">$formatFile</code> 的内容所定义的格式时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertStringNotMatchesFormatFile()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertStringMatchesFormatFile.example"></a><p class="title"><strong>例 A.43: assertStringMatchesFormatFile() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StringMatchesFormatFileTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertStringMatchesFormatFile('/path/to/expected.txt', 'foo');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit StringMatchesFormatFileTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) StringMatchesFormatFileTest::testFailure
+Failed asserting that 'foo' matches PCRE pattern "/^[+-]?\d+
+$/s".
+
+/home/sb/StringMatchesFormatFileTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 2, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertSame"></a>assertSame()</h2></div></div></div><a id="idm140589346093616" class="indexterm"></a><a id="idm140589346093040" class="indexterm"></a><a id="idm140589346092464" class="indexterm"></a><a id="idm140589346091888" class="indexterm"></a><p><code class="literal">assertSame(mixed $expected, mixed $actual[, string $message = ''])</code></p><p>当两个变量 <code class="literal">$expected</code> 和 <code class="literal">$actual</code> 的值与类型不完全相同时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotSame()</code> 是与之相反的断言，接受相同的参数。</p><p><code class="literal">assertAttributeSame()</code> 和 <code class="literal">assertAttributeNotSame()</code> 是便捷包装(convenience wrapper)，以某个类或对象的某个 <code class="literal">public</code>、<code class="literal">protected</code> 或 <code class="literal">private</code> 属性作为实际值来进行比较。</p><div class="example"><a id="appendixes.assertions.assertSame.example"></a><p class="title"><strong>例 A.44: assertSame() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class SameTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertSame('2204', 2204);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit SameTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) SameTest::testFailure
+Failed asserting that 2204 is identical to '2204'.
+
+/home/sb/SameTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br><p><code class="literal">assertSame(object $expected, object $actual[, string $message = ''])</code></p><p>当两个变量 <code class="literal">$expected</code> 和 <code class="literal">$actual</code> 不是指向同一个对象的引用时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><div class="example"><a id="appendixes.assertions.assertSame.example2"></a><p class="title"><strong>例 A.45: assertSame() 应用于对象时的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class SameTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertSame(new stdClass, new stdClass);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit SameTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 4.75Mb
+
+There was 1 failure:
+
+1) SameTest::testFailure
+Failed asserting that two variables reference the same object.
+
+/home/sb/SameTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertStringEndsWith"></a>assertStringEndsWith()</h2></div></div></div><a id="idm140589346076176" class="indexterm"></a><a id="idm140589346075600" class="indexterm"></a><p><code class="literal">assertStringEndsWith(string $suffix, string $string[, string $message = ''])</code></p><p>当 <code class="literal">$string</code> 不以 <code class="literal">$suffix</code> 结尾时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertStringEndsNotWith()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertStringEndsWith.example"></a><p class="title"><strong>例 A.46: assertStringEndsWith() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StringEndsWithTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertStringEndsWith('suffix', 'foo');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit StringEndsWithTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 1 second, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) StringEndsWithTest::testFailure
+Failed asserting that 'foo' ends with "suffix".
+
+/home/sb/StringEndsWithTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertStringEqualsFile"></a>assertStringEqualsFile()</h2></div></div></div><a id="idm140589346067696" class="indexterm"></a><a id="idm140589346067104" class="indexterm"></a><p><code class="literal">assertStringEqualsFile(string $expectedFile, string $actualString[, string $message = ''])</code></p><p>当 <code class="literal">$expectedFile</code> 所指定的文件其内容不是 <code class="literal">$actualString</code> 时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertStringNotEqualsFile()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertStringEqualsFile.example"></a><p class="title"><strong>例 A.47: assertStringEqualsFile() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StringEqualsFileTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertStringEqualsFile('/home/sb/expected', 'actual');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit StringEqualsFileTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.25Mb
+
+There was 1 failure:
+
+1) StringEqualsFileTest::testFailure
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'expected
+-'
++'actual'
+
+/home/sb/StringEqualsFileTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 2, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertStringStartsWith"></a>assertStringStartsWith()</h2></div></div></div><a id="idm140589346059104" class="indexterm"></a><a id="idm140589346058512" class="indexterm"></a><p><code class="literal">assertStringStartsWith(string $prefix, string $string[, string $message = ''])</code></p><p>当 <code class="literal">$string</code> 不以 <code class="literal">$prefix</code> 开头时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertStringStartsNotWith()</code> 是与之相反的断言，并接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertStringStartsWith.example"></a><p class="title"><strong>例 A.48: assertStringStartsWith() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StringStartsWithTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertStringStartsWith('prefix', 'foo');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit StringStartsWithTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) StringStartsWithTest::testFailure
+Failed asserting that 'foo' starts with "prefix".
+
+/home/sb/StringStartsWithTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertThat"></a>assertThat()</h2></div></div></div><a id="idm140589346050624" class="indexterm"></a><p>可以用 <code class="literal">PHPUnit_Framework_Constraint</code>  类来订立更加复杂的断言。随后可以用 <code class="literal">assertThat()</code> 方法来评定这些断言。<a class="xref" href="appendixes.assertions.html#appendixes.assertions.assertThat.example" title="例 A.49: assertThat() 的用法">例 A.49</a> 展示了如何用 <code class="literal">logicalNot()</code> 和 <code class="literal">equalTo()</code> 约束条件来表达与 <code class="literal">assertNotEquals()</code> 等价的断言。</p><p><code class="literal">assertThat(mixed $value, PHPUnit_Framework_Constraint $constraint[, $message = ''])</code></p><p>当 <code class="literal">$value</code> 不符合约束条件 <code class="literal">$constraint</code> 时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><div class="example"><a id="appendixes.assertions.assertThat.example"></a><p class="title"><strong>例 A.49: assertThat() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class BiscuitTest extends TestCase
+{
+    public function testEquals()
+    {
+        $theBiscuit = new Biscuit('Ginger');
+        $myBiscuit  = new Biscuit('Ginger');
+
+        $this-&gt;assertThat(
+          $theBiscuit,
+          $this-&gt;logicalNot(
+            $this-&gt;equalTo($myBiscuit)
+          )
+        );
+    }
+}
+?&gt;</pre></div></div><br class="example-break"></br><p>
+      <a class="xref" href="appendixes.assertions.html#appendixes.assertions.assertThat.tables.constraints" title="表 A.1. 约束条件">表 A.1</a>列举了所有可用的 <code class="literal">PHPUnit_Framework_Constraint</code> 类。</p><div class="table"><a id="appendixes.assertions.assertThat.tables.constraints"></a><p class="title"><strong>表 A.1. 约束条件</strong></p><div class="table-contents"><table class="table" summary="约束条件" border="1"><colgroup><col></col><col></col></colgroup><thead><tr><th align="left">约束条件</th><th align="left">含义</th></tr></thead><tbody><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_Attribute attribute(PHPUnit_Framework_Constraint $constraint, $attributeName)</code></td><td align="left">此约束将另外一个约束应用于某个类或对象的某个属性。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_IsAnything anything()</code></td><td align="left">此约束接受任意输入值。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_ArrayHasKey arrayHasKey(mixed $key)</code></td><td align="left">此约束断言所评定的数组拥有指定键名。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_TraversableContains contains(mixed $value)</code></td><td align="left">此约束断言所评定的 <code class="literal">array</code> 或实现了 <code class="literal">Iterator</code> 接口的对象包含有给定值。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_TraversableContainsOnly containsOnly(string $type)</code></td><td align="left">此约束断言所评定的 <code class="literal">array</code> 或实现了 <code class="literal">Iterator</code> 接口的对象仅包含给定类型的值。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_TraversableContainsOnly containsOnlyInstancesOf(string $classname)</code></td><td align="left">此约束断言所评定的 <code class="literal">array</code> 或实现了 <code class="literal">Iterator</code> 接口的对象仅包含给定类名的类的实例。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_IsEqual equalTo($value, $delta = 0, $maxDepth = 10)</code></td><td align="left">此约束检验一个值是否等于另外一个。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_Attribute attributeEqualTo($attributeName, $value, $delta = 0, $maxDepth = 10)</code></td><td align="left">此约束检验一个值是否等于某个类或对象的某个属性。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_DirectoryExists directoryExists()</code></td><td align="left">此约束检验所评定的目录是否存在。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_FileExists fileExists()</code></td><td align="left">此约束检验所评定的文件名对应的文件是否存在。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_IsReadable isReadable()</code></td><td align="left">此约束检验所评定的文件名对应的文件是否可读。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_IsWritable isWritable()</code></td><td align="left">此约束检验所评定的文件名对应的文件是否可写。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_GreaterThan greaterThan(mixed $value)</code></td><td align="left">此约束断言所评定的值大于给定值。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_Or greaterThanOrEqual(mixed $value)</code></td><td align="left">此约束断言所评定的值大于或等于给定值。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_ClassHasAttribute classHasAttribute(string $attributeName)</code></td><td align="left">此约束断言所评定的类具有给定属性。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_ClassHasStaticAttribute classHasStaticAttribute(string $attributeName)</code></td><td align="left">此约束断言所评定的类具有给定静态属性。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_ObjectHasAttribute hasAttribute(string $attributeName)</code></td><td align="left">此约束断言所评定的对象具有给定属性。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_IsIdentical identicalTo(mixed $value)</code></td><td align="left">此约束断言所评定的值与另外一个值全等。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_IsFalse isFalse()</code></td><td align="left">此约束断言所评定的值为 <code class="literal">false</code>。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_IsInstanceOf isInstanceOf(string $className)</code></td><td align="left">此约束断言所评定的对象是给定类的实例。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_IsNull isNull()</code></td><td align="left">此约束断言所评定的值为 <code class="literal">null</code>。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_IsTrue isTrue()</code></td><td align="left">此约束断言所评定的值为 <code class="literal">true</code>。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_IsType isType(string $type)</code></td><td align="left">此约束断言所评定的值是指定类型的。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_LessThan lessThan(mixed $value)</code></td><td align="left">此约束断言所评定的值小于给定值。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_Or lessThanOrEqual(mixed $value)</code></td><td align="left">此约束断言所评定的值小于或等于给定值。</td></tr><tr><td align="left"><code class="literal">logicalAnd()</code></td><td align="left">逻辑与(AND)。</td></tr><tr><td align="left"><code class="literal">logicalNot(PHPUnit_Framework_Constraint $constraint)</code></td><td align="left">逻辑非(NOT)。</td></tr><tr><td align="left"><code class="literal">logicalOr()</code></td><td align="left">逻辑或(OR)。</td></tr><tr><td align="left"><code class="literal">logicalXor()</code></td><td align="left">逻辑异或(XOR)。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_PCREMatch matchesRegularExpression(string $pattern)</code></td><td align="left">此约束断言所评定的字符串匹配于正则表达式。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_StringContains stringContains(string $string, bool $case)</code></td><td align="left">此约束断言所评定的字符串包含指定字符串。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_StringEndsWith stringEndsWith(string $suffix)</code></td><td align="left">此约束断言所评定的字符串以给定后缀结尾。</td></tr><tr><td align="left"><code class="literal">PHPUnit_Framework_Constraint_StringStartsWith stringStartsWith(string $prefix)</code></td><td align="left">此约束断言所评定的字符串以给定前缀开头。</td></tr></tbody></table></div></div><br class="table-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertTrue"></a>assertTrue()</h2></div></div></div><a id="idm140589345960144" class="indexterm"></a><p><code class="literal">assertTrue(bool $condition[, string $message = ''])</code></p><p>当 <code class="literal">$condition</code> 为 <code class="literal">false</code> 时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertNotTrue()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertTrue.example"></a><p class="title"><strong>例 A.50: assertTrue() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class TrueTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertTrue(false);
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit TrueTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) TrueTest::testFailure
+Failed asserting that false is true.
+
+/home/sb/TrueTest.php:6
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertXmlFileEqualsXmlFile"></a>assertXmlFileEqualsXmlFile()</h2></div></div></div><a id="idm140589345952400" class="indexterm"></a><a id="idm140589345951808" class="indexterm"></a><p><code class="literal">assertXmlFileEqualsXmlFile(string $expectedFile, string $actualFile[, string $message = ''])</code></p><p>当 <code class="literal">$actualFile</code> 对应的 XML 文档与 <code class="literal">$expectedFile</code> 对应的 XML 文档不相同时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertXmlFileNotEqualsXmlFile()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertXmlFileEqualsXmlFile.example"></a><p class="title"><strong>例 A.51: assertXmlFileEqualsXmlFile() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class XmlFileEqualsXmlFileTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertXmlFileEqualsXmlFile(
+          '/home/sb/expected.xml', '/home/sb/actual.xml');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit XmlFileEqualsXmlFileTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.25Mb
+
+There was 1 failure:
+
+1) XmlFileEqualsXmlFileTest::testFailure
+Failed asserting that two DOM documents are equal.
+--- Expected
++++ Actual
+@@ @@
+ &lt;?xml version="1.0"?&gt;
+ &lt;foo&gt;
+-  &lt;bar/&gt;
++  &lt;baz/&gt;
+ &lt;/foo&gt;
+
+/home/sb/XmlFileEqualsXmlFileTest.php:7
+
+FAILURES!
+Tests: 1, Assertions: 3, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertXmlStringEqualsXmlFile"></a>assertXmlStringEqualsXmlFile()</h2></div></div></div><a id="idm140589345943680" class="indexterm"></a><a id="idm140589345943088" class="indexterm"></a><p><code class="literal">assertXmlStringEqualsXmlFile(string $expectedFile, string $actualXml[, string $message = ''])</code></p><p>当 <code class="literal">$actualXml</code> 对应的 XML 文档与 <code class="literal">$expectedFile</code> 对应的 XML 文档不相同时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertXmlStringNotEqualsXmlFile()</code> 是与之相反的断言，并接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertXmlStringEqualsXmlFile.example"></a><p class="title"><strong>例 A.52: assertXmlStringEqualsXmlFile() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class XmlStringEqualsXmlFileTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertXmlStringEqualsXmlFile(
+          '/home/sb/expected.xml', '&lt;foo&gt;&lt;baz/&gt;&lt;/foo&gt;');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit XmlStringEqualsXmlFileTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.25Mb
+
+There was 1 failure:
+
+1) XmlStringEqualsXmlFileTest::testFailure
+Failed asserting that two DOM documents are equal.
+--- Expected
++++ Actual
+@@ @@
+ &lt;?xml version="1.0"?&gt;
+ &lt;foo&gt;
+-  &lt;bar/&gt;
++  &lt;baz/&gt;
+ &lt;/foo&gt;
+
+/home/sb/XmlStringEqualsXmlFileTest.php:7
+
+FAILURES!
+Tests: 1, Assertions: 2, Failures: 1.</pre></div></div><br class="example-break"></br></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="appendixes.assertions.assertXmlStringEqualsXmlString"></a>assertXmlStringEqualsXmlString()</h2></div></div></div><a id="idm140589345934944" class="indexterm"></a><a id="idm140589345934352" class="indexterm"></a><p><code class="literal">assertXmlStringEqualsXmlString(string $expectedXml, string $actualXml[, string $message = ''])</code></p><p>当 <code class="literal">$actualXml</code> 对应的 XML 文档与 <code class="literal">$expectedXml</code> 对应的 XML 文档不相同时报告错误，错误讯息由 <code class="literal">$message</code> 指定。</p><p><code class="literal">assertXmlStringNotEqualsXmlString()</code> 是与之相反的断言，接受相同的参数。</p><div class="example"><a id="appendixes.assertions.assertXmlStringEqualsXmlString.example"></a><p class="title"><strong>例 A.53: assertXmlStringEqualsXmlString() 的用法</strong></p><div class="example-contents"><pre class="programlisting">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class XmlStringEqualsXmlStringTest extends TestCase
+{
+    public function testFailure()
+    {
+        $this-&gt;assertXmlStringEqualsXmlString(
+          '&lt;foo&gt;&lt;bar/&gt;&lt;/foo&gt;', '&lt;foo&gt;&lt;baz/&gt;&lt;/foo&gt;');
+    }
+}
+?&gt;</pre><pre class="screen"><strong class="userinput"><code>phpunit XmlStringEqualsXmlStringTest</code></strong>
+PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
+
+F
+
+Time: 0 seconds, Memory: 5.00Mb
+
+There was 1 failure:
+
+1) XmlStringEqualsXmlStringTest::testFailure
+Failed asserting that two DOM documents are equal.
+--- Expected
++++ Actual
+@@ @@
+ &lt;?xml version="1.0"?&gt;
+ &lt;foo&gt;
+-  &lt;bar/&gt;
++  &lt;baz/&gt;
+ &lt;/foo&gt;
+
+/home/sb/XmlStringEqualsXmlStringTest.php:7
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.</pre></div></div><br class="example-break"></br></div></div>
+     <div class="row">
+      <div class="col-md-1 pull-left prev-nav"><a accesskey="p" href="extending-phpunit.html">上一章</a></div>
+      <div class="col-md-1 pull-right next-nav"><a accesskey="n" href="appendixes.annotations.html">下一章</a></div>
+     </div>
+    </div>
+   </div>
+   <hr/>
+   <footer>
+    <p><a href="appendixes.copyright.html">Copyright</a> &copy; 2005-2017 <a href="http://sebastian-bergmann.de/">Sebastian Bergmann</a>.</p>
+   </footer>
+  </div>
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/highlight.pack.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() { $('pre.programlisting').each(function(i, e) {hljs.highlightBlock(e)}); });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,10 @@
+<?php
+
+namespace {%namespace%};
+
+use Think\Model;
+
+class {%className%} extends Model
+{
+    //
+}

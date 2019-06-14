@@ -1,0 +1,10 @@
+sudo cp -f /data/wwwroot/default/strack/service/strack_jobs.service /etc/systemd/system/
+sudo systemctl --system daemon-reload
+
+4. 服务管理
+#启动服务
+sudo systemctl start strack_jobs.service
+#reload服务
+sudo systemctl reload strack_jobs.service
+#关闭服务
+sudo systemctl stop strack_jobs.service

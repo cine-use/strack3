@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>后台管理 - Strack 快速入门</title>
+  <link href='../css/googlecss.css' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u540e\u53f0\u7ba1\u7406";
+    var mkdocs_page_input_path = "admin.md";
+    var mkdocs_page_url = "/admin/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Strack 快速入门</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">前言</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../update/">更新说明</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../action/">动作</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../myhome/">个人首页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../project/">项目</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../biding/">报价</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../plan/">计划</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../episodes/">集数</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../sequence/">序列</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../pre_production/">前期制作</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../asset/">资产</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../shot/">镜头</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../media/">媒体</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../webplayer/">网页播放器</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../gantt/">甘特图</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../report_form/">报表</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../filter/">过滤模块</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../excel/">导出Excel</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../preference/">个人设置</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">后台管理</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">后台设置</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">登录后台</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">关于</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_4">第三方接口</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_5">系统监控</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_6">缓存</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_7">管理日志</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_8">转码管理</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_9">默认设置</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_10">邮件设置</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_11">提醒设置</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_12">日程设置</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_13">软件列表</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_14">动作列表</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_15">账号</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_16">区域</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_17">部门</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_18">国家/地区</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_19">用户组</a></li>
+    
+
+    <li class="toctree-l2"><a href="#api">API许可</a></li>
+    
+
+    <li class="toctree-l2"><a href="#api_1">API权限组</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_20">项目设置</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_21">项目工序</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_22">项目状态</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_23">任务级别</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_24">标签设置</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_25">类别设置</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_26">投标设置</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_27">项目模板</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_28">磁盘</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_29">媒体预览</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../view/">客户端主界面</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../traymenu/">客户端托盘菜单</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../DCC_plugins/">客户端DCC插件</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Strack 快速入门</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>后台管理</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">后台设置</h2>
+<p>管理整个系统配置信息，查看系统运行状态，下面分模块一一介绍。</p>
+<h2 id="_2">登录后台</h2>
+<p>为了保证系统安全设置，启用了后台二次验证，密码同当前用户系统登录密码。</p>
+<p><img alt="image" src="../images/admin_login.png" /></p>
+<h2 id="_3">关于</h2>
+<p>当前页面可以查看系统统计数据、当前系统版本号、系统授权许可状态。</p>
+<p><img alt="image" src="../images/admin_about.png" /></p>
+<h2 id="_4">第三方接口</h2>
+<p>当天仅提供了百度翻译接口。注意，需要公司部署服务能够连接外网和公司自己去申请百度翻译授权密钥。</p>
+<p><img alt="image" src="../images/admin_threepart.png" /></p>
+<h2 id="_5">系统监控</h2>
+<p><img alt="image" src="../images/admin_diagnostics.png" /></p>
+<h2 id="_6">缓存</h2>
+<p>点击清空缓存</p>
+<p><img alt="image" src="../images/admin_cache.png" /></p>
+<h2 id="_7">管理日志</h2>
+<p>记录用户在后台所有操作日志。</p>
+<p><img alt="image" src="../images/admin_logs.png" /></p>
+<h2 id="_8">转码管理</h2>
+<p>可以查看转码进度，对于失败的媒体可以选择进行重新提交转码，如果当前转码源文件已经不存在，那么会直接删除对应失败信息。</p>
+<p><img alt="image" src="../images/admin_transcode.png" /></p>
+<h2 id="_9">默认设置</h2>
+<p><img alt="image" src="../images/admin_default_set.png" /></p>
+<h2 id="_10">邮件设置</h2>
+<p><img alt="image" src="../images/admin_mail_send.png" /></p>
+<h2 id="_11">提醒设置</h2>
+<p>这里是控制全局消息提醒设置，可以精确控制每个项目消息提醒。</p>
+<p><img alt="image" src="../images/admin_notice_set.png" /></p>
+<h2 id="_12">日程设置</h2>
+<p>工作时间设置包括工作日、上班和下班时间、制作时间是否排除非工作日或者假期。</p>
+<p><img alt="image" src="../images/admin_schedul_worktime.png" /></p>
+<p>可以设置全局工作消息</p>
+<p><img alt="image" src="../images/admin_schedul_reminder.png" /></p>
+<p>自定义时间日志项</p>
+<p><img alt="image" src="../images/admin_schedul_logitem.png" /></p>
+<p>设置日期事项，类型有加班和假期配合工作时间使用</p>
+<p><img alt="image" src="../images/admin_schedul_date.png" /></p>
+<h2 id="_13">软件列表</h2>
+<p>为软件相关Action提供默认系统图标。</p>
+<p><img alt="image" src="../images/admin_software.png" /></p>
+<h2 id="_14">动作列表</h2>
+<p>左边是管理注册的所有动作，右边是从实体角度来管理动作。</p>
+<p><img alt="image" src="../images/admin_action_mg.png" /></p>
+<h2 id="_15">账号</h2>
+<p>管理系统用户账号信息，离职人员不算在系统许可数量之内。</p>
+<p><img alt="image" src="../images/admin_account.png" /></p>
+<p>添加用户</p>
+<p><img alt="image" src="../images/admin_add_account.png" /></p>
+<h2 id="_16">区域</h2>
+<p>区域可以理解为公司内部电影、广告部划分，也可以理解为北京、上海分公司划分。</p>
+<p><img alt="image" src="../images/Scope.png" /></p>
+<h2 id="_17">部门</h2>
+<p>公司内部职能部门划分。</p>
+<p><img alt="image" src="../images/admin_dept.png" /></p>
+<h2 id="_18">国家/地区</h2>
+<p>公司可能会存在的人员所属地区/国家。</p>
+<p><img alt="image" src="../images/admin_nation.png" /></p>
+<h2 id="_19">用户组</h2>
+<p>可以自定义出属于公司业务需求的用户权限组。</p>
+<p><img alt="image" src="../images/admin_group.png" /></p>
+<h2 id="api">API许可</h2>
+<p><img alt="image" src="../images/admin_apikey.png" /></p>
+<h2 id="api_1">API权限组</h2>
+<p><img alt="image" src="../images/admin_apigroup.png" /></p>
+<h2 id="_20">项目设置</h2>
+<p><img alt="image" src="../images/admin_project_set.png" /></p>
+<h2 id="_21">项目工序</h2>
+<p>公司项目所有可能会用到的工序列表。</p>
+<p><img alt="image" src="../images/admin_project_step.png" /></p>
+<h2 id="_22">项目状态</h2>
+<p>公司项目所有可能会用到的状态列表。</p>
+<p><img alt="image" src="../images/admin_status.png" /></p>
+<h2 id="_23">任务级别</h2>
+<p>大组分为A、B、C、D。</p>
+<p>■ A: 大于90分</p>
+<p>■ B：60到89分</p>
+<p>■ C：30到59分</p>
+<p>■ D：0到29分</p>
+<p><img alt="image" src="../images/admin_task_level.png" /></p>
+<h2 id="_24">标签设置</h2>
+<p><img alt="image" src="../images/admin_tags.png" /></p>
+<h2 id="_25">类别设置</h2>
+<p><img alt="image" src="../images/admin_category.png" /></p>
+<h2 id="_26">投标设置</h2>
+<p>这里可以设置项目投标模板一些配置。</p>
+<p><img alt="image" src="../images/admin_category.png" /></p>
+<p>声明模板设置</p>
+<p><img alt="image" src="../images/admin_bidding_shenming.png" /></p>
+<p>估价项设置</p>
+<p><img alt="image" src="../images/admin_bidding_items.png" /></p>
+<p>设想模板设置</p>
+<p><img alt="image" src="../images/admin_bidding_shexiang.png" /></p>
+<p>条款模板设置</p>
+<p><img alt="image" src="../images/admin_bidding_tiaokuan.png" /></p>
+<h2 id="_27">项目模板</h2>
+<p><img alt="image" src="../images/admin_template.png" /></p>
+<h2 id="_28">磁盘</h2>
+<p><img alt="image" src="../images/admin_diskis.png" /></p>
+<h2 id="_29">媒体预览</h2>
+<p><img alt="image" src="../images/admin_review_set.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../view/" class="btn btn-neutral float-right" title="客户端主界面">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../preference/" class="btn btn-neutral" title="个人设置"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.cgspread.com">Strack文档小组 </a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../preference/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../view/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

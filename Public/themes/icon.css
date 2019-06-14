@@ -1,0 +1,95 @@
+.icon-blank:before{
+	content: "\f096";
+}
+.icon-add:before {
+	content: "\e766";
+}
+.icon-edit:before{
+	content: "\f040";
+}
+.icon-clear:before{
+	content: "\e765";
+}
+.icon-remove:before{
+	content: "\f014";
+}
+.icon-save:before{
+	content: "\f0c7";
+}
+.icon-cut:before{
+	content: "\f0c4";
+}
+.icon-ok:before{
+	content: "\f00c";
+}
+.icon-no:before{
+	content: "\e756";
+}
+.icon-cancel:before{
+	content: "\e765";
+}
+.icon-reload:before{
+	content: "\ea56";
+}
+.icon-search:before{
+	content: "\e647";
+}
+.icon-print:before{
+	content: "\f02f";
+}
+.icon-help:before{
+	content: "\ea32";
+}
+.icon-undo:before{
+	content: "\e98d";
+}
+.icon-redo:before{
+	content: "\e98e";
+}
+.icon-back:before{
+	content: "\ea61";
+}
+.icon-sum:before{
+	content: "\ea90";
+}
+.icon-tip:before{
+	content: "\e60f";
+}
+.icon-filter:before{
+	content: "\e63e";
+}
+.icon-man:before{
+	content: "\e997";
+}
+.icon-lock:before{
+	content: "\f023";
+}
+.icon-more:before{
+	content: "\f110";
+}
+
+.icon-mini-add:before{
+	content: "\e766";
+}
+.icon-mini-edit:before{
+	content: "\f040";
+}
+.icon-mini-refresh:before{
+	content: "\ea57";
+}
+
+.icon-large-picture:before{
+	content: "\e912";
+}
+.icon-large-clipart:before{
+	content: "\e741";
+}
+.icon-large-shapes:before{
+	content: "\e632";
+}
+.icon-large-smartart:before{
+	content: "\e70e";
+}
+.icon-large-chart:before{
+	content: "\f080";
+}

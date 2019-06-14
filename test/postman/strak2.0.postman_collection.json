@@ -1,0 +1,477 @@
+{
+	"info": {
+		"_postman_id": "5b150a27-3e15-4203-8571-23aa64db2bb8",
+		"name": "strak2.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"description": "",
+			"item": [
+				{
+					"name": "userError",
+					"description": "",
+					"item": [
+						{
+							"name": "user/find Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "filter",
+											"value": "{\"filters\":{\"user_id\":5}}",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "fields",
+											"value": "{\"fields\":[\"user_id\",\"login_name\",\"password\"]}",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "order",
+											"value": "{\"order\":{\"user_id\":\"desc\"}}",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "page_num",
+											"value": "{\"page_num\":\"1\"}",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "page_size",
+											"value": "{\"page_size\":\"2\"}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "192.168.31.205/strack/Api/User/find",
+									"host": [
+										"192",
+										"168",
+										"31",
+										"205"
+									],
+									"path": [
+										"strack",
+										"Api",
+										"User",
+										"find"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user/select Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "filter",
+											"value": "{\"filter\":{\"user_ids\":[\"IN\",\"1,3,4\"]}}",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "page_num",
+											"value": "{\"page_num\":\"1\"}",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "page_size",
+											"value": "{\"page_size\":\"2\"}",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "order",
+											"value": "{\"order\":{\"user_id\":\"asc\"}}",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "fields",
+											"value": "{\"fields\":[\"user_id\",\"login_name\"]}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "192.168.31.205/strack/Api/User/select",
+									"host": [
+										"192",
+										"168",
+										"31",
+										"205"
+									],
+									"path": [
+										"strack",
+										"Api",
+										"User",
+										"select"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user/delete Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "2",
+											"description": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "2222",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "192.168.31.205/strack/Api/User/delete",
+									"host": [
+										"192",
+										"168",
+										"31",
+										"205"
+									],
+									"path": [
+										"strack",
+										"Api",
+										"User",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user/update Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "data",
+											"value": "{\"user_id\":7,\"email\":\"23061039312@qq.com\",\"login_name\":\"test_gkx4\",\"password\":\"password11\"}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "192.168.31.205/strack/Api/User/update",
+									"host": [
+										"192",
+										"168",
+										"31",
+										"205"
+									],
+									"path": [
+										"strack",
+										"Api",
+										"User",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user/create Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "data",
+											"value": "{\"user_id\":7,\"email\":\"23061039@qq.com\",\"login_name\":\"test_gkx2\",\"password\":\"password\"}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "192.168.31.205/strack/Api/User/create",
+									"host": [
+										"192",
+										"168",
+										"31",
+										"205"
+									],
+									"path": [
+										"strack",
+										"Api",
+										"User",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "user/find",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "filter",
+									"value": "{\"filter\":{\"user_id\":5}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "fields",
+									"value": "{\"fields\":[\"user_id\",\"login_name\",\"password\"]}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "order",
+									"value": "{\"order\":{\"user_id\":\"desc\"}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "page_num",
+									"value": "{\"page_num\":\"1\"}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "page_size",
+									"value": "{\"page_size\":\"2\"}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "192.168.31.205/strack/Api/User/find",
+							"host": [
+								"192",
+								"168",
+								"31",
+								"205"
+							],
+							"path": [
+								"strack",
+								"Api",
+								"User",
+								"find"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user/select",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "filter",
+									"value": "{\"filter\":{\"user_id\":[\"IN\",\"1,3,4\"]}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "page_num",
+									"value": "{\"page_num\":\"1\"}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "page_size",
+									"value": "{\"page_size\":\"2\"}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "order",
+									"value": "{\"order\":{\"user_id\":\"desc\"}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "fields",
+									"value": "{\"fields\":[\"user_id\",\"login_name\"]}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "192.168.31.205/strack/Api/User/select",
+							"host": [
+								"192",
+								"168",
+								"31",
+								"205"
+							],
+							"path": [
+								"strack",
+								"Api",
+								"User",
+								"select"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user/delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "2",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "192.168.31.205/strack/Api/User/delete",
+							"host": [
+								"192",
+								"168",
+								"31",
+								"205"
+							],
+							"path": [
+								"strack",
+								"Api",
+								"User",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user/update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"user_id\":7,\"email\":\"23061039312@qq.com\",\"login_name\":\"test_gkx4\",\"password\":\"password11\"}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "192.168.31.205/strack/Api/User/update",
+							"host": [
+								"192",
+								"168",
+								"31",
+								"205"
+							],
+							"path": [
+								"strack",
+								"Api",
+								"User",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"user_id\":7,\"email\":\"2361039@qq.com\",\"login_name\":\"tesaat_gkx2\",\"password\":\"password\"}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "192.168.31.205/strack/Api/User/create",
+							"host": [
+								"192",
+								"168",
+								"31",
+								"205"
+							],
+							"path": [
+								"strack",
+								"Api",
+								"User",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,15 @@
+[Unit]
+Description=Strack Jobs Server
+After=network.target
+After=syslog.target
+
+[Service]
+Type=forking
+PIDFile=/data/wwwroot/default/strack/Runtime/swoole-jobs/log/master.pid
+ExecStart=/usr/local/php/bin/php //data/wwwroot/default/strack/strack-jobs start >> /data/wwwroot/default/strack/Runtime/swoole-jobs/log/server.log 2>&1
+ExecStop=/bin/kill $MAINPID
+ExecReload=/bin/kill -USR1 $MAINPID
+Restart=always
+
+[Install]
+WantedBy=multi-user.target graphical.target

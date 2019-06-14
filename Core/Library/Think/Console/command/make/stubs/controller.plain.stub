@@ -1,0 +1,10 @@
+<?php
+
+namespace {%namespace%};
+
+use Think\Controller;
+
+class {%className%} extends Controller
+{
+    //
+}

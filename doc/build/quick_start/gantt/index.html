@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>甘特图 - Strack 快速入门</title>
+  <link href='../css/googlecss.css' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u7518\u7279\u56fe";
+    var mkdocs_page_input_path = "gantt.md";
+    var mkdocs_page_url = "/gantt/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Strack 快速入门</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">前言</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../update/">更新说明</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../action/">动作</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../myhome/">个人首页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../project/">项目</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../biding/">报价</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../plan/">计划</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../episodes/">集数</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../sequence/">序列</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../pre_production/">前期制作</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../asset/">资产</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../shot/">镜头</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../media/">媒体</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../webplayer/">网页播放器</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">甘特图</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">模块简介</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">页面预览</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">工具栏操作</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_4">表格页面操作</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_5">时间线任务项操作</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../report_form/">报表</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../filter/">过滤模块</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../excel/">导出Excel</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../preference/">个人设置</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../admin/">后台管理</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../view/">客户端主界面</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../traymenu/">客户端托盘菜单</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../DCC_plugins/">客户端DCC插件</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Strack 快速入门</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>甘特图</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">模块简介</h2>
+<p>甘特图其通过条状图来显示当前项目的前期制作任务、资产任务、镜头任务进展的内在关系随着时间进展的情况。</p>
+<h2 id="_2">页面预览</h2>
+<p><img alt="image" src="../images/gantt_panle.png" /></p>
+<h2 id="_3">工具栏操作</h2>
+<p><strong>1. 左侧编辑按钮说明</strong></p>
+<p><img alt="image" src="../images/gantt_edit1.png" /></p>
+<p><strong>2. 右侧编辑按钮说明</strong></p>
+<p>搜索为通用模块这里就不介绍了，详情请看过滤模块介绍。</p>
+<p><img alt="image" src="../images/gantt_edit2.png" /></p>
+<h2 id="_4">表格页面操作</h2>
+<p><strong>1. 双击左侧表格单元格编辑</strong></p>
+<p>开始时间、结束时间、制作周期为可编辑单元格，三者数据互相有影响。编辑完毕左上方会标记为红色小三角表示当前数据还未保存。</p>
+<p><strong>有两种触发保存方法：</strong>
+1. 点击左上方保存按钮进行批量保存。
+2. 拖拽右侧时间轴内任意项触发保存操作。</p>
+<p><img alt="image" src="../images/gantt_cell_edit.png" /></p>
+<p><strong>2. 点击表格数据缩略图</strong></p>
+<p>可以快速跳转到当前任务详情页面。</p>
+<p><strong>3. 点击表格数据行</strong></p>
+<p>如果当前行有起始时间数据，则会快速在右侧时间线上定位到当前时间点显示。</p>
+<h2 id="_5">时间线任务项操作</h2>
+<p><strong>1. 把鼠标移入到时间线上任务项</strong></p>
+<p>会快速显示当前任务起始时间基本信息。</p>
+<p><img alt="image" src="../images/gantt_hover.png" /></p>
+<p><strong>2. 创建任务项制作时间范围</strong></p>
+<p>对于还未设置时间的任务项，可以在当前这行时间线上直接拖拽鼠标选择一个时间范围，停止拖拽释放鼠标操作则会自动保存。</p>
+<p><img alt="image" src="../images/gantt_edit_drag.png" /></p>
+<p><strong>3. 修改任务项制作时间范围</strong></p>
+<p>两种方法：
+1. 整体拖拽任务项改变其时间范围，释放鼠标操作则会自动保存。
+2. 拖拽任务项两边手柄调整任务项一头时间范围，释放鼠标操作则会自动保存。</p>
+<p><img alt="image" src="../images/gantt_edit_resize.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../report_form/" class="btn btn-neutral float-right" title="报表">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../webplayer/" class="btn btn-neutral" title="网页播放器"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.cgspread.com">Strack文档小组 </a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../webplayer/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../report_form/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

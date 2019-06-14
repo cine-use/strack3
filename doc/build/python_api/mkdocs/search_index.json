@@ -1,0 +1,154 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Python API \u4ecb\u7ecd", 
+            "title": "\u6982\u8ff0"
+        }, 
+        {
+            "location": "/action/", 
+            "text": "fields \u5b57\u6bb5\n\n\n\n\n\n\n\n\n\u5b57\u6bb5\u540d\u79f0\n\n\n\u5b57\u6bb5\u8bf4\u660e\n\n\n\u5b57\u6bb5\u7c7b\u578b\n\n\n\u9ed8\u8ba4\u8fd4\u56de\n\n\n\u521b\u5efa\u53ef\u9009\n\n\n\u7f16\u8f91\u53ef\u9009\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u52a8\u4f5c\u7f16\u53f7\n\n\nint\n\n\nTrue\n\n\n----\n\n\n----\n\n\n\n\n\n\naction_type\n\n\n\u52a8\u4f5c\u7c7b\u578b\n\n\nstring\n\n\nTrue\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\nname\n\n\n\u52a8\u4f5c\u540d\u79f0\n\n\nstring\n\n\nTrue\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\nregister\n\n\n\u6ce8\u518c\u4fe1\u606f\n\n\ndict\n\n\nTrue\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\n\n\nrelations \u5173\u8054\u5b57\u6bb5\n\n\n\u65e0\n\n\nmethods \u65b9\u6cd5\n\n\n\n\n\n\n\n\n\u65b9\u6cd5\u540d\u79f0\n\n\n\u63cf\u8ff0\n\n\n\n\n\n\n\n\n\n\ncreate\n\n\ncreate a data entry on strack.\n\n\n\n\n\n\nfind\n\n\nget first matched entry with given fields.\n\n\n\n\n\n\nselect\n\n\nget all matched entry with given fields.\n\n\n\n\n\n\nupdate\n\n\nedit entry data on strack.\n\n\n\n\n\n\nremove\n\n\nremove matched entry with given fields.\n\n\n\n\n\n\n\n\ncreate\n\n\n\n\n\n\nDescription:\n\n\ncreate a data entry on strack.\n\n\n\n\n\n\nFlags:\n\n\n\n\n\n\n\n\n\n\n\n\n\u53c2\u6570\u540d\u79f0\n\n\n\u53c2\u6570\u8bf4\u660e\n\n\n\u53c2\u6570\u7c7b\u578b\n\n\n\u662f\u5426\u5fc5\u987b\n\n\n\n\n\n\n\n\n\n\ndata\n\n\ncreated data\n\n\ndict\n\n\nTrue\n\n\n\n\n\n\n\n\n\n\nExamples:\n\n\n\n\nfrom strack_globals import StrackGlobals\nst = StrackGlobals.st\nst.action.create({'name': '', 'register':{})", 
+            "title": "\u52a8\u4f5c"
+        }, 
+        {
+            "location": "/action/#fields", 
+            "text": "\u5b57\u6bb5\u540d\u79f0  \u5b57\u6bb5\u8bf4\u660e  \u5b57\u6bb5\u7c7b\u578b  \u9ed8\u8ba4\u8fd4\u56de  \u521b\u5efa\u53ef\u9009  \u7f16\u8f91\u53ef\u9009      id  \u52a8\u4f5c\u7f16\u53f7  int  True  ----  ----    action_type  \u52a8\u4f5c\u7c7b\u578b  string  True  True  True    name  \u52a8\u4f5c\u540d\u79f0  string  True  True  True    register  \u6ce8\u518c\u4fe1\u606f  dict  True  True  True", 
+            "title": "fields \u5b57\u6bb5"
+        }, 
+        {
+            "location": "/action/#relations", 
+            "text": "\u65e0", 
+            "title": "relations \u5173\u8054\u5b57\u6bb5"
+        }, 
+        {
+            "location": "/action/#methods", 
+            "text": "\u65b9\u6cd5\u540d\u79f0  \u63cf\u8ff0      create  create a data entry on strack.    find  get first matched entry with given fields.    select  get all matched entry with given fields.    update  edit entry data on strack.    remove  remove matched entry with given fields.", 
+            "title": "methods \u65b9\u6cd5"
+        }, 
+        {
+            "location": "/action/#create", 
+            "text": "Description:  create a data entry on strack.    Flags:       \u53c2\u6570\u540d\u79f0  \u53c2\u6570\u8bf4\u660e  \u53c2\u6570\u7c7b\u578b  \u662f\u5426\u5fc5\u987b      data  created data  dict  True      Examples:   from strack_globals import StrackGlobals\nst = StrackGlobals.st\nst.action.create({'name': '', 'register':{})", 
+            "title": "create"
+        }, 
+        {
+            "location": "/asset/", 
+            "text": "\u5b57\u6bb5\n\n\n\n\n\n\n\n\n\u5b57\u6bb5\u540d\u79f0\n\n\n\u5b57\u6bb5\u8bf4\u660e\n\n\n\u5b57\u6bb5\u7c7b\u578b\n\n\n\u9ed8\u8ba4\u8fd4\u56de\n\n\n\u521b\u5efa\u53ef\u9009\n\n\n\u7f16\u8f91\u53ef\u9009\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u8d44\u4ea7\u7f16\u53f7\n\n\nint\n\n\nTrue\n\n\n----\n\n\n----\n\n\n\n\n\n\ncategory_id\n\n\n\u7c7b\u522b\u7f16\u53f7\n\n\nint\n\n\nTrue\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\ncreated\n\n\n\u521b\u5efa\u65f6\u95f4\n\n\nstring\n\n\n----\n\n\n----\n\n\n----\n\n\n\n\n\n\ncreated_by\n\n\n\u521b\u5efa\u8005\n\n\nint\n\n\n----\n\n\n----\n\n\n----\n\n\n\n\n\n\ndescription\n\n\n\u63cf\u8ff0\n\n\nstring\n\n\nTrue\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\nframe_range\n\n\n\u5236\u4f5c\u5e27\u8303\u56f4\n\n\nstring\n\n\n----\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\nhas_task\n\n\n\u662f\u5426\u6709\u4efb\u52a1\n\n\nbool\n\n\n----\n\n\n----\n\n\n----\n\n\n\n\n\n\nname\n\n\n\u8d44\u4ea7\u540d\n\n\nstring\n\n\nTrue\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\nproject_id\n\n\n\u9879\u76ee\u7f16\u53f7\n\n\nint\n\n\nTrue\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\nrate\n\n\n\u5e27\u901f\u7387\n\n\nint\n\n\n----\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\nresolution\n\n\n\u5206\u8fa8\u7387\n\n\nstring\n\n\n----\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\nstatus_id\n\n\n\u72b6\u6001\u7f16\u53f7\n\n\nint\n\n\nTrue\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\njson\n\n\nJSON\n\n\ndict\n\n\n----\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\n\n\n\u5173\u8054\u5b57\u6bb5\n\n\n\n\n\n\n\n\n\u5b57\u6bb5\u540d\u79f0\n\n\n\u5b57\u6bb5\u8bf4\u660e\n\n\n\u5b57\u6bb5\u7c7b\u578b\n\n\n\n\n\n\n\n\n\n\ncategory\n\n\n\u7c7b\u522b\n\n\ndict\n\n\n\n\n\n\nproject\n\n\n\u9879\u76ee\n\n\ndict\n\n\n\n\n\n\nstatus\n\n\n\u72b6\u6001\n\n\ndict\n\n\n\n\n\n\ntask\n\n\n\u4efb\u52a1\n\n\ndict\n\n\n\n\n\n\nthumbnail\n\n\n\u7f29\u7565\u56fe\n\n\ndict\n\n\n\n\n\n\n\n\n\u65b9\u6cd5\n\n\n\n\n\n\n\n\n\u65b9\u6cd5\u540d\u79f0\n\n\n\u63cf\u8ff0\n\n\n\n\n\n\n\n\n\n\ncreate\n\n\ncreate a data entry on strack.\n\n\n\n\n\n\ncustom\n\n\nget custom fields.\n\n\n\n\n\n\nfind\n\n\nget first matched entry with given fields.\n\n\n\n\n\n\nselect\n\n\nget all matched entry with given fields.\n\n\n\n\n\n\nremove\n\n\nremove matched entry with given fields.\n\n\n\n\n\n\nsummary\n\n\nget summary info with given conditions.\n\n\n\n\n\n\nupdate\n\n\nedit entry data on strack.\n\n\n\n\n\n\nupload\n\n\nupload thumbnail with given path.\n\n\n\n\n\n\n\n\ncreate\n\n\n\n\n\n\nDescription:\n\n\ncreate a data entry on strack.\n\n\n\n\n\n\nFlags:\n\n\n\n\n\n\n\n\n\n\n\n\n\u53c2\u6570\u540d\u79f0\n\n\n\u53c2\u6570\u8bf4\u660e\n\n\n\u53c2\u6570\u7c7b\u578b\n\n\n\u662f\u5426\u5fc5\u987b\n\n\n\n\n\n\n\n\n\n\ndata\n\n\ncreated data\n\n\ndict\n\n\nTrue\n\n\n\n\n\n\n\n\n\n\nExamples:\n\n\n\n\nfrom strack_globals import StrackGlobals\nst = StrackGlobals.st\nst.asset.create({'name': '', 'register':{})\n\n\n\n\ncustom\n\n\n\n\n\n\nDescription:\n\n\nget custom fields\n\n\n\n\n\n\nFlags:\n\n\n\n\n\n\n\n\n\n\n\n\n\u53c2\u6570\u540d\u79f0\n\n\n\u53c2\u6570\u8bf4\u660e\n\n\n\u53c2\u6570\u7c7b\u578b\n\n\n\u662f\u5426\u5fc5\u987b\n\n\n\n\n\n\n\n\n\n\nproject_id\n\n\n\u9879\u76ee\u7f16\u53f7\n\n\nint\n\n\nTrue\n\n\n\n\n\n\n\n\n\n\nExamples:\n\n\n\n\nfrom strack_globals import StrackGlobals\nst = StrackGlobals.st\nprint st.asset.custom(98)\n\n\n {u'rows': [{u'variable_id': 91, u'variable_code': u'aaaaa', u'project_id': 98, u'variable_name': u'a\\u554a\\u554a\\u554a', u'variable_type': 5, u'config': {u'g': u'custom', u'm': u'custom', u'type_name': u'a\\u554a\\u554a\\u554a', u'mask': u'', u'alias': u'aaaaa', u't': u'5', u'v': u''}}], u'total': 1}\n\n\n\n\n\nfind\n\n\n\n\n\n\nDescription:\n\n\nget first matched entry with given fields.\n\n\n\n\n\n\nFlags:\n\n\n\n\n\n\n\n\n\n\n\n\n\u53c2\u6570\u540d\u79f0\n\n\n\u53c2\u6570\u8bf4\u660e\n\n\n\u53c2\u6570\u7c7b\u578b\n\n\n\u662f\u5426\u5fc5\u987b\n\n\n\n\n\n\n\n\n\n\nfilters\n\n\n\u8fc7\u6ee4\u6761\u4ef6\n\n\nstr\n\n\nFalse\n\n\n\n\n\n\nfields\n\n\n\u83b7\u53d6\u5b57\u6bb5\n\n\nlist\n\n\nFalse\n\n\n\n\n\n\n\n\n\n\nExamples:\n\n\n\n\nfrom strack_globals import StrackGlobals\nst = StrackGlobals.st\n\n# \u8fd4\u56de\u627e\u5230\u7684\u7b2c\u4e00\u4e2a\u8d44\u4ea7\nprint st.asset.find()\n\n\n {'project_id': 1, u'description': u'', u'status_id': 24, u'category_id': 4, 'type': u'asset', 'id': 116, 'name': u'CG-123-015'}\n\n# \u4ec5\u8fd4\u56de\u7b2c\u4e00\u4e2a\u627e\u5230\u7684\u9879\u76ee\u7f16\u53f7\u4e3a98\u7684asset\u7684name\u5b57\u6bb5\nprint st.asset.find('project_id=98', ['name'])\n\n\n {'type': u'asset', 'name': u'dragonfly', 'id': 2686}\n\n\n\n\n\nselect\n\n\n\n\n\n\nDescription:\n\n\nget all matched entry with given fields.\n\n\n\n\n\n\nFlags:\n\n\n\n\n\n\n\n\n\n\n\n\n\u53c2\u6570\u540d\u79f0\n\n\n\u53c2\u6570\u8bf4\u660e\n\n\n\u53c2\u6570\u7c7b\u578b\n\n\n\u662f\u5426\u5fc5\u987b\n\n\n\n\n\n\n\n\n\n\nfilters\n\n\n\u8fc7\u6ee4\u6761\u4ef6\n\n\nstr\n\n\nFalse\n\n\n\n\n\n\nfields\n\n\n\u83b7\u53d6\u5b57\u6bb5\n\n\nlist\n\n\nFalse\n\n\n\n\n\n\norder\n\n\n\u6392\u5e8f\u65b9\u5f0f\n\n\ndict\n\n\nFalse\n\n\n\n\n\n\nlimit\n\n\n\u9650\u5236\u7ed3\u679c\u6570\u91cf\n\n\nint\n\n\nFalse\n\n\n\n\n\n\npage\n\n\n\u5206\u9875\n\n\ndict\n\n\nFalse\n\n\n\n\n\n\n\n\n\n\nExamples:\n\n\n\n\nfrom strack_globals import StrackGlobals\nst = StrackGlobals.st\n\n# \u8fd4\u56de\u9879\u76ee\u7f16\u53f7\u4e3a98\u5e76\u4e14\u6709\u4efb\u52a1\u7684\u524d10\u4e2a\u8d44\u4ea7\u7684name\u5b57\u6bb5, \u5e76\u6309id\u964d\u5e8f\u6392\u5217.\nprint st.asset.select('project_id=98 and has_task=True', ['name'], order={'id': 'desc'}, limit=10)\n\n\n [{'type': u'asset', 'name': u'shit', 'id': 4091}, {'type': u'asset', 'name': u'box_hgy', 'id': 4088}, {'type': u'asset', 'name': u'sphere_hgy', 'id': 4087}, {'type': u'asset', 'name': u'dog', 'id': 4083}, {'type': u'asset', 'name': u'cat', 'id': 3108}, {'type': u'asset', 'name': u'drum', 'id': 2729}, {'type': u'asset', 'name': u'victor_cigarette_and_match_box', 'id': 2728}, {'type': u'asset', 'name': u'victor_cassette_player', 'id': 2727}, {'type': u'asset', 'name': u'tornado', 'id': 2726}, {'type': u'asset', 'name': u'timer_watch_victor', 'id': 2725}]\n\n\n\n\nremove\n\n\nsummary\n\n\nupdate\n\n\n\n\n\n\nDescription:\n\n\nedit entry data on strack.\n\n\n\n\n\n\nFlags:\n\n\n\n\n\n\n\n\n\n\n\n\n\u53c2\u6570\u540d\u79f0\n\n\n\u53c2\u6570\u8bf4\u660e\n\n\n\u53c2\u6570\u7c7b\u578b\n\n\n\u662f\u5426\u5fc5\u987b\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u7f16\u53f7\n\n\nint\n\n\nTrue\n\n\n\n\n\n\nfields\n\n\n\u4fee\u6539\u5b57\u6bb5\n\n\ndict\n\n\nTrue\n\n\n\n\n\n\n\n\n\n\nExamples\n\n\n\n\nfrom strack_globals import StrackGlobals\nst = StrackGlobals.st\nprint st.asset.update(116, {'name': 'new_name'})\n\n\n {'type': u'asset', 'name': u'new_name', 'id': 116}\n\n\n\n\nupload\n\n\n\n\n\n\nDescription: \n\n\nupload thumbnail with given path.\n\n\n\n\n\n\nFlags:\n\n\n\n\n\n\n\n\n\n\n\n\n\u53c2\u6570\u540d\u79f0\n\n\n\u53c2\u6570\u8bf4\u660e\n\n\n\u53c2\u6570\u7c7b\u578b\n\n\n\u662f\u5426\u5fc5\u987b\n\n\n\n\n\n\n\n\n\n\nentity_id\n\n\n\u5b9e\u4f53\u7f16\u53f7\n\n\nint\n\n\nTrue\n\n\n\n\n\n\npath\n\n\n\u6587\u4ef6\u8def\u5f84\n\n\nstring\n\n\nTrue\n\n\n\n\n\n\n\n\n\n\nExamples\n\n\n\n\nfrom strack_globals import StrackGlobals\nst = StrackGlobals.st\n\nprint st.asset.upload(4153, r'D:\\Temp\\asset_thumbnail.png')\n\n\n {u'path': {u'max': u'/Uploads/ItemThumb/2246eaab_1496140370/item_4153/item_abf448a01501922331_max.jpg', u'min': u'/Uploads/ItemThumb/2246eaab_1496140370/item_4153/item_abf448a01501922331_min.jpg'}, u'link_id': u'4153', u'entity': u'asset'}",
+            "title": "\u8d44\u4ea7"
+        }, 
+        {
+            "location": "/asset/#_1", 
+            "text": "\u5b57\u6bb5\u540d\u79f0  \u5b57\u6bb5\u8bf4\u660e  \u5b57\u6bb5\u7c7b\u578b  \u9ed8\u8ba4\u8fd4\u56de  \u521b\u5efa\u53ef\u9009  \u7f16\u8f91\u53ef\u9009      id  \u8d44\u4ea7\u7f16\u53f7  int  True  ----  ----    category_id  \u7c7b\u522b\u7f16\u53f7  int  True  True  True    created  \u521b\u5efa\u65f6\u95f4  string  ----  ----  ----    created_by  \u521b\u5efa\u8005  int  ----  ----  ----    description  \u63cf\u8ff0  string  True  True  True    frame_range  \u5236\u4f5c\u5e27\u8303\u56f4  string  ----  True  True    has_task  \u662f\u5426\u6709\u4efb\u52a1  bool  ----  ----  ----    name  \u8d44\u4ea7\u540d  string  True  True  True    project_id  \u9879\u76ee\u7f16\u53f7  int  True  True  True    rate  \u5e27\u901f\u7387  int  ----  True  True    resolution  \u5206\u8fa8\u7387  string  ----  True  True    status_id  \u72b6\u6001\u7f16\u53f7  int  True  True  True    json  JSON  dict  ----  True  True", 
+            "title": "\u5b57\u6bb5"
+        }, 
+        {
+            "location": "/asset/#_2", 
+            "text": "\u5b57\u6bb5\u540d\u79f0  \u5b57\u6bb5\u8bf4\u660e  \u5b57\u6bb5\u7c7b\u578b      category  \u7c7b\u522b  dict    project  \u9879\u76ee  dict    status  \u72b6\u6001  dict    task  \u4efb\u52a1  dict    thumbnail  \u7f29\u7565\u56fe  dict", 
+            "title": "\u5173\u8054\u5b57\u6bb5"
+        }, 
+        {
+            "location": "/asset/#_3", 
+            "text": "\u65b9\u6cd5\u540d\u79f0  \u63cf\u8ff0      create  create a data entry on strack.    custom  get custom fields.    find  get first matched entry with given fields.    select  get all matched entry with given fields.    remove  remove matched entry with given fields.    summary  get summary info with given conditions.    update  edit entry data on strack.    upload  upload thumbnail with given path.", 
+            "title": "\u65b9\u6cd5"
+        }, 
+        {
+            "location": "/asset/#create", 
+            "text": "Description:  create a data entry on strack.    Flags:       \u53c2\u6570\u540d\u79f0  \u53c2\u6570\u8bf4\u660e  \u53c2\u6570\u7c7b\u578b  \u662f\u5426\u5fc5\u987b      data  created data  dict  True      Examples:   from strack_globals import StrackGlobals\nst = StrackGlobals.st\nst.asset.create({'name': '', 'register':{})", 
+            "title": "create"
+        }, 
+        {
+            "location": "/asset/#custom", 
+            "text": "Description:  get custom fields    Flags:       \u53c2\u6570\u540d\u79f0  \u53c2\u6570\u8bf4\u660e  \u53c2\u6570\u7c7b\u578b  \u662f\u5426\u5fc5\u987b      project_id  \u9879\u76ee\u7f16\u53f7  int  True      Examples:   from strack_globals import StrackGlobals\nst = StrackGlobals.st\nprint st.asset.custom(98)  {u'rows': [{u'variable_id': 91, u'variable_code': u'aaaaa', u'project_id': 98, u'variable_name': u'a\\u554a\\u554a\\u554a', u'variable_type': 5, u'config': {u'g': u'custom', u'm': u'custom', u'type_name': u'a\\u554a\\u554a\\u554a', u'mask': u'', u'alias': u'aaaaa', u't': u'5', u'v': u''}}], u'total': 1}",
+            "title": "custom"
+        }, 
+        {
+            "location": "/asset/#find", 
+            "text": "Description:  get first matched entry with given fields.    Flags:       \u53c2\u6570\u540d\u79f0  \u53c2\u6570\u8bf4\u660e  \u53c2\u6570\u7c7b\u578b  \u662f\u5426\u5fc5\u987b      filters  \u8fc7\u6ee4\u6761\u4ef6  str  False    fields  \u83b7\u53d6\u5b57\u6bb5  list  False      Examples:   from strack_globals import StrackGlobals\nst = StrackGlobals.st\n\n# \u8fd4\u56de\u627e\u5230\u7684\u7b2c\u4e00\u4e2a\u8d44\u4ea7\nprint st.asset.find()  {'project_id': 1, u'description': u'', u'status_id': 24, u'category_id': 4, 'type': u'asset', 'id': 116, 'name': u'CG-123-015'}\n\n# \u4ec5\u8fd4\u56de\u7b2c\u4e00\u4e2a\u627e\u5230\u7684\u9879\u76ee\u7f16\u53f7\u4e3a98\u7684asset\u7684name\u5b57\u6bb5\nprint st.asset.find('project_id=98', ['name'])  {'type': u'asset', 'name': u'dragonfly', 'id': 2686}", 
+            "title": "find"
+        }, 
+        {
+            "location": "/asset/#select", 
+            "text": "Description:  get all matched entry with given fields.    Flags:       \u53c2\u6570\u540d\u79f0  \u53c2\u6570\u8bf4\u660e  \u53c2\u6570\u7c7b\u578b  \u662f\u5426\u5fc5\u987b      filters  \u8fc7\u6ee4\u6761\u4ef6  str  False    fields  \u83b7\u53d6\u5b57\u6bb5  list  False    order  \u6392\u5e8f\u65b9\u5f0f  dict  False    limit  \u9650\u5236\u7ed3\u679c\u6570\u91cf  int  False    page  \u5206\u9875  dict  False      Examples:   from strack_globals import StrackGlobals\nst = StrackGlobals.st\n\n# \u8fd4\u56de\u9879\u76ee\u7f16\u53f7\u4e3a98\u5e76\u4e14\u6709\u4efb\u52a1\u7684\u524d10\u4e2a\u8d44\u4ea7\u7684name\u5b57\u6bb5, \u5e76\u6309id\u964d\u5e8f\u6392\u5217.\nprint st.asset.select('project_id=98 and has_task=True', ['name'], order={'id': 'desc'}, limit=10)  [{'type': u'asset', 'name': u'shit', 'id': 4091}, {'type': u'asset', 'name': u'box_hgy', 'id': 4088}, {'type': u'asset', 'name': u'sphere_hgy', 'id': 4087}, {'type': u'asset', 'name': u'dog', 'id': 4083}, {'type': u'asset', 'name': u'cat', 'id': 3108}, {'type': u'asset', 'name': u'drum', 'id': 2729}, {'type': u'asset', 'name': u'victor_cigarette_and_match_box', 'id': 2728}, {'type': u'asset', 'name': u'victor_cassette_player', 'id': 2727}, {'type': u'asset', 'name': u'tornado', 'id': 2726}, {'type': u'asset', 'name': u'timer_watch_victor', 'id': 2725}]", 
+            "title": "select"
+        }, 
+        {
+            "location": "/asset/#remove", 
+            "text": "", 
+            "title": "remove"
+        }, 
+        {
+            "location": "/asset/#summary", 
+            "text": "", 
+            "title": "summary"
+        }, 
+        {
+            "location": "/asset/#update", 
+            "text": "Description:  edit entry data on strack.    Flags:       \u53c2\u6570\u540d\u79f0  \u53c2\u6570\u8bf4\u660e  \u53c2\u6570\u7c7b\u578b  \u662f\u5426\u5fc5\u987b      id  \u7f16\u53f7  int  True    fields  \u4fee\u6539\u5b57\u6bb5  dict  True      Examples   from strack_globals import StrackGlobals\nst = StrackGlobals.st\nprint st.asset.update(116, {'name': 'new_name'})  {'type': u'asset', 'name': u'new_name', 'id': 116}", 
+            "title": "update"
+        }, 
+        {
+            "location": "/asset/#upload", 
+            "text": "Description:   upload thumbnail with given path.    Flags:       \u53c2\u6570\u540d\u79f0  \u53c2\u6570\u8bf4\u660e  \u53c2\u6570\u7c7b\u578b  \u662f\u5426\u5fc5\u987b      entity_id  \u5b9e\u4f53\u7f16\u53f7  int  True    path  \u6587\u4ef6\u8def\u5f84  string  True      Examples   from strack_globals import StrackGlobals\nst = StrackGlobals.st\n\nprint st.asset.upload(4153, r'D:\\Temp\\asset_thumbnail.png')  {u'path': {u'max': u'/Uploads/ItemThumb/2246eaab_1496140370/item_4153/item_abf448a01501922331_max.jpg', u'min': u'/Uploads/ItemThumb/2246eaab_1496140370/item_4153/item_abf448a01501922331_min.jpg'}, u'link_id': u'4153', u'entity': u'asset'}", 
+            "title": "upload"
+        }, 
+        {
+            "location": "/avatar/", 
+            "text": "\u5b57\u6bb5\n\n\n\n\n\n\n\n\n\u5b57\u6bb5\u540d\u79f0\n\n\n\u5b57\u6bb5\u8bf4\u660e\n\n\n\u5b57\u6bb5\u7c7b\u578b\n\n\n\u9ed8\u8ba4\u8fd4\u56de\n\n\n\u521b\u5efa\u53ef\u9009\n\n\n\u7f16\u8f91\u53ef\u9009\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u5934\u50cf\u7f16\u53f7\n\n\nint\n\n\nTrue\n\n\n----\n\n\n----\n\n\n\n\n\n\npath\n\n\n\u5934\u50cf\u8def\u5f84\n\n\nstring\n\n\nTrue\n\n\n----\n\n\n----\n\n\n\n\n\n\nuser_id\n\n\n\u7528\u6237\u7f16\u53f7\n\n\nint\n\n\nTrue\n\n\n----\n\n\n----\n\n\n\n\n\n\n\n\n\u5173\u8054\u5b57\u6bb5\n\n\n\u65e0\n\n\n\u65b9\u6cd5\n\n\n\n\n\n\n\n\n\u65b9\u6cd5\u540d\u79f0\n\n\n\u63cf\u8ff0\n\n\n\n\n\n\n\n\n\n\nfind\n\n\nget first matched entry with given fields.\n\n\n\n\n\n\nselect\n\n\nget all matched entry with given fields.\n\n\n\n\n\n\nupload\n\n\nupload thumbnail with given path.\n\n\n\n\n\n\n\n\nfind\n\n\n\n\n\n\nDescription:\n\n\nget first matched entry with given fields.\n\n\n\n\n\n\nFlags:\n\n\n\n\n\n\n\n\n\n\n\n\n\u53c2\u6570\u540d\u79f0\n\n\n\u53c2\u6570\u8bf4\u660e\n\n\n\u53c2\u6570\u7c7b\u578b\n\n\n\u662f\u5426\u5fc5\u987b\n\n\n\n\n\n\n\n\n\n\nfilters\n\n\n\u8fc7\u6ee4\u6761\u4ef6\n\n\nstr\n\n\nFalse\n\n\n\n\n\n\nfields\n\n\n\u83b7\u53d6\u5b57\u6bb5\n\n\nlist\n\n\nFalse\n\n\n\n\n\n\n\n\n\n\nExamples:\n\n\n\n\nfrom strack_globals import StrackGlobals\nst = StrackGlobals.st\n\n# \u8fd4\u56de\u627e\u5230\u7684\u89d2\u8272\u5934\u50cf\nprint st.avatar.find()\n\n\n {u'path': u'/Uploads/avatars/20150212103159_c8aae080d7d66e68a80fe3dadc5a02df.jpg', u'user_id': 178, 'id': 2, 'type': u'avatar'}\n\n# \u8fd4\u56de\u7528\u6237\u7f16\u53f7\u662f10\u7684\u89d2\u8272\u5934\u50cf\nprint st.avatar.find('user_id=10')\n\n\n None\n\n\n\n\nselect\n\n\n\n\n\n\nDescription:\n\n\nget all matched entry with given fields.\n\n\n\n\n\n\nFlags:\n\n\n\n\n\n\n\n\n\n\n\n\n\u53c2\u6570\u540d\u79f0\n\n\n\u53c2\u6570\u8bf4\u660e\n\n\n\u53c2\u6570\u7c7b\u578b\n\n\n\u662f\u5426\u5fc5\u987b\n\n\n\n\n\n\n\n\n\n\nfilters\n\n\n\u8fc7\u6ee4\u6761\u4ef6\n\n\nstr\n\n\nFalse\n\n\n\n\n\n\nfields\n\n\n\u83b7\u53d6\u5b57\u6bb5\n\n\nlist\n\n\nFalse\n\n\n\n\n\n\norder\n\n\n\u6392\u5e8f\u65b9\u5f0f\n\n\ndict\n\n\nFalse\n\n\n\n\n\n\nlimit\n\n\n\u9650\u5236\u7ed3\u679c\u6570\u91cf\n\n\nint\n\n\nFalse\n\n\n\n\n\n\npage\n\n\n\u5206\u9875\n\n\ndict\n\n\nFalse\n\n\n\n\n\n\n\n\n\n\nExamples:\n\n\n\n\nfrom strack_globals import StrackGlobals\nst = StrackGlobals.st\n\n# \u8fd4\u56de\u6240\u6709\u7684\u89d2\u8272\u5934\u50cf\nprint st.avatar.select()\n\n\n [{u'path': u'/Uploads/avatars/7faaafea1475414470.jpg', u'user_id': 265, 'id': 36, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/e25f617e1494838975.jpg', u'user_id': 244, 'id': 37, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/c44c1abb1479107344.jpg', u'user_id': 245, 'id': 38, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/40f55a061489568025.jpg', u'user_id': 268, 'id': 39, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/728c40541490947482.jpg', u'user_id': 1, 'id': 40, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/6718961f1497857891.jpg', u'user_id': 281, 'id': 41, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/cec8d6fa1498036256.jpg', u'user_id': 243, 'id': 42, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/0e341d5e1498915255.jpg', u'user_id': 282, 'id': 43, 'type': u'avatar'}]\n\n# \u8fd4\u56de\u7528\u6237\u7f16\u53f7\u662f1\u7684\u89d2\u8272\u5934\u50cf\nprint st.avatar.select('user_id=1')\n\n\n [{u'path': u'/Uploads/avatars/728c40541490947482.jpg', u'user_id': 1, 'id': 40, 'type': u'avatar'}]\n\n\n\n\nupload\n\n\n\n\n\n\nDescription:\n\n\nupload thumbnail with given path.\n\n\n\n\n\n\nFlags:\n\n\n\n\n\n\n\n\n\n\n\n\n\u53c2\u6570\u540d\u79f0\n\n\n\u53c2\u6570\u8bf4\u660e\n\n\n\u53c2\u6570\u7c7b\u578b\n\n\n\u662f\u5426\u5fc5\u987b\n\n\n\n\n\n\n\n\n\n\nentity_id\n\n\n\u5b9e\u4f53\u7f16\u53f7\n\n\nint\n\n\nTrue\n\n\n\n\n\n\npath\n\n\n\u6587\u4ef6\u8def\u5f84\n\n\nstr\n\n\nTrue\n\n\n\n\n\n\n\n\n\n\nExamples:\n\n\n\n\nfrom strack_globals import StrackGlobals\nst = StrackGlobals.st\n\n# \u7ed9\u7f16\u53f7\u4e3a281\u7684\u7528\u6237\u4e0a\u4f20\u5934\u50cf\nprint st.avatar.upload(281, r\nE:\\avatar.png\n)\n\n\n {u'user_id': u'281', u'avatar': u'/Uploads/avatars/d27f6e131501925159.jpg'}", 
+            "title": "\u89d2\u8272"
+        }, 
+        {
+            "location": "/avatar/#_1", 
+            "text": "\u5b57\u6bb5\u540d\u79f0  \u5b57\u6bb5\u8bf4\u660e  \u5b57\u6bb5\u7c7b\u578b  \u9ed8\u8ba4\u8fd4\u56de  \u521b\u5efa\u53ef\u9009  \u7f16\u8f91\u53ef\u9009      id  \u5934\u50cf\u7f16\u53f7  int  True  ----  ----    path  \u5934\u50cf\u8def\u5f84  string  True  ----  ----    user_id  \u7528\u6237\u7f16\u53f7  int  True  ----  ----", 
+            "title": "\u5b57\u6bb5"
+        }, 
+        {
+            "location": "/avatar/#_2", 
+            "text": "\u65e0", 
+            "title": "\u5173\u8054\u5b57\u6bb5"
+        }, 
+        {
+            "location": "/avatar/#_3", 
+            "text": "\u65b9\u6cd5\u540d\u79f0  \u63cf\u8ff0      find  get first matched entry with given fields.    select  get all matched entry with given fields.    upload  upload thumbnail with given path.", 
+            "title": "\u65b9\u6cd5"
+        }, 
+        {
+            "location": "/avatar/#find", 
+            "text": "Description:  get first matched entry with given fields.    Flags:       \u53c2\u6570\u540d\u79f0  \u53c2\u6570\u8bf4\u660e  \u53c2\u6570\u7c7b\u578b  \u662f\u5426\u5fc5\u987b      filters  \u8fc7\u6ee4\u6761\u4ef6  str  False    fields  \u83b7\u53d6\u5b57\u6bb5  list  False      Examples:   from strack_globals import StrackGlobals\nst = StrackGlobals.st\n\n# \u8fd4\u56de\u627e\u5230\u7684\u89d2\u8272\u5934\u50cf\nprint st.avatar.find()  {u'path': u'/Uploads/avatars/20150212103159_c8aae080d7d66e68a80fe3dadc5a02df.jpg', u'user_id': 178, 'id': 2, 'type': u'avatar'}\n\n# \u8fd4\u56de\u7528\u6237\u7f16\u53f7\u662f10\u7684\u89d2\u8272\u5934\u50cf\nprint st.avatar.find('user_id=10')  None", 
+            "title": "find"
+        }, 
+        {
+            "location": "/avatar/#select", 
+            "text": "Description:  get all matched entry with given fields.    Flags:       \u53c2\u6570\u540d\u79f0  \u53c2\u6570\u8bf4\u660e  \u53c2\u6570\u7c7b\u578b  \u662f\u5426\u5fc5\u987b      filters  \u8fc7\u6ee4\u6761\u4ef6  str  False    fields  \u83b7\u53d6\u5b57\u6bb5  list  False    order  \u6392\u5e8f\u65b9\u5f0f  dict  False    limit  \u9650\u5236\u7ed3\u679c\u6570\u91cf  int  False    page  \u5206\u9875  dict  False      Examples:   from strack_globals import StrackGlobals\nst = StrackGlobals.st\n\n# \u8fd4\u56de\u6240\u6709\u7684\u89d2\u8272\u5934\u50cf\nprint st.avatar.select()  [{u'path': u'/Uploads/avatars/7faaafea1475414470.jpg', u'user_id': 265, 'id': 36, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/e25f617e1494838975.jpg', u'user_id': 244, 'id': 37, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/c44c1abb1479107344.jpg', u'user_id': 245, 'id': 38, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/40f55a061489568025.jpg', u'user_id': 268, 'id': 39, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/728c40541490947482.jpg', u'user_id': 1, 'id': 40, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/6718961f1497857891.jpg', u'user_id': 281, 'id': 41, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/cec8d6fa1498036256.jpg', u'user_id': 243, 'id': 42, 'type': u'avatar'}, {u'path': u'/Uploads/avatars/0e341d5e1498915255.jpg', u'user_id': 282, 'id': 43, 'type': u'avatar'}]\n\n# \u8fd4\u56de\u7528\u6237\u7f16\u53f7\u662f1\u7684\u89d2\u8272\u5934\u50cf\nprint st.avatar.select('user_id=1')  [{u'path': u'/Uploads/avatars/728c40541490947482.jpg', u'user_id': 1, 'id': 40, 'type': u'avatar'}]", 
+            "title": "select"
+        }, 
+        {
+            "location": "/avatar/#upload", 
+            "text": "Description:  upload thumbnail with given path.    Flags:       \u53c2\u6570\u540d\u79f0  \u53c2\u6570\u8bf4\u660e  \u53c2\u6570\u7c7b\u578b  \u662f\u5426\u5fc5\u987b      entity_id  \u5b9e\u4f53\u7f16\u53f7  int  True    path  \u6587\u4ef6\u8def\u5f84  str  True      Examples:   from strack_globals import StrackGlobals\nst = StrackGlobals.st\n\n# \u7ed9\u7f16\u53f7\u4e3a281\u7684\u7528\u6237\u4e0a\u4f20\u5934\u50cf\nprint st.avatar.upload(281, r E:\\avatar.png )  {u'user_id': u'281', u'avatar': u'/Uploads/avatars/d27f6e131501925159.jpg'}", 
+            "title": "upload"
+        }, 
+        {
+            "location": "/category/", 
+            "text": "\u5b57\u6bb5\n\n\n\n\n\n\n\n\n\u5b57\u6bb5\u540d\u79f0\n\n\n\u5b57\u6bb5\u8bf4\u660e\n\n\n\u5b57\u6bb5\u7c7b\u578b\n\n\n\u9ed8\u8ba4\u8fd4\u56de\n\n\n\u521b\u5efa\u53ef\u9009\n\n\n\u7f16\u8f91\u53ef\u9009\n\n\n\n\n\n\n\n\n\n\nid\n\n\n\u7c7b\u522b\u7f16\u53f7\n\n\nint\n\n\nTrue\n\n\n----\n\n\n----\n\n\n\n\n\n\ncreated\n\n\n\u521b\u5efa\u65f6\u95f4\n\n\nstring\n\n\n----\n\n\n----\n\n\n----\n\n\n\n\n\n\nname\n\n\n\u7c7b\u522b\u540d\u79f0\n\n\nstring\n\n\nTrue\n\n\nTrue\n\n\nTrue\n\n\n\n\n\n\n\n\n\u5173\u8054\u5b57\u6bb5\n\n\n\u65e0\n\n\n\u65b9\u6cd5\n\n\n\n\n\n\n\n\n\u65b9\u6cd5\u540d\u79f0\n\n\n\u63cf\u8ff0\n\n\n\n\n\n\n\n\n\n\ncreate\n\n\ncreate a data entry on strack.\n\n\n\n\n\n\nfind\n\n\nget first matched entry with given fields.\n\n\n\n\n\n\nremove\n\n\nremove entry with given fields.\n\n\n\n\n\n\nselect\n\n\nget all matched entry with given fields.\n\n\n\n\n\n\nupdate\n\n\nedit entry data on strack.\n\n\n\n\n\n\n\n\ncreate\n\n\n\n\n\n\nDescription:\n\n\ncreate a data entry on strack.\n\n\n\n\n\n\nFlags:\n\n\n\n\n\n\n\n\n\n\n\n\n\u53c2\u6570\u540d\u79f0\n\n\n\u53c2\u6570\u8bf4\u660e\n\n\n\u53c2\u6570\u7c7b\u578b\n\n\n\u662f\u5426\u5fc5\u987b\n\n\n\n\n\n\n\n\n\n\ndata\n\n\n\u521b\u5efa\u6570\u636e\n\n\ndict\n\n\nTrue\n\n\n\n\n\n\n\n\n\n\nExamples:\n\n\n\n\nfrom strack_globals import StrackGlobals\nst = StrackGlobals.st\n\n# \u521b\u5efa\u540d\u4e3a\u52a8\u7269\u7684\u8d44\u4ea7\u7c7b\u522b\nprint st.category.create({\nname\n:\nanimals\n})\n\n\n {u'created': u'2017-08-05', 'type': u'category', 'name': u'animals', 'id': 14}", 
+            "title": "\u7c7b\u522b"
+        }, 
+        {
+            "location": "/category/#_1", 
+            "text": "\u5b57\u6bb5\u540d\u79f0  \u5b57\u6bb5\u8bf4\u660e  \u5b57\u6bb5\u7c7b\u578b  \u9ed8\u8ba4\u8fd4\u56de  \u521b\u5efa\u53ef\u9009  \u7f16\u8f91\u53ef\u9009      id  \u7c7b\u522b\u7f16\u53f7  int  True  ----  ----    created  \u521b\u5efa\u65f6\u95f4  string  ----  ----  ----    name  \u7c7b\u522b\u540d\u79f0  string  True  True  True", 
+            "title": "\u5b57\u6bb5"
+        }, 
+        {
+            "location": "/category/#_2", 
+            "text": "\u65e0", 
+            "title": "\u5173\u8054\u5b57\u6bb5"
+        }, 
+        {
+            "location": "/category/#_3", 
+            "text": "\u65b9\u6cd5\u540d\u79f0  \u63cf\u8ff0      create  create a data entry on strack.    find  get first matched entry with given fields.    remove  remove entry with given fields.    select  get all matched entry with given fields.    update  edit entry data on strack.", 
+            "title": "\u65b9\u6cd5"
+        }, 
+        {
+            "location": "/category/#create", 
+            "text": "Description:  create a data entry on strack.    Flags:       \u53c2\u6570\u540d\u79f0  \u53c2\u6570\u8bf4\u660e  \u53c2\u6570\u7c7b\u578b  \u662f\u5426\u5fc5\u987b      data  \u521b\u5efa\u6570\u636e  dict  True      Examples:   from strack_globals import StrackGlobals\nst = StrackGlobals.st\n\n# \u521b\u5efa\u540d\u4e3a\u52a8\u7269\u7684\u8d44\u4ea7\u7c7b\u522b\nprint st.category.create({ name : animals })  {u'created': u'2017-08-05', 'type': u'category', 'name': u'animals', 'id': 14}", 
+            "title": "create"
+        }
+    ]
+}

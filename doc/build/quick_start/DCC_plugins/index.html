@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>客户端DCC插件 - Strack 快速入门</title>
+  <link href='../css/googlecss.css' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5ba2\u6237\u7aefDCC\u63d2\u4ef6";
+    var mkdocs_page_input_path = "DCC_plugins.md";
+    var mkdocs_page_url = "/DCC_plugins/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Strack 快速入门</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">前言</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../update/">更新说明</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../action/">动作</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../myhome/">个人首页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../project/">项目</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../biding/">报价</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../plan/">计划</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../episodes/">集数</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../sequence/">序列</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../pre_production/">前期制作</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../asset/">资产</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../shot/">镜头</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../media/">媒体</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../webplayer/">网页播放器</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../gantt/">甘特图</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../report_form/">报表</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../filter/">过滤模块</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../excel/">导出Excel</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../preference/">个人设置</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../admin/">后台管理</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../view/">客户端主界面</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../traymenu/">客户端托盘菜单</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">客户端DCC插件</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#dcc">DCC 插件</a></li>
+    
+
+    <li class="toctree-l2"><a href="#maya">Maya案例</a></li>
+    
+
+    <li class="toctree-l2"><a href="#selectproject">SelectProject （项目选择）</a></li>
+    
+
+    <li class="toctree-l2"><a href="#strackpanel">StrackPanel （主面板）</a></li>
+    
+
+    <li class="toctree-l2"><a href="#assetkeeper">AssetKeeper （资产加载器）</a></li>
+    
+
+    <li class="toctree-l2"><a href="#editionup">EditionUp （升级编辑版本）</a></li>
+    
+
+    <li class="toctree-l2"><a href="#versionup">VersionUp （升级版本）</a></li>
+    
+
+    <li class="toctree-l2"><a href="#strackpublish">StrackPublish （发布版本）</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Strack 快速入门</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>客户端DCC插件</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="dcc">DCC 插件</h2>
+<p>DCC软件的插件也是客户端的重要组成部分。</p>
+<p>目前我们提供了maya、nuke、houdini的插件。</p>
+<p>对于其他软件的支持在后续的计划中。</p>
+<h2 id="maya">Maya案例</h2>
+<p>菜单</p>
+<p><img alt="image" src="../images/menu.png" /></p>
+<p>■ <strong>actions</strong></p>
+<p>注册在Strack系统上的maya的动作。</p>
+<p>■ <strong>SelectProject</strong></p>
+<p>打开项目选择页面</p>
+<p>■ <strong>StrackPanel</strong></p>
+<p>显示StrackPanel面板</p>
+<p>■ <strong>AssetKeeper</strong></p>
+<p>打开AssetKeeper工具</p>
+<p>■ <strong>VersionUp</strong></p>
+<p>打开提交version工具</p>
+<h2 id="selectproject">SelectProject （项目选择）</h2>
+<p>通过项目选择页面，可以在DCC软件内部切换项目。</p>
+<p><img alt="image" src="../images/selectProject.png" /></p>
+<h2 id="strackpanel">StrackPanel （主面板）</h2>
+<p>StrackPanel面板是DCC软件内部的strack操作面板，集任务、制作文件、version、publish于一身。</p>
+<p><img alt="image" src="../images/strackPanel.png" /></p>
+<p><strong>待办事项页</strong></p>
+<p>显示这条任务需要达到哪些要求。</p>
+<p><img alt="image" src="../images/todo.png" /></p>
+<p><strong>works页</strong></p>
+<p>显示当前任务制作文件的版本。</p>
+<p><img alt="image" src="../images/works.png" /></p>
+<p><strong>versions页</strong></p>
+<p>显示当前任务已经提交过的版本。</p>
+<p><img alt="image" src="../images/versions.png" /></p>
+<p><strong>publishs页</strong></p>
+<p>显示当前任务已经发布过的文件。</p>
+<p><img alt="image" src="../images/publishs.png" /></p>
+<h2 id="assetkeeper">AssetKeeper （资产加载器）</h2>
+<p>通过AssetKeeper艺术家可以自由地获取到上下游的publish文件，并将其组装到自己的文件中。</p>
+<p><img alt="image" src="../images/assetKeeper.png" /></p>
+<p><strong>使用方法</strong></p>
+<ol>
+<li>
+<p>选择实体类别和publishType，在右侧publish区域会显示符合条件的publish文件</p>
+</li>
+<li>
+<p>将要添加到场景中的publish文件从拖拽到下方的场景区域， 同时触发导入hook，选择想要的导入方式，成功将实体导入到场景中。</p>
+</li>
+</ol>
+<p><img alt="image" src="../images/import.png" /></p>
+<ol>
+<li>在场景区域的实体上右键，可以切换版本(如需其他功能，可以自行添加新的hook)。</li>
+</ol>
+<p><img alt="image" src="../images/change.png" /></p>
+<ol>
+<li>
+<p>想要将实体从场景中移除，可以通过右键菜单中的Delete项进行删除。或者按键盘上的delete键也可以实现这个效果。</p>
+</li>
+<li>
+<p>AssetProxy按钮(未实装)</p>
+</li>
+</ol>
+<h2 id="editionup">EditionUp （升级编辑版本）</h2>
+<p>使用EditionUp对制作文件进行编辑版升级。</p>
+<p><img alt="image" src="../images/editionup.png" /></p>
+<p><strong>使用方法</strong></p>
+<p>1.在StrackPanel顶部点击EditionUp按钮，弹出对话框。</p>
+<p>2.点击Snapshot的剪刀图案，进行截图。</p>
+<p>3.在Description区域填写描述。</p>
+<p>4.点击OK按钮，完成制作文件编辑版的升级。</p>
+<h2 id="versionup">VersionUp （升级版本）</h2>
+<p>通过使用VersionUp工具，在经过自检之后，提交版本。</p>
+<p><strong>自检页面</strong></p>
+<p><img alt="image" src="../images//versionup.png" /></p>
+<p><strong>VersionUp页面</strong></p>
+<p><img alt="image" src="../images//versionup2.png" /></p>
+<p><strong>使用方法</strong></p>
+<ol>
+<li>
+<p>点击菜单，弹出工具，首先是会出现自检页面。</p>
+</li>
+<li>
+<p>通过全部自检项或者跳过后，点击下一步按钮跳转到VersionUp页面。</p>
+</li>
+<li>
+<p>根据选中的工作文件的Edition会自动填写VersionFilePath。</p>
+</li>
+<li>
+<p>拖拽需要审核的媒体文件到MediaInfo区域。</p>
+</li>
+<li>
+<p>选中此次提交完成了哪些todo和Issue。</p>
+</li>
+<li>
+<p>在Description区域填写描述。</p>
+</li>
+<li>
+<p>点击VersionUp按钮提交新的版本到Strack系统上。 </p>
+</li>
+</ol>
+<h2 id="strackpublish">StrackPublish （发布版本）</h2>
+<p>通过publish工具创建publish信息并发布文件。</p>
+<p><img alt="image" src="../images//publish.png" /></p>
+<p><strong>使用方法</strong></p>
+<ol>
+<li>在StrackPanel的versions页，右键任意版本，选择publish，弹出publish工具。</li>
+</ol>
+<p><img alt="image" src="../images//version_menu.png" /></p>
+<ol>
+<li>
+<p>选择想要发布的publishType。</p>
+</li>
+<li>
+<p>将对应文件拖拽到对应的区域内。</p>
+</li>
+</ol>
+<p><img alt="image" src="../images//publish_file.png" /></p>
+<ol>
+<li>点击Publish按钮，进行发布。发布成功后，可以在Strack系统上进行查看。AssetKeeper也将读取到新的发布内容。</li>
+</ol>
+<p><img alt="image" src="../images//strack_publish.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../traymenu/" class="btn btn-neutral" title="客户端托盘菜单"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.cgspread.com">Strack文档小组 </a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../traymenu/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>
